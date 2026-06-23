@@ -111,7 +111,9 @@ const SECTIONS = [
           'Direct editor access: spawn actors, set properties, run console commands',
           'Built-in auth, stable API surface \u2014 supported and versioned by Epic',
           'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
-          'Announced alongside the Worlds in Action hackathon ecosystem'
+          'Announced alongside the Worlds in Action hackathon ecosystem',
+          'We built our own: ECABridge \u2014 Agile Lens\u2019 UE5 MCP plugin for scene building, character customization, and automation',
+          'We built our own: ECABridge \u2014 Agile Lens\u2019 UE5 MCP plugin for scene building and character customization'
         ],
         notes:'Big deal: when the engine maker ships the server, it\u2019s a signal that this workflow is the future.' },
       { title:'Interactive Scene Editing', subtitle:'AI edits the live scene as you watch',
@@ -127,6 +129,7 @@ const SECTIONS = [
           'Batch import, LOD assignment, material binding \u2014 at scale',
           'Triggered by a script or CI step, not a human click',
           'The automation layer most Unreal teams haven\u2019t touched yet',
+          'Example: Forage \u2014 AI asset scout that sources Fab packs and generates handoff manifests headlessly',
           'Pairs naturally with Datasmith, Python scripting, and the Asset Registry'
         ],
         notes:'Advanced topic. Frame as: this is where studios get 10x leverage without hiring.' },
@@ -187,7 +190,7 @@ const SECTIONS = [
         ],
         notes:'Quick practical before the bigger idea. Gives Godot users something actionable.' },
       { title:'Real Projects, Real Transfers', subtitle:'Cascade, MetaHumans, RealityKit, visionOS \u2014 all connected',
-        img:'', bullets:[
+        img:'MEDIA_CYCLER', bullets:[
           'Cascade (Godot + AVP): immersive spatial scenes built \u2014 patterns now map to Unreal\u2019s visionOS pipeline',
           'MetaHuman on visionOS: RigLogic proved native RealityKit skeleton posing at 90fps \u2014 applies to every future avatar pipeline',
           'RTX fork: Godot rendering research translated to Unreal material strategies in under one session',
@@ -1250,7 +1253,18 @@ new MutationObserver(()=>{if(sl.classList.contains('active')){window._activeCycl
 if(sl.classList.contains('active')){window._activeCycler=api;start();}}
 
 // Init gradient placeholders on case slides
-allSlides.forEach(sl=>{if(sl.dataset.type!=='case')return;const mount=sl.querySelector('.media-cycler-mount');if(!mount)return;const sec=SECTIONS[+sl.dataset.section];const acc=sec?.accent||'teal';const cols={teal:['rgba(0,212,255,.18)','rgba(6,8,16,.4)'],purple:['rgba(167,139,250,.18)','rgba(6,8,16,.4)'],amber:['rgba(245,158,11,.18)','rgba(6,8,16,.4)'],rose:['rgba(244,63,94,.18)','rgba(6,8,16,.4)']};const[c1,c2]=cols[acc]||cols.teal;const tl=sl.querySelector('.case-title')?.textContent||'';buildMediaCycler(sl,[{type:'gradient',color1:c1,color2:c2,label:tl.substring(0,30)}],{imageDuration:99999});});
+allSlides.forEach(sl=>{if(sl.dataset.type!=='case')return;const mount=sl.querySelector('.media-cycler-mount');if(!mount)return;const sec=SECTIONS[+sl.dataset.section];const acc=sec?.accent||'teal';const cols={teal:['rgba(0,212,255,.18)','rgba(6,8,16,.4)'],purple:['rgba(167,139,250,.18)','rgba(6,8,16,.4)'],amber:['rgba(245,158,11,.18)','rgba(6,8,16,.4)'],rose:['rgba(244,63,94,.18)','rgba(6,8,16,.4)']};const[c1,c2]=cols[acc]||cols.teal;const tl=sl.querySelector('.case-title')?.textContent||'';buildMediaCycler(sl,[{type:'gradient',color1:c1,color2:c2,label:tl.substring(0,30)}],{imageDuration:99999});(function(){
+  const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Real Projects, Real Transfers'));
+  if (!sl) return;
+  buildMediaCycler(sl, [
+    {type:'image', src:'media/cascade-gameplay.jpg'},
+    {type:'image', src:'media/cascade-cast.jpg'},
+    {type:'image', src:'media/metahuman-final.png'},
+    {type:'image', src:'media/metahuman-seated.png'},
+  ], {imageDuration:5000});
+})();
+
+});
 
 // Map constellation
 let mapDone=false;const LSHORT=SECTIONS.map(s=>s.lesson.short||s.lesson.title.split('\n')[0]);
