@@ -60,7 +60,7 @@ const SECTIONS = [
         ],
         notes:'Beginner frame: think of it as USB-C but for AI tools. One connector spec, any device.' },
       { title:'Two Ways to Work', subtitle:'Interactive vs. headless \u2014 same protocol, different loops',
-        img:'', bullets:[
+        img:'images/ch1-two-modes.svg', bullets:[
           'Interactive: AI edits the live scene as you watch \u2014 instant feedback, back-and-forth',
           'Headless: AI runs your pipeline without opening the editor \u2014 batch, scale, schedule',
           'Choose by the task: iteration \u2192 interactive; automation \u2192 headless'
@@ -91,7 +91,7 @@ const SECTIONS = [
         ],
         notes:'Frame for novices as cost control + speed + privacy. Advanced users: this is the \u201cthinking fast and slow\u201d of AI pipelines.' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
-        img:'', bullets:[
+        img:'images/ch2-setup-pattern.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
           'AI client: Claude (or any LLM) sends structured calls to the server',
           'Config file: tells your AI where each server lives',
@@ -112,12 +112,11 @@ const SECTIONS = [
           'Built-in auth, stable API surface \u2014 supported and versioned by Epic',
           'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
           'Announced alongside the Worlds in Action hackathon ecosystem',
-          'We built our own: ECABridge \u2014 Agile Lens\u2019 UE5 MCP plugin for scene building, character customization, and automation',
-          'We built our own: ECABridge \u2014 Agile Lens\u2019 UE5 MCP plugin for scene building and character customization'
+          'We\u2019ve also built our own in-house UE5 MCP tooling \u2014 scene building, character setup, and headless automation'
         ],
         notes:'Big deal: when the engine maker ships the server, it\u2019s a signal that this workflow is the future.' },
       { title:'Interactive Scene Editing', subtitle:'AI edits the live scene as you watch',
-        img:'', bullets:[
+        img:'MEDIA_CYCLER', bullets:[
           'Prompt: \u201cAdd a three-point lighting setup to the hero character\u201d',
           'AI reads the scene tree, places lights with correct naming and initial values',
           'Changes appear in-editor immediately \u2014 visible, undoable, inspectable',
@@ -125,7 +124,7 @@ const SECTIONS = [
         ],
         notes:'Add a demo clip here if you have one. The visual of lights appearing in UE is compelling.' },
       { title:'Headless Asset Pipelines', subtitle:'No editor window required',
-        img:'', bullets:[
+        img:'MEDIA_CYCLER', bullets:[
           'Batch import, LOD assignment, material binding \u2014 at scale',
           'Triggered by a script or CI step, not a human click',
           'The automation layer most Unreal teams haven\u2019t touched yet',
@@ -198,7 +197,7 @@ const SECTIONS = [
         ],
         notes:'Use your actual project screenshots and clips here. These are YOUR real examples.' },
       { title:'The KB as Triangulation', subtitle:'Three known points give you the fourth for free',
-        img:'', bullets:[
+        img:'images/ch5-triangulation.svg', bullets:[
           'A\u2192B: Godot to AVP taught us RealityKit constraints, scale bugs, the LowLevelMesh skinner',
           'A\u2192C: Unreal to AVP had the same constraints \u2014 solved in a fraction of the time',
           'B\u2192C: \u201cDo what we did in Cascade, but in Unreal\u201d is now a one-sentence brief',
@@ -1262,6 +1261,23 @@ allSlides.forEach(sl=>{if(sl.dataset.type!=='case')return;const mount=sl.querySe
     {type:'image', src:'media/metahuman-final.png'},
     {type:'image', src:'media/metahuman-seated.png'},
   ], {imageDuration:5000});
+})();
+
+(function(){
+  const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Interactive Scene Editing'));
+  if (!sl) return;
+  buildMediaCycler(sl, [
+    {type:'image', src:'media/ue-mcp-demo.gif'},
+    {type:'image', src:'media/ue-mcp-orbit.gif'},
+  ], {imageDuration:5000});
+})();
+
+(function(){
+  const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Headless Asset Pipelines'));
+  if (!sl) return;
+  buildMediaCycler(sl, [
+    {type:'video', src:'media/forage-demo.mp4', loop:true},
+  ], {});
 })();
 
 });

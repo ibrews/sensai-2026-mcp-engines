@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 680" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gh" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4b5fd"/><stop offset="60%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c5cf0"/>
+    </radialGradient>
+    <radialGradient id="ghost" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#f59e0b"/>
+    </radialGradient>
+  </defs>
+
+  <text x="410" y="46" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="16" letter-spacing="3">THREE KNOWN POINTS &#8594; THE FOURTH FOR FREE</text>
+
+  <!-- triangle edges (subtle) -->
+  <polygon points="410,118 150,452 670,452" fill="rgba(0,212,255,.03)" stroke="rgba(0,212,255,.25)" stroke-width="1.5"/>
+
+  <!-- hub-to-corner rays (the triangulation) -->
+  <line x1="410" y1="300" x2="410" y2="150" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+  <line x1="410" y1="300" x2="185" y2="435" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+  <line x1="410" y1="300" x2="635" y2="435" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+
+  <!-- edge transfer labels -->
+  <text x="245" y="270" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600" transform="rotate(-52 245 270)">RealityKit limits</text>
+  <text x="575" y="270" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600" transform="rotate(52 575 270)">scale + skeleton</text>
+  <text x="410" y="486" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600">&#8220;do it like Cascade, but in Unreal&#8221;</text>
+
+  <!-- ===== corner nodes ===== -->
+  <!-- top -->
+  <g filter="url(#gh)">
+    <rect x="300" y="92" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="410" y="120" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">GODOT &#8594; visionOS</text>
+  <text x="410" y="141" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">Cascade on AVP</text>
+
+  <!-- bottom-left -->
+  <g filter="url(#gh)">
+    <rect x="40" y="430" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="150" y="458" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">UNREAL &#8594; visionOS</text>
+  <text x="150" y="479" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">solved in a fraction</text>
+
+  <!-- bottom-right -->
+  <g filter="url(#gh)">
+    <rect x="560" y="430" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="670" y="458" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">MetaHuman runtime</text>
+  <text x="670" y="479" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">RigLogic @ 90fps</text>
+
+  <!-- ===== central KB hub ===== -->
+  <circle cx="410" cy="300" r="62" fill="url(#hub)" filter="url(#gh)"/>
+  <text x="410" y="294" text-anchor="middle" fill="#1a1230" font-size="20" font-weight="800">SECOND</text>
+  <text x="410" y="318" text-anchor="middle" fill="#1a1230" font-size="20" font-weight="800">BRAIN</text>
+  <text x="410" y="384" text-anchor="middle" fill="#c4b5fd" font-size="13.5" font-weight="600">your knowledge base</text>
+
+  <!-- ===== derived 4th node ===== -->
+  <line x1="470" y1="345" x2="600" y2="590" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 6" stroke-opacity=".85" filter="url(#gh)"/>
+  <circle cx="620" cy="600" r="48" fill="url(#ghost)" filter="url(#gh)"/>
+  <text x="620" y="596" text-anchor="middle" fill="#2a1c02" font-size="15" font-weight="800">NEW</text>
+  <text x="620" y="615" text-anchor="middle" fill="#2a1c02" font-size="15" font-weight="800">PROJECT</text>
+
+  <text x="250" y="600" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">The AI reasons</text>
+  <text x="250" y="624" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">across your past work</text>
+  <text x="250" y="650" text-anchor="middle" fill="rgba(245,158,11,.95)" font-size="15" font-weight="700">&#8594; the next one is faster</text>
+</svg>
