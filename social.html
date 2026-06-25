@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Spatial Deck — Social Card</title>
+<title>AI + MCP for Blender, Unreal & Godot — Social Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,58 +15,55 @@
 }
 html,body{width:1200px;height:630px;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
 
-/* Background — same spatial-deck visual language */
 .bg{position:absolute;inset:0;overflow:hidden}
 .bg-gradient{position:absolute;inset:0;
   background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(124,58,237,.22) 0%,transparent 55%),
-             radial-gradient(ellipse 60% 70% at 85% 20%,rgba(0,212,255,.16) 0%,transparent 55%),
+             radial-gradient(ellipse 60% 70% at 85% 25%,rgba(0,212,255,.16) 0%,transparent 55%),
+             radial-gradient(ellipse 40% 45% at 84% 22%,rgba(245,158,11,.12) 0%,transparent 60%),
              linear-gradient(180deg,#060810 0%,#0b0820 50%,#060810 100%);
 }
 canvas{position:absolute;inset:0}
 
-/* Constellation graphic on the right */
-.constellation{position:absolute;top:50%;right:80px;transform:translateY(-50%);width:340px;height:340px}
-.constellation svg{width:100%;height:100%}
-.cnode{fill:rgba(0,212,255,.6);stroke:rgba(0,212,255,.85);stroke-width:1.5}
-.cring{fill:none;stroke:rgba(0,212,255,.45);stroke-width:1.5}
-.cline{stroke:rgba(0,212,255,.18);stroke-width:.6}
+/* Isometric cube graphic on the right — talk identity (matches favicon) */
+.cube{position:absolute;top:50%;right:78px;transform:translateY(-50%);width:360px;height:360px}
+.cube svg{width:100%;height:100%}
 
 /* Content */
-.content{position:absolute;top:50%;left:80px;transform:translateY(-50%);max-width:680px;z-index:10}
+.content{position:absolute;top:50%;left:80px;transform:translateY(-50%);max-width:660px;z-index:10}
 .tag{
-  font-size:14px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--teal);opacity:.9;margin-bottom:24px;
+  font-size:15px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--teal);opacity:.9;margin-bottom:26px;
 }
 .title{
-  font-size:96px;font-weight:700;line-height:.96;letter-spacing:-.03em;
+  font-size:74px;font-weight:700;line-height:1.0;letter-spacing:-.03em;
   background:linear-gradient(130deg,#fff 20%,#a5d8ff 55%,#9b8cff 90%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
 .tagline{
-  font-size:24px;font-weight:400;color:var(--dim);line-height:1.4;
-  max-width:600px;margin-bottom:36px;
+  font-size:23px;font-weight:400;color:var(--dim);line-height:1.42;
+  max-width:600px;margin-bottom:34px;
 }
-.meta{
-  display:flex;align-items:center;gap:14px;
-  font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.45);
-}
-.meta .pill{
-  display:inline-flex;align-items:center;gap:8px;
+.meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pill{
+  display:inline-flex;align-items:center;gap:9px;
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
-  border-radius:30px;padding:9px 18px;
+  border-radius:30px;padding:10px 20px;
+  font-size:14px;font-weight:500;letter-spacing:.04em;
 }
-.meta .pill .lbl{opacity:.45;font-size:10px}
-.meta .url{color:var(--teal);opacity:.85}
+.pill .lbl{opacity:.45;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.pill .url{color:var(--teal);opacity:.92}
+.pill.amber{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08)}
+.pill.amber .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
 
 /* Footer brand mark */
 .footer{
-  position:absolute;bottom:36px;left:80px;right:80px;
+  position:absolute;bottom:38px;left:80px;right:78px;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.28);
+  font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.32);
 }
+.footer .speaker{color:rgba(255,255,255,.55)}
 </style>
 </head>
 <body>
@@ -75,56 +72,60 @@ canvas{position:absolute;inset:0}
   <canvas id="stars"></canvas>
 </div>
 
-<!-- Constellation graphic -->
-<div class="constellation">
-  <svg viewBox="0 0 340 340">
-    <!-- ring -->
-    <circle class="cring" cx="170" cy="170" r="140"/>
-    <!-- 8 connecting lines -->
-    <line class="cline" x1="170" y1="30" x2="269.5" y2="269.5"/>
-    <line class="cline" x1="269.5" y1="70.5" x2="70.5" y2="269.5"/>
-    <line class="cline" x1="310" y1="170" x2="30" y2="170"/>
-    <line class="cline" x1="269.5" y1="269.5" x2="70.5" y2="70.5"/>
-    <line class="cline" x1="170" y1="310" x2="170" y2="30"/>
-    <line class="cline" x1="70.5" y1="269.5" x2="269.5" y2="70.5"/>
-    <line class="cline" x1="30" y1="170" x2="310" y2="170"/>
-    <line class="cline" x1="70.5" y1="70.5" x2="269.5" y2="269.5"/>
-    <!-- 8 nodes -->
-    <circle class="cnode" cx="170" cy="30" r="6"/>
-    <circle class="cnode" cx="269.5" cy="70.5" r="6"/>
-    <circle class="cnode" cx="310" cy="170" r="6"/>
-    <circle class="cnode" cx="269.5" cy="269.5" r="6"/>
-    <circle class="cnode" cx="170" cy="310" r="6"/>
-    <circle class="cnode" cx="70.5" cy="269.5" r="6"/>
-    <circle class="cnode" cx="30" cy="170" r="6"/>
-    <circle class="cnode" cx="70.5" cy="70.5" r="6"/>
-    <!-- center brand -->
-    <text x="170" y="168" text-anchor="middle" dominant-baseline="middle" fill="rgba(255,255,255,.7)" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="600" letter-spacing="3">SPATIAL</text>
-    <text x="170" y="188" text-anchor="middle" dominant-baseline="middle" fill="rgba(255,255,255,.7)" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="600" letter-spacing="3">DECK</text>
+<!-- Isometric cube: amber AI node feeding three teal engine nodes -->
+<div class="cube">
+  <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="g" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <radialGradient id="ai" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fcd34d"/><stop offset="60%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/>
+      </radialGradient>
+    </defs>
+    <!-- cube faces -->
+    <polygon points="80,150 180,205 180,300 80,245" fill="rgba(0,153,187,.85)"/>
+    <polygon points="280,150 180,205 180,300 280,245" fill="rgba(0,109,136,.9)"/>
+    <polygon points="180,90 280,150 180,205 80,150" fill="rgba(0,212,255,.95)"/>
+    <!-- edge highlights -->
+    <polyline points="180,90 280,150 280,245 180,300 80,245 80,150 180,90" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.4" stroke-linejoin="round"/>
+    <line x1="180" y1="205" x2="180" y2="90" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
+    <!-- connection lines AI -> engine nodes -->
+    <line x1="180" y1="90" x2="80" y2="150" stroke="#f59e0b" stroke-width="1.6" opacity=".55" filter="url(#g)"/>
+    <line x1="180" y1="90" x2="280" y2="150" stroke="#f59e0b" stroke-width="1.6" opacity=".55" filter="url(#g)"/>
+    <line x1="180" y1="90" x2="180" y2="300" stroke="#f59e0b" stroke-width="1.4" opacity=".4" filter="url(#g)"/>
+    <!-- engine nodes (teal) -->
+    <circle cx="80" cy="150" r="9" fill="#00d4ff" filter="url(#g)"/>
+    <circle cx="280" cy="150" r="9" fill="#00d4ff" filter="url(#g)"/>
+    <circle cx="180" cy="300" r="9" fill="#00d4ff" opacity=".8" filter="url(#g)"/>
+    <!-- AI node (amber, top vertex) -->
+    <circle cx="180" cy="90" r="20" fill="url(#ai)" filter="url(#g)"/>
+    <circle cx="180" cy="90" r="8" fill="#fff" opacity=".75"/>
   </svg>
 </div>
 
 <div class="content">
-  <div class="tag">Open Source · MIT</div>
-  <h1 class="title">Spatial<br>Deck</h1>
-  <p class="tagline">A self-contained, single-file presentation framework for live talks. No build, no framework. AI-collaborative editing built in.</p>
+  <div class="tag">Free Virtual Workshop · SIGGRAPH 2026 Prep</div>
+  <h1 class="title">AI + MCP for<br>Blender, Unreal<br>&amp; Godot</h1>
+  <p class="tagline">Run AI agents directly inside your 3D editor — live scene editing, headless asset pipelines, and the structure that makes it reliable.</p>
   <div class="meta">
-    <div class="pill"><span class="lbl">Repo</span><span class="url">github.com/ibrews/spatial-deck</span></div>
+    <div class="pill amber"><span class="dot"></span><span>Hosted by SensAI Hackademy</span></div>
+    <div class="pill"><span class="lbl">RSVP</span><span class="url">luma.com/sensai-q6jg</span></div>
   </div>
 </div>
 
 <div class="footer">
-  <span>One HTML File · No Dependencies</span>
-  <span>Annotate Mode · Move Mode · Clicker Ready</span>
+  <span class="speaker">Alex Coulombe · Agile Lens</span>
+  <span>Unreal Authorized Instructor · XR · AI Pipelines</span>
 </div>
 
 <script>
 // Stars background
 const cv=document.getElementById('stars'),sc=cv.getContext('2d');
 cv.width=1200;cv.height=630;
-const stars=Array.from({length:90},()=>({
-  x:Math.random()*1200,y:Math.random()*630,
-  r:Math.random()*1.4+.3,o:Math.random()*.5+.15
+const stars=Array.from({length:90},(_, i)=>({
+  x:(i*97+37)%1200,y:(i*193+61)%630,
+  r:((i*7)%14)/10+.3,o:((i*11)%50)/100+.15
 }));
 sc.clearRect(0,0,1200,630);
 stars.forEach(s=>{
