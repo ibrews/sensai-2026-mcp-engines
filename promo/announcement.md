@@ -14,7 +14,7 @@ Register: https://luma.com/sensai-q6jg
 
 **Your AI can write code *about* your 3D scene. What if it could reach in and build the scene itself?**
 
-At the start of 2026, our CEO **Alex Coulombe** started tinkering with agentic workflows — kicking the tires on OpenClaw first (these days it's almost all Claude 😅 — OpenClaw's a fond, distant memory). Ever since, he's been chasing AI pipelines that genuinely move the needle on Agile Lens client work *and* keep us on the bleeding edge of R&D.
+At the start of 2026, our CEO **Alex Coulombe** started tinkering with agentic workflows — kicking the tires on OpenClaw first (a fond, distant memory now 😅). These days it's Claude for the hard problems and a fleet of local models for everything else — because the best agentic pipeline is also the one that doesn't torch your token budget every week. Ever since, he's been chasing AI workflows that genuinely move the needle on Agile Lens client work *and* keep us on the bleeding edge of R&D.
 
 Next Tuesday, for the first time, he's sharing the hard-won lessons publicly: how to run AI agents **directly inside Blender, Unreal Engine, and Godot** using MCP (Model Context Protocol) — live scene editing, headless asset pipelines, local-model routing, and the project-structure tricks that make it all actually reliable.
 
@@ -31,7 +31,7 @@ Come spend less time on the repetitive stuff and more time creating. Hope to see
 
 ## Short (X / Instagram / Threads)
 
-Our CEO Alex Coulombe spent 2026 turning AI agents loose *inside* Blender, Unreal & Godot (started on OpenClaw, now it's basically all Claude 😄).
+Our CEO Alex Coulombe spent 2026 turning AI agents loose *inside* Blender, Unreal & Godot (started on OpenClaw — now it's Claude for the hard parts + a local-model fleet to keep the bills sane).
 
 Next Tue he's sharing the playbook — free, prepping for the Worlds in Action Hack @ SIGGRAPH 2026. 200+ already in.
 
@@ -43,4 +43,4 @@ Next Tue he's sharing the playbook — free, prepping for the Worlds in Action H
 
 - **Attribution:** company = Agile Lens, Alex as CEO/speaker (correct for Agile Lens channels).
 - **Social card:** `promo/social-card.png` (1200×630) — attach to the post / set as OG image.
-- **The Claude line** is intentionally light per Alex's framing; trim the emoji for a more formal channel.
+- **The Claude/fleet line** reflects the real approach: fleet-first (local models), Claude reserved for hard problems to protect the weekly budget. Doubles as a teaser for the talk's "local LLM routing" section. Keep it light; trim the emoji for a more formal channel.
