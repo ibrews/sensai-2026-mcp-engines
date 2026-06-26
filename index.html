@@ -83,13 +83,13 @@ const SECTIONS = [
         ],
         notes:'Easiest win in the room, and you can do it today.\nName for meaning: hero_lighting_key beats Light_003.\nBad names make the AI act on the wrong object, confidently.' },
       { title:'Local LLM Routing', subtitle:'Not everything needs a cloud API',
-        img:'', bullets:[
-          'Simple tasks (rename, batch-move, export): fast local models handle them fine',
-          'Complex reasoning (light for mood, debug a shader): route to a stronger model',
-          'The routing layer is where production efficiency actually lives',
-          'A smaller model, well-prompted with scene context, often beats a larger model with none'
+        img:'media/blender-typed-hero.png', bullets:[
+          'Simple tasks (create, recolor, scatter, export): a local model handles them fine',
+          'We tested it: with one free-form code tool, local models LEAK the call as text — 0 of 6',
+          'The fix wasn’t a bigger model — it was typed tools: small structured args, not raw code',
+          'Then a local 8B emits clean calls 100% of the time. Tool design beats model size.'
         ],
-        notes:'Not everything needs a cloud model. This is where the budget lives.\nSimple edits go to a fast local model; hard reasoning gets the big one.\nA small model with scene context beats a big one flying blind.' },
+        notes:'This is where the token budget actually lives.\nHonest result: a free-form code tool made local models print the call as text, not run it.\nThe fix was typed tools, not a bigger model — then an 8B was 100% reliable.\nLand the line: tool design beats model size.' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
         img:'images/ch2-setup-pattern.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
@@ -164,6 +164,14 @@ const SECTIONS = [
           'Rigging: useful for structure and symmetry, less reliable for weights'
         ],
         notes:'Geometry Nodes and materials: describe the look, get the node graph.\nBatch operations across dozens of objects in one prompt.\nHonest caveat: great for structure, shaky on rig weights.' },
+      { title:'Watch a Local 8B Build It', subtitle:'qwen3:8b \u00b7 typed tools \u00b7 zero cloud tokens',
+        img:'MEDIA_CYCLER', bullets:[
+          '\u201cAdd a red cube, scatter cones around it\u201d \u2014 a clean multi-call plan, run in Blender',
+          'Every object here was placed by a local 8B model through typed MCP tools',
+          'No internet, no API key \u2014 this whole shot was generated on a laptop',
+          'Stock free-form tool: unreliable. Typed tools: 100% clean. Same model.'
+        ],
+        notes:'The fleet-first payoff, rendered from what the local model actually emitted.\nEvery object placed by a local 8B through typed tools \u2014 no cloud.\nContrast the stock free-form tool that leaked; typed tools fixed it.\nThis is the scene the live demo recreates.' },
       { title:'The Production Pattern', subtitle:'Verify every structural change',
         img:'', bullets:[
           'Blender\u2019s undo stack is your safety net \u2014 use it at every step',
@@ -223,11 +231,11 @@ const SECTIONS = [
       { title:'The Setup', subtitle:'What you\u2019re looking at',
         img:'', bullets:[
           'Blender with an MCP server running in the background',
-          'Claude Code connected as the AI client',
+          'A local model (Ollama) drives via typed tools — Claude on standby for the hard asks',
           'A starting scene ready to be modified',
           'Goal: natural language in \u2014 visible change in the viewport out'
         ],
-        notes:'Orient them: Blender open, MCP server running, scene ready.\nShow the driver connected. Plain language in, viewport change out.\nKeep it short; the tasks are the show.' },
+        notes:'Orient them: Blender open, MCP server running, scene ready.\nDriver is a LOCAL model via typed tools; Claude is the backup.\nPlain language in, viewport change out. Keep it short; the tasks are the show.' },
       { title:'Task: Scene Edit', subtitle:'Natural language \u2192 visible change',
         img:'', bullets:[
           'Alex gives a creative direction \u2014 no code, no menus',
@@ -1893,6 +1901,20 @@ setTimeout(updateDurationDisplay,100);
   m.style.cssText='position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#000';
   const v=document.createElement('video');
   v.src='media/forage-demo.mp4'; v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto';
+  v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
+  m.appendChild(v);
+  const sync=()=>{ if(sl.classList.contains('active')){ v.play().catch(()=>{}); } else { try{v.pause();}catch(_){} } };
+  new MutationObserver(sync).observe(sl,{attributes:true,attributeFilter:['class']});
+  v.addEventListener('canplay',sync); v.addEventListener('loadeddata',sync);
+  sync();
+})();
+
+(function(){
+  const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Watch a Local 8B Build It'));
+  if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(!m) return; m.innerHTML='';
+  m.style.cssText='position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#000';
+  const v=document.createElement('video');
+  v.src='media/blender-build.mp4'; v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto';
   v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
   m.appendChild(v);
   const sync=()=>{ if(sl.classList.contains('active')){ v.play().catch(()=>{}); } else { try{v.pause();}catch(_){} } };

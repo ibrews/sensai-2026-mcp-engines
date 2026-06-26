@@ -17,7 +17,7 @@ Built with [Spatial Deck](https://github.com/ibrews/spatial-deck) — a single-f
 | CH 1 | Agents Changed the Game — from copilot to operator, what MCP is, the two paradigms | Teal |
 | CH 2 | Structure Is the Secret Sauce — scene naming, local LLM routing, the setup pattern | Purple |
 | CH 3 | Epic's Official Answer — Unreal Engine MCP plugin, interactive editing, headless pipelines | Amber |
-| CH 4 | The Community Built It First — Blender MCP servers, high-leverage tasks, production patterns | Rose |
+| CH 4 | The Community Built It First — Blender MCP servers, high-leverage tasks, a local 8B building a scene live, production patterns | Rose |
 | CH 5 | Your Second Brain Is the Real Tool — Godot + cross-engine knowledge transfer + the KB thesis | Teal |
 | DEMO | Live Demo — Blender + Claude Code + MCP, live in front of the audience | Amber |
 
@@ -46,9 +46,11 @@ Built with [Spatial Deck](https://github.com/ibrews/spatial-deck) — a single-f
 
 ## Live Demo Setup
 
-The demo uses **Blender + Claude Code + an MCP server**. Requirements:
-- Blender 4.x
-- [blender-mcp](https://github.com/ahujasid/blender-mcp) or equivalent community MCP server
-- Claude Code (CLI) with the MCP server configured
+The demo is **fleet-first**: a **local model (Ollama) drives Blender via typed MCP tools**, with Claude on standby for open-ended asks. Requirements:
+- Blender 4.x + [blender-mcp](https://github.com/ahujasid/blender-mcp)
+- A local model via Ollama (qwen3:8b) **+ the typed-tool MCP wrapper** (small structured tools instead of one free-form `execute_blender_code`)
+- Claude Code (CLI) as the backup driver
 
-The demo pattern: Alex gives a natural-language instruction → Claude one-shots it or asks one clarifying question → a visible change appears in the viewport.
+The demo pattern: Alex gives a natural-language instruction → the local model emits a clean typed-tool plan → a visible change appears in the viewport. The CH 4 slide *"Watch a Local 8B Build It"* shows a scene a local 8B model built this way.
+
+> **Why typed tools:** with the stock single `execute_blender_code` tool, local models leak the call as text (~0/6 reliable). With typed tools they're 100% reliable — *tool design beats model size.* Full runbook, the typed-tool server, and the video generator: KB `projects/sensai-blender-demo/`.
