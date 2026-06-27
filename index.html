@@ -45,14 +45,14 @@ const SECTIONS = [
       notes:'AI used to write code about your scene. Now it acts inside it.\nAgents operate tools, not just autocomplete. That is the whole talk.\nQuick read of the room: who has used an AI agent vs a copilot?\nPromise: by the end you can wire this into your own engine.' },
     cases: [
       { title:'From Copilot to Operator', subtitle:'The gap between \u201csuggests\u201d and \u201cdoes\u201d is everything',
-        img:'', bullets:[
+        img:'images/ch1-copilot-operator.svg', bullets:[
           'Old workflow: ask AI for code \u2014 copy \u2014 paste \u2014 debug \u2014 repeat',
           'New workflow: AI opens your scene and makes the change directly',
           'Agents don\u2019t just generate \u2014 they act. The loop closes inside the tool.'
         ],
         notes:'Everyone knows the copy-paste tax: ask, copy, paste, debug, repeat.\nAgents close that loop inside the tool and make the change directly.\nThis is the difference between suggests and does.' },
       { title:'What MCP Actually Is', subtitle:'A standard protocol for connecting AI to tools',
-        img:'', bullets:[
+        img:'images/ch1-what-mcp.svg', bullets:[
           'Model Context Protocol: a shared spec so AI can communicate with any tool',
           'Your editor becomes an MCP server \u2014 it exposes commands as callable actions',
           'Your AI becomes the client \u2014 reads the scene, acts, confirms the result',
@@ -75,7 +75,7 @@ const SECTIONS = [
       notes:'Before you install anything: structure decides whether AI succeeds.\nClean scenes are not just for humans anymore.\nThis is the cheapest, highest-leverage prep you can do.\nAdvanced folks know this; few apply it strictly enough for AI.' },
     cases: [
       { title:'Name Everything Like AI Will Read It', subtitle:'Because it will',
-        img:'', bullets:[
+        img:'images/ch2-naming.svg', bullets:[
           'Descriptive names beat generic ones: \u201chero_lighting_key\u201d not \u201cLight_003\u201d',
           'Layer and group organization lets AI navigate without guessing',
           'Consistent patterns let AI transfer knowledge across your projects',
@@ -107,7 +107,7 @@ const SECTIONS = [
       notes:'Lead with the news: the engine maker shipped an official MCP plugin.\nWhen Epic ships the server, that tells you where this is going.\nWe have also built our own in-house tooling on top.\nKeep names abstract here; let the visuals do the talking.' },
     cases: [
       { title:'The Official Plugin', subtitle:'Epic\u2019s MCP server, 2025',
-        img:'', bullets:[
+        img:'images/ch3-official-plugin.svg', bullets:[
           'Direct editor access: spawn actors, set properties, run console commands',
           'Built-in auth, stable API surface \u2014 supported and versioned by Epic',
           'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
@@ -149,7 +149,7 @@ const SECTIONS = [
       notes:'Plot twist: Blender had reliable MCP servers before the engines did.\nOpen ecosystem, Python-native, and battle-tested today.\nIf you want to try this tonight, start here.\nThis is also where our live demo will run.' },
     cases: [
       { title:'The MCP Server Landscape', subtitle:'Open source, Python-native, actively maintained',
-        img:'', bullets:[
+        img:'images/ch4-server-landscape.svg', bullets:[
           'blender-mcp and others: community-built, actively maintained, ready to install',
           'Blender\u2019s Python API maps almost directly to MCP calls',
           'Most mature non-commercial MCP server available today',
@@ -172,6 +172,14 @@ const SECTIONS = [
           'Stock free-form tool: unreliable. Typed tools: 100% clean. Same model.'
         ],
         notes:'The fleet-first payoff, rendered from what the local model actually emitted.\nEvery object placed by a local 8B through typed tools \u2014 no cloud.\nContrast the stock free-form tool that leaked; typed tools fixed it.\nThis is the scene the live demo recreates.' },
+      { title:'Where Local Ends, Claude Begins', subtitle:'Same brief, same tools — the gap is judgment',
+        img:'media/local-vs-claude.png', bullets:[
+          'Local reliably CALLS the tools — places objects, applies materials, adds lights',
+          'But it lacks spatial and aesthetic judgment: framing, scale, color, composition',
+          'Same monument brief → a chaotic blob (local 8B) vs a composed hero shot (Claude)',
+          'The handoff: local for the mechanical 80%, the frontier model for taste and open-ended work'
+        ],
+        notes:'This is the honest ceiling. Local nailed every tool call — objects, materials, lights.\nWhat it could not do is COMPOSE: frame the camera, scale the shapes, harmonize color.\nSame brief, same tools — the only difference is judgment.\nThe handoff rule: local for the mechanical 80%, Claude for taste and the open-ended 20%.' },
       { title:'The Production Pattern', subtitle:'Verify every structural change',
         img:'', bullets:[
           'Blender\u2019s undo stack is your safety net \u2014 use it at every step',
@@ -189,7 +197,7 @@ const SECTIONS = [
       notes:'This is the lesson nobody else is teaching today.\nYour documentation is training data for your own workflows.\nThe better your notes, the smarter your AI gets on your work.\nSlow down here; this is the idea I want them to leave with.' },
     cases: [
       { title:'Godot MCP Options', subtitle:'Open ecosystem, open source, ready to extend',
-        img:'', bullets:[
+        img:'images/ch5-godot-options.svg', bullets:[
           'Community MCP servers: scene tree manipulation, GDScript generation',
           'Godot\u2019s node naming discipline pays off immediately with AI',
           'Open source: when a call doesn\u2019t exist, you can add it',
@@ -213,7 +221,7 @@ const SECTIONS = [
         ],
         notes:'Here is the payoff. Three solved projects, one knowledge base.\nGodot to Vision Pro taught us the constraints the hard way.\nUnreal to Vision Pro hit the same wall and we solved it fast.\nDo it like Cascade but in Unreal is now a one-sentence brief.' },
       { title:'Building for Transferability', subtitle:'Document the why, not just the what',
-        img:'', bullets:[
+        img:'images/ch5-transferability.svg', bullets:[
           'Gotchas + their fixes are the most valuable KB entries you can write',
           'Decision records beat code comments: \u201ctried X, failed because Y, chose Z\u201d',
           'The AI that helped you build the thing can help the next person understand it',

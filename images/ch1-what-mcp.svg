@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gw" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="aw" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
+    <linearGradient id="lw" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">ONE PROTOCOL &#183; ANY TOOL &#183; ANY MODEL</text>
+
+  <!-- AI MODEL (client) -->
+  <rect x="70" y="250" width="220" height="120" rx="18" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gw)"/>
+  <text x="180" y="300" text-anchor="middle" fill="#e9fbff" font-size="24" font-weight="700">AI MODEL</text>
+  <text x="180" y="328" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="14">the client &#8212; local or cloud</text>
+  <text x="180" y="349" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13">picks a tool, fills the args</text>
+
+  <!-- MCP hub (the "USB-C" connector) -->
+  <rect x="360" y="244" width="140" height="132" rx="20" fill="rgba(167,139,250,.14)" stroke="#a78bfa" stroke-width="3" filter="url(#gw)"/>
+  <text x="430" y="300" text-anchor="middle" fill="#efe9ff" font-size="30" font-weight="700">MCP</text>
+  <text x="430" y="326" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="12.5">one connector</text>
+  <text x="430" y="344" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">&#8220;USB-C for AI&#8221;</text>
+
+  <!-- client <-> hub -->
+  <line x1="290" y1="310" x2="352" y2="310" stroke="url(#lw)" stroke-width="3.5" marker-end="url(#aw)"/>
+
+  <!-- three engine chips -->
+  <g>
+    <rect x="600" y="120" width="170" height="80" rx="16" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5"/>
+    <text x="685" y="158" text-anchor="middle" fill="#ffe1e7" font-size="22" font-weight="700">Blender</text>
+    <text x="685" y="180" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>
+
+    <rect x="600" y="270" width="170" height="80" rx="16" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2.5"/>
+    <text x="685" y="308" text-anchor="middle" fill="#ffe9c2" font-size="22" font-weight="700">Unreal</text>
+    <text x="685" y="330" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>
+
+    <rect x="600" y="420" width="170" height="80" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+    <text x="685" y="458" text-anchor="middle" fill="#e9fbff" font-size="22" font-weight="700">Godot</text>
+    <text x="685" y="480" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>
+  </g>
+
+  <!-- hub fans out to the three engines -->
+  <path d="M500 290 C 555 230, 565 180, 598 160" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw)"/>
+  <path d="M500 310 L 598 310" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw)"/>
+  <path d="M500 330 C 555 390, 565 440, 598 460" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw)"/>
+
+  <text x="410" y="565" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">Learn the shape once &#8212; every engine after this is the same wiring.</text>
+</svg>

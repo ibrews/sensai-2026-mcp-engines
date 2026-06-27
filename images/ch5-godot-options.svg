@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="ggo" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="ago" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
+  </defs>
+
+  <text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">OPEN ECOSYSTEM &#183; READY TO EXTEND</text>
+
+  <!-- GODOT box (center-left) -->
+  <rect x="80" y="240" width="220" height="130" rx="20" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#ggo)"/>
+  <text x="190" y="298" text-anchor="middle" fill="#e9fbff" font-size="28" font-weight="700">GODOT</text>
+  <text x="190" y="326" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">pick your wiring</text>
+  <rect x="124" y="338" width="132" height="22" rx="11" fill="rgba(0,212,255,.18)" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="190" y="353" text-anchor="middle" fill="#e9fbff" font-size="11.5" font-weight="600" letter-spacing="1">open ecosystem</text>
+
+  <!-- three option cards fanning out -->
+  <rect x="500" y="110" width="240" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="620" y="148" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">community MCP server</text>
+  <text x="620" y="174" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13">drop in &amp; go</text>
+
+  <rect x="500" y="258" width="240" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="620" y="296" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">GDScript bridge</text>
+  <text x="620" y="322" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13">wire it from inside</text>
+
+  <rect x="500" y="406" width="240" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="620" y="438" text-anchor="middle" fill="#e9fbff" font-size="18" font-weight="700">extend-it-yourself</text>
+  <text x="620" y="462" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="14">(open)</text>
+  <text x="620" y="484" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">no walls in your way</text>
+
+  <!-- fan-out arrows -->
+  <path d="M300 280 C 390 230, 410 180, 498 158" fill="none" stroke="#00d4ff" stroke-width="2.5" opacity=".85" marker-end="url(#ago)"/>
+  <path d="M300 305 L 498 304" fill="none" stroke="#00d4ff" stroke-width="2.5" opacity=".85" marker-end="url(#ago)"/>
+  <path d="M300 330 C 390 380, 410 430, 498 452" fill="none" stroke="#00d4ff" stroke-width="2.5" opacity=".85" marker-end="url(#ago)"/>
+
+  <text x="410" y="566" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">Same shape as Blender and Unreal &#8212; different server, same wiring.</text>
+</svg>

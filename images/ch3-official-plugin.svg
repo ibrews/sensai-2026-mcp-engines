@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gop" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="aop" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#a78bfa"/></marker>
+    <linearGradient id="lop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">EPIC SHIPPED IT</text>
+
+  <!-- UNREAL EDITOR (center) -->
+  <rect x="120" y="170" width="320" height="150" rx="20" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2.5" filter="url(#gop)"/>
+  <text x="280" y="218" text-anchor="middle" fill="#ffe9c2" font-size="26" font-weight="700">UNREAL EDITOR</text>
+
+  <!-- official MCP plugin badge -->
+  <rect x="158" y="240" width="244" height="56" rx="14" fill="rgba(245,158,11,.16)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="280" y="266" text-anchor="middle" fill="#ffe9c2" font-size="17" font-weight="600">+ Official MCP Plugin</text>
+  <text x="280" y="286" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12">2025 &#183; shipped by Epic</text>
+
+  <!-- arrow out to client -->
+  <line x1="440" y1="245" x2="552" y2="245" stroke="url(#lop)" stroke-width="3.5" marker-end="url(#aop)" filter="url(#gop)"/>
+
+  <!-- ANY MCP CLIENT -->
+  <rect x="560" y="190" width="200" height="110" rx="18" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="2.5" filter="url(#gop)"/>
+  <text x="660" y="232" text-anchor="middle" fill="#efe9ff" font-size="21" font-weight="700">ANY MCP</text>
+  <text x="660" y="258" text-anchor="middle" fill="#efe9ff" font-size="21" font-weight="700">CLIENT</text>
+  <text x="660" y="282" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="12.5">Claude &#183; local model</text>
+
+  <!-- two capability chips below -->
+  <rect x="120" y="372" width="300" height="78" rx="16" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.22)" stroke-width="2"/>
+  <text x="270" y="406" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">Interactive scene editing</text>
+  <text x="270" y="430" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">drive the editor live</text>
+
+  <rect x="440" y="372" width="300" height="78" rx="16" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.22)" stroke-width="2"/>
+  <text x="590" y="406" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">Headless asset pipelines</text>
+  <text x="590" y="430" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">batch jobs, no UI</text>
+
+  <text x="410" y="556" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">When the engine maker ships the server, you know where this is going.</text>
+</svg>
