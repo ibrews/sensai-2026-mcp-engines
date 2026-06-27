@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gpp" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="app" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#f43f5e"/></marker>
+  </defs>
+
+  <text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">VERIFY EVERY STRUCTURAL CHANGE</text>
+
+  <!-- loop glyph in the empty center -->
+  <text x="372" y="320" text-anchor="middle" fill="rgba(244,63,94,.45)" font-size="80" font-weight="700">&#8635;</text>
+
+  <!-- curved arrows forming the loop (drawn first, behind nodes) -->
+  <!-- top node -> right node -->
+  <path d="M468 150 C 560 168, 596 224, 600 270" fill="none" stroke="#f43f5e" stroke-width="3" opacity=".85" marker-end="url(#app)"/>
+  <!-- right node -> bottom node -->
+  <path d="M566 386 C 520 452, 446 478, 388 480" fill="none" stroke="#f43f5e" stroke-width="3" opacity=".85" marker-end="url(#app)"/>
+  <!-- bottom node -> top node -->
+  <path d="M196 446 C 132 388, 134 230, 268 156" fill="none" stroke="#f43f5e" stroke-width="3" opacity=".85" marker-end="url(#app)"/>
+
+  <!-- top node: AI makes a change -->
+  <rect x="262" y="100" width="208" height="84" rx="16" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gpp)"/>
+  <text x="366" y="138" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">AI makes a change</text>
+  <text x="366" y="162" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">one structural edit</text>
+
+  <!-- right node: INSPECT -->
+  <rect x="498" y="272" width="208" height="84" rx="16" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gpp)"/>
+  <text x="602" y="310" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">INSPECT the result</text>
+  <text x="602" y="334" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">look before you trust</text>
+
+  <!-- bottom node: keep / undo -->
+  <rect x="166" y="446" width="208" height="84" rx="16" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gpp)"/>
+  <text x="270" y="484" text-anchor="middle" fill="#ffe1e7" font-size="19" font-weight="700">keep it &#160;/&#160; UNDO it</text>
+  <text x="270" y="508" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">decide, then continue</text>
+
+  <!-- side chips -->
+  <rect x="548" y="446" width="206" height="46" rx="14" fill="rgba(244,63,94,.06)" stroke="rgba(244,63,94,.55)" stroke-width="2"/>
+  <text x="651" y="474" text-anchor="middle" fill="#ffd7df" font-size="15" font-weight="600">scratch .blend</text>
+
+  <rect x="548" y="500" width="206" height="46" rx="14" fill="rgba(244,63,94,.06)" stroke="rgba(244,63,94,.55)" stroke-width="2"/>
+  <text x="651" y="528" text-anchor="middle" fill="#ffd7df" font-size="15" font-weight="600">undo = safety net</text>
+
+  <text x="410" y="582" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">The undo stack is your safety net &#8212; use it every step.</text>
+</svg>

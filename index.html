@@ -133,7 +133,7 @@ const SECTIONS = [
         ],
         notes:'No editor window: batch import, LODs, material binding at scale.\nThis clip is Forage: it scouts Fab packs and builds handoff manifests.\nTriggered by a script, not a human click. This is the 10x lane.' },
       { title:'What Breaks (and How to Fix It)', subtitle:'Lessons from real use',
-        img:'', bullets:[
+        img:'images/ch3-what-breaks.svg', bullets:[
           'Deep hierarchies confuse navigation: flatten or scope before prompting',
           'Large scenes need context scoping: \u201cthe hero character\u201d not \u201cthe scene\u201d',
           'Async operations need explicit confirmation: wait, then verify',
@@ -157,7 +157,7 @@ const SECTIONS = [
         ],
         notes:'blender-mcp and friends: community-built and actively maintained.\nThe Blender Python API maps almost one to one onto MCP calls.\nOpen source means when you hit a wall, you add what is missing.' },
       { title:'Where AI Saves Hours', subtitle:'The high-leverage Blender tasks',
-        img:'', bullets:[
+        img:'media/blender-showcase.png', bullets:[
           'Geometry Nodes + AI: fast iteration on complex procedural setups',
           'Material editing: describe the look, AI builds the node graph',
           'Batch operations: rename, relink, export across dozens of objects at once',
@@ -181,7 +181,7 @@ const SECTIONS = [
         ],
         notes:'This is the honest ceiling. Local nailed every tool call — objects, materials, lights.\nWhat it could not do is COMPOSE: frame the camera, scale the shapes, harmonize color.\nSame brief, same tools — the only difference is judgment.\nThe handoff rule: local for the mechanical 80%, Claude for taste and the open-ended 20%.' },
       { title:'The Production Pattern', subtitle:'Verify every structural change',
-        img:'', bullets:[
+        img:'images/ch4-production-pattern.svg', bullets:[
           'Blender\u2019s undo stack is your safety net \u2014 use it at every step',
           'Script generation beats direct manipulation for complex multi-object operations',
           'Keep a scratch .blend next to your production file for AI experiments',
@@ -237,7 +237,7 @@ const SECTIONS = [
       notes:'Energy shift: this is live and something may go sideways.\nThat is fine; it models real AI workflow honestly.\nDriver and tasks are set from the dry-run; stay loose.' },
     cases: [
       { title:'The Setup', subtitle:'What you\u2019re looking at',
-        img:'', bullets:[
+        img:'images/demo-setup.svg', bullets:[
           'Blender with an MCP server running in the background',
           'A local model (Ollama) drives via typed tools — Claude on standby for the hard asks',
           'A starting scene ready to be modified',
@@ -245,7 +245,7 @@ const SECTIONS = [
         ],
         notes:'Orient them: Blender open, MCP server running, scene ready.\nDriver is a LOCAL model via typed tools; Claude is the backup.\nPlain language in, viewport change out. Keep it short; the tasks are the show.' },
       { title:'Task: Scene Edit', subtitle:'Natural language \u2192 visible change',
-        img:'', bullets:[
+        img:'media/blender-build.mp4', bullets:[
           'Alex gives a creative direction \u2014 no code, no menus',
           'Claude one-shots it or asks one clarifying question',
           'The change appears in Blender\u2019s viewport',
@@ -253,7 +253,7 @@ const SECTIONS = [
         ],
         notes:'Give one creative direction in plain language, no menus.\nLet it one-shot or ask one question, then iterate live.\nHave two backup tasks if it finishes fast or stalls.' },
       { title:'Task: The Clarification Moment', subtitle:'What good AI behavior looks like',
-        img:'', bullets:[
+        img:'images/demo-clarification.svg', bullets:[
           'Intentionally ambiguous prompt: Claude asks before acting',
           'One or two questions \u2192 specific, correct result',
           'Asking before breaking is a feature, not a failure',
@@ -1030,7 +1030,9 @@ SECTIONS.forEach((sec,si)=>{
       const iframeSrc=c.img.slice(7);
       imgHTML=`<iframe src="${iframeSrc}" style="width:100%;height:100%;border:none;border-radius:18px" allow="autoplay;fullscreen;xr-spatial-tracking" allowfullscreen></iframe>`;
     } else if(c.img&&c.img!=='MEDIA_CYCLER'){
-      imgHTML=`<img src="${c.img}" loading="lazy" style="border-radius:18px">`;
+      imgHTML=(c.img.endsWith('.mp4')||c.img.endsWith('.webm'))
+        ? `<video src="${c.img}" autoplay loop muted playsinline style="border-radius:18px;max-width:100%;height:auto"></video>`
+        : `<img src="${c.img}" loading="lazy" style="border-radius:18px">`;
     } else {
       imgHTML=`<div class="media-cycler-mount" style="width:100%;height:100%"></div>`;
     }

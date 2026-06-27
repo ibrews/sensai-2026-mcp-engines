@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gwb" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="awb" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#f59e0b"/></marker>
+    <linearGradient id="lwb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f43f5e"/><stop offset="1" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+
+  <text x="410" y="46" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">CONFIDENT &#183; OFTEN WRONG</text>
+
+  <!-- column headers -->
+  <text x="218" y="92" text-anchor="middle" fill="#ffd7df" font-size="17" font-weight="700" letter-spacing="1.5">WHAT BREAKS</text>
+  <text x="602" y="92" text-anchor="middle" fill="#cdeffb" font-size="17" font-weight="700" letter-spacing="1.5">THE FIX</text>
+
+  <!-- row 1 -->
+  <rect x="62" y="108" width="312" height="86" rx="14" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gwb)"/>
+  <text x="218" y="158" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">AI edits the wrong object</text>
+  <line x1="380" y1="151" x2="442" y2="151" stroke="url(#lwb)" stroke-width="3" marker-end="url(#awb)"/>
+  <rect x="446" y="108" width="312" height="86" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="602" y="158" text-anchor="middle" fill="#e9fbff" font-size="20" font-weight="700">name things for meaning</text>
+
+  <!-- row 2 -->
+  <rect x="62" y="214" width="312" height="86" rx="14" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gwb)"/>
+  <text x="218" y="264" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">Silent no-op write</text>
+  <line x1="380" y1="257" x2="442" y2="257" stroke="url(#lwb)" stroke-width="3" marker-end="url(#awb)"/>
+  <rect x="446" y="214" width="312" height="86" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="602" y="257" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">read the value back</text>
+  <text x="602" y="282" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="14">&amp; verify</text>
+
+  <!-- row 3 -->
+  <rect x="62" y="320" width="312" height="86" rx="14" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gwb)"/>
+  <text x="218" y="370" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">Hallucinated API call</text>
+  <line x1="380" y1="363" x2="442" y2="363" stroke="url(#lwb)" stroke-width="3" marker-end="url(#awb)"/>
+  <rect x="446" y="320" width="312" height="86" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="602" y="363" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">generate a script,</text>
+  <text x="602" y="388" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="14">run in a scratch file</text>
+
+  <!-- row 4 -->
+  <rect x="62" y="426" width="312" height="86" rx="14" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5" filter="url(#gwb)"/>
+  <text x="218" y="476" text-anchor="middle" fill="#ffe1e7" font-size="20" font-weight="700">Destructive change</text>
+  <line x1="380" y1="469" x2="442" y2="469" stroke="url(#lwb)" stroke-width="3" marker-end="url(#awb)"/>
+  <rect x="446" y="426" width="312" height="86" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>
+  <text x="602" y="469" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">undo stack +</text>
+  <text x="602" y="494" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="14">versioned saves</text>
+
+  <text x="410" y="566" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">Treat AI like a fast junior: capable, but verify.</text>
+</svg>
