@@ -14,12 +14,17 @@ Built with [Spatial Deck](https://github.com/ibrews/spatial-deck) — a single-f
 
 | Chapter | Topic | Accent |
 |---------|-------|--------|
-| CH 1 | Agents Changed the Game — from copilot to operator, what MCP is, the two paradigms | Teal |
-| CH 2 | Structure Is the Secret Sauce — scene naming, local LLM routing, the setup pattern | Purple |
-| CH 3 | Epic's Official Answer — Unreal Engine MCP plugin, interactive editing, headless pipelines | Amber |
-| CH 4 | The Community Built It First — Blender MCP servers, high-leverage tasks, a local 8B building a scene live, production patterns | Rose |
-| CH 5 | Your Second Brain Is the Real Tool — Godot + cross-engine knowledge transfer + the KB thesis | Teal |
-| DEMO | Live Demo — Blender + Claude Code + MCP, live in front of the audience | Amber |
+| INTRO | Hi, I'm Alex — title-tweak reveal (+RealityKit/Swift/Xcode), who/Agile Lens, the OpenClaw→Claude→local arc, what an MCP is (and why), "you don't need deep pockets," love your work not your tools | Teal |
+| CH 1 | Agents Changed the Game — from copilot to operator, the two paradigms (interactive vs headless) | Teal |
+| CH 2 | Structure Is the Secret Sauce — scene naming, local LLM routing, how we actually route (Sonnet/Opus/Haiku), the setup pattern | Purple |
+| CH 3 | Epic's Official Answer — Unreal Engine MCP plugin, interactive editing, headless pipelines, what breaks | Amber |
+| CH 4 | A Small Team, a Big Ask — anonymized broadcast game-show case study: Perforce, blendshapes without opening Blender, many MetaHumans on a Steam Deck, a veteran still learned things | Amber |
+| CH 5 | The Community Built It First — Blender MCP servers, high-leverage tasks, a local 8B building a scene live, where local ends & Claude begins, production patterns | Rose |
+| CH 6 | Your Second Brain Is the Real Tool — Godot + cross-engine knowledge transfer + the KB triangulation thesis (sharpen the axe) | Teal |
+| CH 7 | Pro-Tips From the Trenches — chips over compaction, teach/learn loops, bounce models & machines, hardware/simulators/Tailscale/Cowork/sunk-cost | Purple |
+| DEMO | Live Demo — Blender driven fleet-first by a local model (qwen3:8b via typed tools), Claude on standby | Amber |
+
+> **Runtime:** with the full content above, the lecture runs ~40–45 min (length is intentional — SensAI asked for maximum depth). Plus ~15 min live demo and ~15 min Q&A.
 
 ---
 
