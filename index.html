@@ -67,7 +67,7 @@ const SECTIONS = [
         ],
         notes:'MCP in one sentence: your editor is the server, your AI is the client.\nUSB-C analogy lands well: one connector spec, any device.\nThis is the mental model for everything that follows.' },
       { title:'You Do Not Need Deep Pockets', subtitle:'Fleet-first: local models handle more than you think',
-        img:'', bullets:[
+        img:'media/local-vs-claude.png', bullets:[
           'Frontier models are powerful but expensive — assume the cost scales with usage',
           'For mechanical tasks (batch ops, file ops, status checks) a local 7–8B model is enough',
           'Typed tools close the gap: a small model with structured calls beats a big model with free-form ones',
@@ -75,7 +75,7 @@ const SECTIONS = [
         ],
         notes:'Key point: most tasks do not need the frontier model.\nTyped tools are the unlock: an 8B model calling typed tools reliably beats a big model with vague ones.\nBuild a local fleet and use Claude only where it earns its cost.' },
       { title:'Love Your Work, Not Your Tools', subtitle:'Great tools come from hating bad ones',
-        img:'', bullets:[
+        img:'media/deck-ui-social.png', bullets:[
           'Do not fear changing your tools — build them when they do not exist',
           'This deck IS our tool: Spatial Deck, born from hating PowerPoint and Google Slides',
           'Open source at github.com/ibrews/spatial-deck — single HTML file, no build step',
@@ -207,7 +207,7 @@ const SECTIONS = [
         ],
         notes:'Perforce is what broadcast shops use. Not git.\nClaude reads changelists, resolves conflicts, writes proper descriptions.\nIt just works without needing a tutorial on P4 conventions.' },
       { title:'You Do Not Always Need an MCP', subtitle:'A CLI and a clean agent is enough',
-        img:'', bullets:[
+        img:'media/cs-no-mcp-blendshapes.png', bullets:[
           'Ready Player Me characters were missing blendshapes; MetaHumans have the full set',
           'We converted them headlessly with Blender + Python — without opening Blender',
           'No MCP plugin installed. The agent drove the Blender CLI directly.',
@@ -216,7 +216,7 @@ const SECTIONS = [
         ],
         notes:'No MCP plugin. The agent called the Blender command-line interface directly.\nReady Player Me missing blendshapes; MetaHumans had them; Blender bridged the gap.\nThe surprise: MetaHumans do not export blendshapes themselves.\nThe lesson: MCP is a convenience layer, not a requirement.' },
       { title:'Many MetaHumans, Tiny Hardware', subtitle:'Performance under real constraints',
-        img:'', bullets:[
+        img:'media/cs-many-mh-tiny-hw.png', bullets:[
           'Multiple MetaHumans simultaneously — one a recognizable celebrity likeness',
           'Target hardware: a Steam Deck — a fanless PC in a controller shell',
           'Found unusual cvars and project settings (including a facial-animation one) that moved the needle',
@@ -225,7 +225,7 @@ const SECTIONS = [
         ],
         notes:'Steam Deck is not a dev PC. We had to find the right cvars.\nThe agent surfaced a facial-animation setting that nobody on the team had heard of.\nIt also wrote the hardware-simulation launch script from the profiling data.\nContext across sessions: that is where the KB pays off.' },
       { title:'A Veteran Still Learned Things', subtitle:'The agent surfaces what experience misses',
-        img:'', bullets:[
+        img:'media/cs-veteran-learned.png', bullets:[
           'Long-time Unreal user with shipped titles — not a newcomer',
           'The agent surfaced workflow improvements the team had never considered',
           'Discovered edge-case engine behaviors that were not in any tutorial',
@@ -334,7 +334,7 @@ const SECTIONS = [
       notes:'These are the things nobody writes in the tutorial.\nFour cases, tight bullets, keep the pace up.\nThese land best as quick stories, not lectures.\nEnd each one with the one-line takeaway.' },
     cases: [
       { title:'Chips Over Compaction', subtitle:'Hand off clean, never compact mid-work',
-        img:'', bullets:[
+        img:'media/protip-kb-graph.jpg', bullets:[
           'At half-full context or a clean stopping point: have Claude write a chip to hand off to a fresh session',
           'Compaction can break loops and in-progress work — a chip preserves intent',
           'End EVERY session with "log key findings across the KB"',
@@ -350,7 +350,7 @@ const SECTIONS = [
         ],
         notes:'Do not just read the result. Read how it got there.\nYou will catch wrong turns early, and you will learn things you did not know to ask.\nHit stop, add context, redirect. You are not a passenger.' },
       { title:'Bounce Models and Machines', subtitle:'Different models think differently',
-        img:'', bullets:[
+        img:'media/fleet-dashboard.jpg', bullets:[
           'Gemini, local models, Sonnet, Opus, Codex — they have different blind spots',
           'Point two different models at the same problem; one solves what the other cannot',
           'Run sessions across computers with claude-fleet — no context lost',
@@ -358,7 +358,7 @@ const SECTIONS = [
         ],
         notes:'One model hitting a wall does not mean it cannot be solved.\nSwitch the model, switch the machine, switch the angle.\nClaude fleet lets you run sessions across computers and keep context.\nDifferent models, different blind spots, same goal.' },
       { title:'Hardware, Loops, and Honesty', subtitle:'The real setup behind the demos',
-        img:'', bullets:[
+        img:'media/protip-hardware-loops.jpg', bullets:[
           'Headless tests on a 2021 M1 MacBook go a long way before you need the target device',
           'Use SIMULATORS: the visionOS sim gives far more loops than keeping a Vision Pro awake',
           'Tailscale + SSH tunneling ties the fleet together — one command, any machine',
