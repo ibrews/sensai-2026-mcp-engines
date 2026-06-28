@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "sensai-real-deck", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8757"], "port": 8757 }
+  ]
+}
