@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="grun" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <text x="410" y="42" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="14" letter-spacing="3">PICK YOUR PLUGIN · SAME WIRING</text>
+
+  <!-- Row 1: Epic + NeoStack -->
+  <!-- Epic Official -->
+  <rect x="48" y="60" width="228" height="118" rx="16" fill="rgba(245,158,11,.08)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="162" y="92" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600" letter-spacing="2">EPIC OFFICIAL</text>
+  <text x="162" y="116" text-anchor="middle" fill="#ffe9c2" font-size="16" font-weight="700">UE 5.8+</text>
+  <text x="162" y="138" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">Plugin Browser → ModelContextProtocol</text>
+  <text x="162" y="158" text-anchor="middle" fill="rgba(245,158,11,.7)" font-size="11">port 8000 · supported by Epic</text>
+
+  <!-- NeoStack -->
+  <rect x="296" y="60" width="228" height="118" rx="16" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="2"/>
+  <text x="410" y="92" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600" letter-spacing="2">NEOSTACK</text>
+  <text x="410" y="116" text-anchor="middle" fill="#efe9ff" font-size="16" font-weight="700">Betide Studio</text>
+  <text x="410" y="138" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">one-time purchase · 27+ tools</text>
+  <text x="410" y="158" text-anchor="middle" fill="rgba(167,139,250,.7)" font-size="11">Blueprint-first · betide.studio/neostack</text>
+
+  <!-- chongdashu -->
+  <rect x="544" y="60" width="228" height="118" rx="16" fill="rgba(0,212,255,.08)" stroke="#00d4ff" stroke-width="2"/>
+  <text x="658" y="92" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="600" letter-spacing="2">OPEN SOURCE ★1.9K</text>
+  <text x="658" y="116" text-anchor="middle" fill="#e9fbff" font-size="16" font-weight="700">chongdashu</text>
+  <text x="658" y="138" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">actor + Blueprint · most starred</text>
+  <text x="658" y="158" text-anchor="middle" fill="rgba(0,212,255,.6)" font-size="10.5">github.com/chongdashu/unreal-mcp</text>
+
+  <!-- Row 2: flopperam + ue-mcp -->
+  <!-- flopperam -->
+  <rect x="48" y="204" width="228" height="118" rx="16" fill="rgba(244,63,94,.08)" stroke="#f43f5e" stroke-width="2"/>
+  <text x="162" y="236" text-anchor="middle" fill="#f43f5e" font-size="11" font-weight="600" letter-spacing="2">OPEN SOURCE</text>
+  <text x="162" y="260" text-anchor="middle" fill="#ffd7df" font-size="16" font-weight="700">flopperam</text>
+  <text x="162" y="282" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">50+ tools · or use hosted server</text>
+  <text x="162" y="302" text-anchor="middle" fill="rgba(244,63,94,.6)" font-size="10.5">agent.flopperam.com/mcp</text>
+
+  <!-- ue-mcp.com -->
+  <rect x="296" y="204" width="228" height="118" rx="16" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="2"/>
+  <text x="410" y="236" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="600" letter-spacing="2">COMMERCIAL</text>
+  <text x="410" y="260" text-anchor="middle" fill="#efe9ff" font-size="16" font-weight="700">ue-mcp.com</text>
+  <text x="410" y="282" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">525+ actions · 18+ subsystems</text>
+  <text x="410" y="302" text-anchor="middle" fill="rgba(167,139,250,.6)" font-size="11">Niagara · PCG · GAS · Sequencer</text>
+
+  <!-- Our own (in-house) -->
+  <rect x="544" y="204" width="228" height="118" rx="16" fill="rgba(0,212,255,.05)" stroke="rgba(0,212,255,.3)" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="658" y="236" text-anchor="middle" fill="rgba(0,212,255,.5)" font-size="11" font-weight="600" letter-spacing="2">IN-HOUSE</text>
+  <text x="658" y="260" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="16" font-weight="700">Roll Your Own</text>
+  <text x="658" y="282" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="11.5">Python + FastMCP · typed tools</text>
+  <text x="658" y="302" text-anchor="middle" fill="rgba(0,212,255,.4)" font-size="11">scene building · headless · custom</text>
+
+  <!-- CLI row -->
+  <rect x="48" y="348" width="724" height="70" rx="14" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.14)" stroke-width="1.5"/>
+  <text x="410" y="374" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12" letter-spacing="2">CONNECT ANY OF THEM WITH ONE COMMAND</text>
+  <text x="410" y="400" text-anchor="middle" fill="#7be8ff" font-size="14" font-family="'JetBrains Mono',monospace" letter-spacing=".04em">claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp</text>
+
+  <!-- legend -->
+  <text x="410" y="460" text-anchor="middle" fill="rgba(240,244,255,.35)" font-size="12">Different server · same AI client · same mental model · same wiring</text>
+
+  <!-- accent dots below each card -->
+  <circle cx="162" cy="192" r="3" fill="#f59e0b" opacity=".5"/>
+  <circle cx="410" cy="192" r="3" fill="#a78bfa" opacity=".5"/>
+  <circle cx="658" cy="192" r="3" fill="#00d4ff" opacity=".5"/>
+  <circle cx="162" cy="332" r="3" fill="#f43f5e" opacity=".5"/>
+  <circle cx="410" cy="332" r="3" fill="#a78bfa" opacity=".5"/>
+  <circle cx="658" cy="332" r="3" fill="#00d4ff" opacity=".3"/>
+</svg>

@@ -79,7 +79,7 @@ const SECTIONS = [
         img:'media/deck-ui-social.png', bullets:[
           'Do not fear changing your tools — build them when they do not exist',
           'This deck IS our tool: Spatial Deck, born from hating PowerPoint and Google Slides',
-          'Open source at github.com/ibrews/spatial-deck — single HTML file, no build step',
+          'Open source at <a href="https://github.com/ibrews/spatial-deck" target="_blank" rel="noopener">github.com/ibrews/spatial-deck</a> — single HTML file, no build step',
           'The best tools are ones you understand completely and can fix yourself'
         ],
         notes:'Quick story: hated every slide tool, so we built one.\nSingle HTML file, no npm, no bundler. You can read the whole thing.\nThe lesson: if a tool is slowing you down, you have permission to replace it.' },
@@ -191,12 +191,12 @@ const SECTIONS = [
         ],
         notes:'Anyone can install a plugin; knowing the failure modes is the value.\nDeep hierarchies confuse it: flatten or scope before you prompt.\nAlways undo-test a new prompt before running it on the full scene.' },
       { title:'Get Running: Unreal MCP', subtitle:'Six options — Epic to open source to commercial',
-        img:'', bullets:[
+        img:'images/ch3-get-running.svg', bullets:[
           'Epic Official (UE 5.8+): built-in — enable ModelContextProtocol in Plugin Browser, port 8000',
-          'NeoStack (Betide Studio): betide.studio/neostack — one-time purchase, 27+ tools, Blueprint-first',
-          'chongdashu/unreal-mcp: github.com/chongdashu/unreal-mcp — 1900+ stars, open source',
-          'flopperam/unreal-engine-mcp: github.com/flopperam/unreal-engine-mcp — or use hosted at agent.flopperam.com/mcp',
-          'ue-mcp: ue-mcp.com — 525+ actions, 18+ subsystems: Niagara, PCG, GAS, sequencer, landscape',
+          'NeoStack (Betide Studio): <a href="https://betide.studio/neostack" target="_blank" rel="noopener">betide.studio/neostack</a> — one-time purchase, 27+ tools, Blueprint-first',
+          'chongdashu/unreal-mcp: <a href="https://github.com/chongdashu/unreal-mcp" target="_blank" rel="noopener">github.com/chongdashu/unreal-mcp</a> — 1900+ stars, open source',
+          'flopperam/unreal-engine-mcp: <a href="https://github.com/flopperam/unreal-engine-mcp" target="_blank" rel="noopener">github.com/flopperam/unreal-engine-mcp</a> — or use hosted at <a href="https://agent.flopperam.com/mcp" target="_blank" rel="noopener">agent.flopperam.com/mcp</a>',
+          'ue-mcp: <a href="https://ue-mcp.com" target="_blank" rel="noopener">ue-mcp.com</a> — 525+ actions, 18+ subsystems: Niagara, PCG, GAS, sequencer, landscape',
           'Connect any: claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp'
         ],
         notes:'Six options, pick by trade-off.\nEpic official: most future-proof, bundled with 5.8.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nchongdashu: most-starred open source, solid actor + Blueprint coverage.\nflopperam: 50+ tools, or skip local setup and use the hosted server.\nue-mcp.com: widest subsystem coverage — Blueprint, materials, Niagara, PCG, GAS, sequencer.\nOne command to wire any of these into Claude Code, then enable the plugin and you are live.' },
@@ -254,7 +254,7 @@ const SECTIONS = [
     cases: [
       { title:'The MCP Server Landscape', subtitle:'Open source, Python-native, actively maintained',
         img:'images/ch4-server-landscape.svg', bullets:[
-          'github.com/ahujasid/blender-mcp — install the addon in Blender, then: claude mcp add blender-mcp uvx blender-mcp',
+          '<a href="https://github.com/ahujasid/blender-mcp" target="_blank" rel="noopener">github.com/ahujasid/blender-mcp</a> — install the addon in Blender, then: claude mcp add blender-mcp uvx blender-mcp',
           'Server auto-launches when Claude Code needs it — no manual start',
           'Blender’s Python API maps almost directly to MCP calls — the port is natural',
           'Open source: when the tool you need doesn’t exist, you add it in a few lines'
@@ -366,8 +366,8 @@ const SECTIONS = [
       { title:'Godot MCP Options', subtitle:'Open ecosystem, open source, ready to extend',
         img:'images/ch5-godot-options.svg', bullets:[
           'GDAI MCP (recommended): Godot Asset Library — search "GDAI MCP", easiest setup, best docs',
-          'Godot MCP Pro (paid, 163 tools): godotengine.org/asset-library/asset/4961',
-          'Open source: github.com/Coding-Solo/godot-mcp — lightweight, stdio, hackable',
+          'Godot MCP Pro (paid, 163 tools): <a href="https://godotengine.org/asset-library/asset/4961" target="_blank" rel="noopener">godotengine.org/asset-library/asset/4961</a>',
+          'Open source: <a href="https://github.com/Coding-Solo/godot-mcp" target="_blank" rel="noopener">github.com/Coding-Solo/godot-mcp</a> — lightweight, stdio, hackable',
           'Godot’s node naming discipline pays off immediately — name everything descriptively',
           'GDScript generation shines for state machines, boilerplate, and input handling'
         ],
@@ -539,6 +539,14 @@ body.shot-mode #counter,body.shot-mode #brand,body.shot-mode #step-indicator,bod
 .accent-purple .case-ytag{color:var(--purple)}.accent-purple .case-bl li::before{background:var(--purple)}
 .accent-amber .case-ytag{color:var(--amber)}.accent-amber .case-bl li::before{background:var(--amber)}
 .accent-rose .case-ytag{color:var(--rose)}.accent-rose .case-bl li::before{background:var(--rose)}
+.case-bl li a,.lesson-tagline a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(0,212,255,.3);transition:color .15s,border-color .15s;word-break:break-all}
+.case-bl li a:hover,.lesson-tagline a:hover{color:#7be8ff;border-color:rgba(123,232,255,.6)}
+.accent-amber .case-bl li a{color:var(--amber);border-color:rgba(245,158,11,.3)}
+.accent-amber .case-bl li a:hover{color:#ffd27a;border-color:rgba(245,158,11,.6)}
+.accent-purple .case-bl li a{color:var(--purple);border-color:rgba(167,139,250,.3)}
+.accent-purple .case-bl li a:hover{color:#c4b5fd;border-color:rgba(167,139,250,.6)}
+.accent-rose .case-bl li a{color:var(--rose);border-color:rgba(244,63,94,.3)}
+.accent-rose .case-bl li a:hover{color:#fb7185;border-color:rgba(244,63,94,.6)}
 .slide-lesson{padding-bottom:clamp(80px,10vh,140px)}
 .year-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(10rem,24vw,26rem);font-weight:700;letter-spacing:-.06em;line-height:1;color:rgba(255,255,255,.028);pointer-events:none;user-select:none}
 .lesson-ey{display:flex;align-items:center;justify-content:center;gap:14px;font-size:clamp(.7rem,1.1vw,1rem);font-weight:600;letter-spacing:.26em;text-transform:uppercase;margin-bottom:30px}
