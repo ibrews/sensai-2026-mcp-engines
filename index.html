@@ -131,7 +131,7 @@ const SECTIONS = [
         ],
         notes:'This is where the token budget actually lives.\nHonest result: a free-form code tool made local models print the call as text, not run it.\nThe fix was typed tools, not a bigger model  -  then an 8B was 100% reliable.\nLand the line: tool design beats model size.' },
       { title:'How We Actually Route', subtitle:'The model tier for every task',
-        img:'', bullets:[
+        img:'media/fleet-control.png', bullets:[
           'Sonnet 4.6 (loop default ~80%): feature impl, build/deploy/verify, tests, refactors, device-log triage, KB writeups, most Unreal MCP work',
           'Opus 4.8 (reserve): novel architecture, subtle root-causes — the ABI/stride-mismatch class of bug, MaterialX design calls, "why is this collapsing" diagnosis',
           'Haiku 4.5: mechanical edits, icon gen, file shuffling, status checks',
@@ -199,7 +199,7 @@ const SECTIONS = [
       notes:'Context: a broadcast game-show project with a real deadline and a small team.\nKeep the project and the celebrity abstract throughout.\nThe through-line: every hard task here had an agent on it.\nLet the individual cases tell the story.' },
     cases: [
       { title:'Version Control That Just Works', subtitle:'Claude on Perforce',
-        img:'', bullets:[
+        img:'media/cs-git-log.png', bullets:[
           'Perforce is the broadcast standard — not git, not GitHub',
           'Claude resolves merge conflicts, writes structured commit notes, navigates the depot',
           'The agent understands the changelist model without hand-holding',
