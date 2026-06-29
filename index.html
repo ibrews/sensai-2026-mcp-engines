@@ -190,6 +190,16 @@ const SECTIONS = [
           'Always undo-test a new prompt before running it on the full scene'
         ],
         notes:'Anyone can install a plugin; knowing the failure modes is the value.\nDeep hierarchies confuse it: flatten or scope before you prompt.\nAlways undo-test a new prompt before running it on the full scene.' },
+      { title:'Get Running: Unreal MCP', subtitle:'Six options — Epic to open source to commercial',
+        img:'', bullets:[
+          'Epic Official (UE 5.8+): built-in — enable ModelContextProtocol in Plugin Browser, port 8000',
+          'NeoStack (Betide Studio): betide.studio/neostack — one-time purchase, 27+ tools, Blueprint-first',
+          'chongdashu/unreal-mcp: github.com/chongdashu/unreal-mcp — 1900+ stars, open source',
+          'flopperam/unreal-engine-mcp: github.com/flopperam/unreal-engine-mcp — or use hosted at agent.flopperam.com/mcp',
+          'ue-mcp: ue-mcp.com — 525+ actions, 18+ subsystems: Niagara, PCG, GAS, sequencer, landscape',
+          'Connect any: claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp'
+        ],
+        notes:'Six options, pick by trade-off.\nEpic official: most future-proof, bundled with 5.8.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nchongdashu: most-starred open source, solid actor + Blueprint coverage.\nflopperam: 50+ tools, or skip local setup and use the hosted server.\nue-mcp.com: widest subsystem coverage — Blueprint, materials, Niagara, PCG, GAS, sequencer.\nOne command to wire any of these into Claude Code, then enable the plugin and you are live.' },
     ] },
 
   // ── CH 4: Case Study ────────────────────────────────────────────────────
@@ -244,10 +254,10 @@ const SECTIONS = [
     cases: [
       { title:'The MCP Server Landscape', subtitle:'Open source, Python-native, actively maintained',
         img:'images/ch4-server-landscape.svg', bullets:[
-          'blender-mcp and others: community-built, actively maintained, ready to install',
-          'Blender’s Python API maps almost directly to MCP calls',
-          'Most mature non-commercial MCP server available today',
-          'Open source: when you hit a wall, you can add what’s missing'
+          'github.com/ahujasid/blender-mcp — install the addon in Blender, then: claude mcp add blender-mcp uvx blender-mcp',
+          'Server auto-launches when Claude Code needs it — no manual start',
+          'Blender’s Python API maps almost directly to MCP calls — the port is natural',
+          'Open source: when the tool you need doesn’t exist, you add it in a few lines'
         ],
         notes:'blender-mcp and friends: community-built and actively maintained.\nThe Blender Python API maps almost one to one onto MCP calls.\nOpen source means when you hit a wall, you add what is missing.' },
       { title:'Where AI Saves Hours', subtitle:'The high-leverage Blender tasks',
@@ -355,9 +365,10 @@ const SECTIONS = [
     cases: [
       { title:'Godot MCP Options', subtitle:'Open ecosystem, open source, ready to extend',
         img:'images/ch5-godot-options.svg', bullets:[
-          'Community MCP servers: scene tree manipulation, GDScript generation',
-          'Godot’s node naming discipline pays off immediately with AI',
-          'Open source: when a call doesn’t exist, you can add it',
+          'GDAI MCP (recommended): Godot Asset Library — search "GDAI MCP", easiest setup, best docs',
+          'Godot MCP Pro (paid, 163 tools): godotengine.org/asset-library/asset/4961',
+          'Open source: github.com/Coding-Solo/godot-mcp — lightweight, stdio, hackable',
+          'Godot’s node naming discipline pays off immediately — name everything descriptively',
           'GDScript generation shines for state machines, boilerplate, and input handling'
         ],
         notes:'Godot has community MCP servers for scene tree and GDScript.\nIts node-naming discipline pays off immediately with AI.\nGDScript generation shines for state machines and boilerplate.' },
