@@ -2126,11 +2126,13 @@ setTimeout(updateDurationDisplay,100);
 
 (function(){
   // Robust-scene proof: a local 8B built a neon city via COMPOSITE tools.
-  // Cycle the atomic-vs-composite contrast (the "tool design beats model size"
-  // money shot) with a turntable orbit of the model-built city.
+  // Open on the full-frame hero glory shot ("a local model built THIS"), then the
+  // atomic-vs-composite contrast (the "tool design beats model size" money shot),
+  // then a turntable orbit of the model-built city.
   const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Watch a Local 8B Build It'));
   if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(m) m.innerHTML='';
   buildMediaCycler(sl, [
+    {type:'image', src:'media/cs-local-city.png'},
     {type:'image', src:'media/cs-tool-contrast.png'},
     {type:'video', src:'media/local-city.mp4', loop:true},
   ], {imageDuration:6500});
