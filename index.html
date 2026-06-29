@@ -46,7 +46,7 @@ const SECTIONS = [
       notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLets get into it.' },
     cases: [
       { title:'The Talk Title… Plus One More Stack', layout:'big',
-        bigText:'AI + MCP for Blender, Unreal, Godot…\n+ RealityKit, Swift &amp; Xcode',
+        bigText:'AI + MCP for Blender, Unreal, Godot…\n<span class="one-more">+ RealityKit, Swift &amp; Xcode</span>',
         bigCaption:'We are in Apple’s stack at least as much as the three engines — fair warning.',
         notes:'Put up the original title. Then land the addition as a wink.\nWe do a lot of Apple platform work: RealityKit, visionOS, Swift, Xcode.\nMCP connects all of it the same way. One talk, four stacks.' },
       { title:'What We Will Cover', subtitle:'A map before the territory',
@@ -765,6 +765,11 @@ body.pr-dragging,body.pr-dragging *{user-select:none!important;-webkit-user-sele
 .placed-qr-card .qr-badge{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
 /* === LAYOUT: BIG (full-slide statement text) === */
 .case-slide.layout-big{flex-direction:column;text-align:center;padding:clamp(50px,5vw,110px);justify-content:center;align-items:center}
+.slide[data-type="cover"] .cover-logo-strip{position:absolute;bottom:clamp(20px,3vh,46px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:26px;opacity:.5;z-index:2;pointer-events:none}
+.cover-logo-strip .logo-al{height:26px;filter:brightness(0) invert(1)}
+.cover-logo-strip .logo-acp{height:26px;filter:brightness(0) invert(1)}
+.cover-logo-strip .logo-badge{height:34px}
+.big-text .one-more{font-size:.5em;font-weight:300;color:rgba(240,244,255,.55);font-style:italic;letter-spacing:.06em;display:block;margin-top:.22em}
 .case-slide.layout-big .big-stack{display:flex;flex-direction:column;gap:clamp(18px,2.5vw,40px);align-items:center;max-width:1300px}
 .case-slide.layout-big .big-eyebrow{font-size:clamp(1.4rem,2.6vw,2.4rem);font-weight:500;color:rgba(240,244,255,.78);letter-spacing:-.01em;line-height:1.2}
 .case-slide.layout-big .big-sub{font-size:clamp(.95rem,1.5vw,1.4rem);color:var(--dim);font-style:italic;line-height:1.45}
@@ -1052,6 +1057,45 @@ body.fx-fs-active #fx-fs-hint{opacity:1}
    ======================================================================= */
 function svgE(t,a){const e=document.createElementNS('http://www.w3.org/2000/svg',t);if(a)Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e;}
 
+function buildAvatar(parent,opts={}){
+  const scale=opts.scale||1;const withBeard=!!opts.withBeard;const withGlasses=!!opts.withGlasses;
+  const root=svgE('g',{class:'avatar',...(opts.id?{id:opts.id}:{})});root.style.shapeRendering='crispEdges';
+  if(scale!==1)root.setAttribute('transform',`scale(${scale})`);parent.appendChild(root);
+  const SKIN=opts.skinColor||'#f2c79b',SKIN_DARK='#d9a77a',HAIR_LIGHT=opts.hairLight||'#a8602f',HAIR=opts.hairColor||'#8b4a2a',HAIR_DARK=opts.hairDark||'#5e2f1a',HAIR_SHADOW=opts.hairShadow||'#3a1c08',BEARD=opts.beardColor||'#6e3a1e',BEARD_LIGHT=opts.beardLight||'#8a4f2a',SHIRT=opts.shirtColor||'#6a8fd6',SHIRT_DARK=opts.shirtDark||'#4a6fb8',PANTS='#3f3025',BOOTS='#1f150c',EYE='#1a1a26',FRAME='#1a1520';
+  const px=(g,x,y,w,h,fill)=>g.appendChild(svgE('rect',{x,y,width:w,height:h,fill}));
+  const body=svgE('g',{class:'av-body'});
+  px(body,-12,-34,24,22,SKIN);px(body,-12,-16,24,4,SKIN_DARK);
+  px(body,-13,-40,26,2,HAIR_SHADOW);px(body,-15,-38,30,3,HAIR_SHADOW);px(body,-16,-36,32,4,HAIR_SHADOW);px(body,-9,-42,5,2,HAIR_SHADOW);px(body,3,-42,4,2,HAIR_SHADOW);px(body,-2,-43,5,1,HAIR_SHADOW);
+  px(body,-12,-40,24,2,HAIR_DARK);px(body,-14,-38,28,3,HAIR_DARK);px(body,-13,-34,30,3,HAIR_DARK);px(body,-8,-42,4,2,HAIR_DARK);px(body,4,-42,3,2,HAIR_DARK);px(body,-1,-43,3,1,HAIR_DARK);
+  px(body,-11,-41,22,1,HAIR);px(body,-13,-38,26,2,HAIR);px(body,-14,-36,28,2,HAIR);px(body,-8,-41,4,1,HAIR);px(body,4,-41,3,1,HAIR);
+  px(body,-13,-34,2,3,HAIR_DARK);px(body,12,-33,2,3,HAIR_DARK);px(body,-14,-31,2,4,HAIR);px(body,10,-31,1,2,HAIR);
+  px(body,-8,-40,3,1,HAIR_LIGHT);px(body,4,-40,2,1,HAIR_LIGHT);px(body,-10,-38,2,1,HAIR_LIGHT);px(body,-2,-42,2,1,HAIR_LIGHT);px(body,-7,-41,2,1,HAIR_LIGHT);
+  px(body,-12,-34,5,3,HAIR_DARK);px(body,-11,-33,4,2,HAIR);px(body,-7,-34,3,2,HAIR_DARK);px(body,-7,-33,2,1,HAIR);px(body,-4,-34,2,4,HAIR_DARK);px(body,-4,-33,1,3,HAIR);px(body,-1,-34,3,2,HAIR_DARK);px(body,-1,-33,2,1,HAIR);px(body,3,-34,4,3,HAIR_DARK);px(body,3,-33,3,2,HAIR);px(body,7,-34,5,4,HAIR_DARK);px(body,10,-31,3,3,HAIR);
+  px(body,-12,-31,2,1,HAIR_LIGHT);px(body,8,-33,2,1,HAIR_LIGHT);
+  px(body,-8,-27,8,3,HAIR_DARK);px(body,3,-28,9,4,HAIR_DARK);
+  px(body,-7,-24,3,4,EYE);px(body,4,-24,3,4,EYE);px(body,-6,-23,1,2,'#fff');px(body,5,-23,1,2,'#fff');
+  px(body,-3,-17,6,1,'#9c5040');
+  if(withBeard){px(body,-12,-22,4,5,BEARD);px(body,8,-22,4,5,BEARD);px(body,-12,-20,5,3,BEARD);px(body,7,-20,5,3,BEARD);px(body,-12,-17,4,1,BEARD);px(body,8,-17,4,1,BEARD);px(body,-7,-19,14,2,BEARD);px(body,-6,-19,12,1,BEARD_LIGHT);px(body,-2,-16,4,1,BEARD);px(body,-12,-16,24,2,BEARD);px(body,-12,-14,24,2,BEARD);px(body,-10,-12,20,1,BEARD);}
+  if(withGlasses){
+    // Left lens frame (rectangular, thick dark frames — David's signature look)
+    px(body,-9,-26,6,1,FRAME);px(body,-9,-20,6,1,FRAME);px(body,-9,-26,1,7,FRAME);px(body,-4,-26,1,7,FRAME);
+    // Right lens frame
+    px(body,3,-26,6,1,FRAME);px(body,3,-20,6,1,FRAME);px(body,3,-26,1,7,FRAME);px(body,8,-26,1,7,FRAME);
+    // Bridge between lenses
+    px(body,-4,-24,7,1,FRAME);
+    // Temple arms (extend off to the sides)
+    px(body,-11,-25,2,1,FRAME);px(body,9,-25,2,1,FRAME);
+  }
+  px(body,-4,-12,8,3,SKIN_DARK);
+  px(body,-12,-9,24,18,SHIRT);px(body,-12,-9,24,3,SHIRT_DARK);px(body,-12,6,24,3,SHIRT_DARK);
+  px(body,-12,9,12,14,PANTS);px(body,0,9,12,14,PANTS);px(body,-2,9,4,14,'#2a1f18');
+  px(body,-12,23,12,5,BOOTS);px(body,0,23,12,5,BOOTS);
+  root.appendChild(body);
+  const armsDown=svgE('g',{class:'av-arms-down'});px(armsDown,-18,-8,6,14,SHIRT);px(armsDown,-18,4,6,4,SKIN);px(armsDown,12,-8,6,14,SHIRT);px(armsDown,12,4,6,4,SKIN);root.appendChild(armsDown);
+  const armsUp=svgE('g',{class:'av-arms-up'});px(armsUp,-18,-22,6,14,SHIRT);px(armsUp,-18,-26,6,6,SKIN);px(armsUp,12,-22,6,14,SHIRT);px(armsUp,12,-26,6,6,SKIN);root.appendChild(armsUp);
+  return root;
+}
+
 // Stars
 const cv=document.getElementById('stars'),sc=cv.getContext('2d');let st=[];
 function initS(){cv.width=innerWidth;cv.height=innerHeight;st=Array.from({length:110},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height*.6,r:Math.random()*1.2+.2,o:Math.random()*.4+.05,d:(Math.random()-.5)*.013}))}
@@ -1137,7 +1181,7 @@ function playBing(){try{const c=sfxCtx(),t=c.currentTime,o=c.createOscillator(),
 
 // Cover
 const cov=document.createElement('div');cov.className='slide active';cov.dataset.type='cover';
-cov.innerHTML=`<img src="media/agilelens-logo.png" alt="Agile Lens" style="height:78px;margin-bottom:30px;opacity:.92"><div class="event-tag">SensAI Hackademy &middot; Worlds in Action Hack Prep</div><h1 class="talk-title">AI + MCP for<br>Blender, Unreal<br>&amp; Godot</h1><p class="talk-subtitle">Build AI-driven creative pipelines &mdash; from first prompt to production</p><div class="speaker-card"><div><div class="speaker-name">Alex Coulombe</div><div class="speaker-co">Agile Lens &middot; UE Gold Authorized Instructor</div></div></div>`;
+cov.innerHTML=`<div class="event-tag">SensAI Hackademy &middot; Worlds in Action Hack Prep</div><h1 class="talk-title">AI + MCP for<br>Blender, Unreal<br>&amp; Godot</h1><p class="talk-subtitle">Build AI-driven creative pipelines &mdash; from first prompt to production</p><div class="speaker-card"><div><div class="speaker-name">Alex Coulombe</div><div class="speaker-co">Agile Lens &middot; UE Gold Authorized Instructor</div></div></div><div class="cover-logo-strip"><img src="media/agilelens_logo.svg" alt="Agile Lens" class="logo-al"><img src="media/acp-logo-white.png" alt="Alex Coulombe Presents" class="logo-acp"><img src="GoldAuthorized.png" alt="UE Gold Authorized Instructor" class="logo-badge"></div>`;
 deck.appendChild(cov);allSlides.push(cov);
 
 // Build sections
@@ -1370,7 +1414,7 @@ cls.innerHTML=`<div class="close-ey">Thank You</div><h2 class="close-title">Let\
 <div style="position:absolute;bottom:clamp(30px,4vh,60px);left:50%;transform:translateX(-50%);opacity:.35;z-index:2"><svg width="200" height="40" viewBox="0 0 869 175" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M266.385 134.295L264.681 136H249.34L247.635 134.295L239.113 112.137L235.704 110.432H193.09L189.681 112.137L181.159 134.295L179.454 136H164.114L162.409 134.295V117.25L201.613 18.3878L203.318 16.6833H225.476L227.181 18.3878L266.385 117.25V134.295ZM230.59 88.2733L215.249 47.3647H213.545L198.204 88.2733L199.909 89.9778H228.886L230.59 88.2733ZM346.604 52.4783V127.477C346.604 158.159 327.854 171.795 303.991 171.795C283.537 171.795 269.901 161.568 268.196 146.227L269.901 144.523H290.355L292.059 146.227C293.764 149.636 297.173 151.341 303.991 151.341C315.923 151.341 322.741 144.523 322.741 129.182H321.036C321.036 129.182 314.218 137.705 298.878 137.705C278.423 137.705 261.378 120.659 261.378 93.3869C261.378 66.1145 278.423 49.0692 298.878 49.0692C314.218 49.0692 321.036 57.5919 321.036 57.5919H322.741L324.445 52.4783L326.15 50.7738H344.9L346.604 52.4783ZM285.241 93.3869C285.241 107.023 290.355 117.25 303.991 117.25C317.627 117.25 322.741 107.023 322.741 93.3869C322.741 79.7507 317.627 69.5235 303.991 69.5235C290.355 69.5235 285.241 79.7507 285.241 93.3869ZM378.964 35.433L377.259 37.1376H356.805L355.1 35.433V18.3878L356.805 16.6833H377.259L378.964 18.3878V35.433ZM378.964 134.295L377.259 136H356.805L355.1 134.295V52.4783L356.805 50.7738H377.259L378.964 52.4783V134.295ZM411.31 134.295L409.605 136H389.151L387.446 134.295V18.3878L389.151 16.6833H409.605L411.31 18.3878V134.295ZM496.496 93.3869V100.205L494.791 101.91H441.951L440.247 103.614C440.247 107.023 443.656 117.25 457.292 117.25C462.405 117.25 467.519 115.546 469.223 112.137L470.928 110.432H491.382L493.087 112.137C491.382 122.364 482.86 137.705 457.292 137.705C428.315 137.705 414.679 117.25 414.679 93.3869C414.679 69.5235 428.315 49.0692 455.587 49.0692C482.86 49.0692 496.496 69.5235 496.496 93.3869ZM469.223 84.8643L470.928 83.1597C470.928 81.4552 469.223 69.5235 455.587 69.5235C441.951 69.5235 440.247 81.4552 440.247 83.1597L441.951 84.8643H469.223ZM615.779 134.295L614.075 136H537.371L535.667 134.295V18.3878L537.371 16.6833H557.825L559.53 18.3878V113.841L561.234 115.546H614.075L615.779 117.25V134.295ZM687.249 93.3869V100.205L685.545 101.91H632.705L631 103.614C631 107.023 634.409 117.25 648.045 117.25C653.159 117.25 658.273 115.546 659.977 112.137L661.682 110.432H682.136L683.84 112.137C682.136 122.364 673.613 137.705 648.045 137.705C619.068 137.705 605.432 117.25 605.432 93.3869C605.432 69.5235 619.068 49.0692 646.341 49.0692C673.613 49.0692 687.249 69.5235 687.249 93.3869ZM659.977 84.8643L661.682 83.1597C661.682 81.4552 659.977 69.5235 646.341 69.5235C632.705 69.5235 631 81.4552 631 83.1597L632.705 84.8643H659.977ZM770.778 134.295L769.073 136H748.619L746.914 134.295V84.8643C746.914 76.3416 743.505 69.5235 733.278 69.5235C721.347 69.5235 714.528 76.3416 714.528 91.6824V134.295L712.824 136H692.37L690.665 134.295V52.4783L692.37 50.7738H711.119L712.824 52.4783L714.528 57.5919H716.233C719.642 54.1828 726.46 49.0692 738.392 49.0692C758.846 49.0692 770.778 62.7054 770.778 83.1597V134.295ZM847.495 110.432C847.495 124.068 837.268 137.705 809.995 137.705C786.132 137.705 772.496 125.773 772.496 108.728L774.2 107.023H794.654L796.359 108.728C796.359 115.546 801.473 117.25 809.995 117.25C818.518 117.25 823.631 115.546 823.631 110.432C823.631 103.614 816.813 103.614 806.586 101.91C796.359 100.205 774.2 95.0914 774.2 74.6371C774.2 61.0009 784.427 49.0692 809.995 49.0692C830.449 49.0692 845.79 57.5919 845.79 74.6371L844.086 76.3416H823.631L821.927 74.6371C821.927 71.2281 818.518 69.5235 809.995 69.5235C801.473 69.5235 798.064 71.2281 798.064 76.3416C798.064 83.1597 808.291 83.1597 818.518 84.8643C828.745 86.5688 847.495 89.9778 847.495 110.432Z" fill="white"/><circle cx="71" cy="73" r="60" stroke="white" stroke-width="8" fill="none"/><line x1="115" y1="117" x2="142" y2="155" stroke="white" stroke-width="8" stroke-linecap="round"/></svg></div>`;
 const RES=[['spatial-deck',"This deck's engine - one HTML file"],['claude-fleet','Claude Code across many machines'],['hyperframes','Write HTML, render video - for agents'],['godot-visionos-simulator-kit','Godot on the visionOS simulator'],['SplatStage','Walk inside Gaussian splats on AVP'],['VitruvianGodot','CC0 photoreal head, stock Godot'],['MetaHumanGodot','Live MetaHuman look-dev in Godot'],['godot-avp-cascade','Cascade - hand-tracked Godot on AVP'],['blueprint-auto-layout','Auto-tidy Unreal Blueprint graphs'],['ue5-testflight','UE5 to TestFlight, automated'],['apple-platform-skills','Claude skills for Apple dev'],['capafy-skills','Battle-tested Claude Code skills']];
 const res=document.createElement('div');res.className='slide';res.dataset.type='resources';
-res.innerHTML=`<div class="close-ey" style="color:var(--teal)">Take These Home</div><h2 class="close-title" style="font-size:clamp(2.2rem,4.6vw,3.8rem);margin-bottom:8px">All Free. All Public.</h2><p class="close-sub" style="margin-bottom:26px">github.com/ibrews &middot; scan any project</p><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px 24px;max-width:1060px;width:92%;margin:0 auto">`+RES.map(r=>`<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://github.com/ibrews/${r[0]}" style="width:80px;height:80px;border-radius:8px;background:#fff;padding:5px" alt="${r[0]}" loading="lazy"><div style="font:600 .78rem var(--font);color:#f0f4ff">${r[0]}</div><div style="font:.64rem var(--font);line-height:1.3;color:rgba(255,255,255,.5)">${r[1]}</div></div>`).join('')+`</div>`;
+res.innerHTML=`<div class="close-ey" style="color:var(--teal)">Take These Home</div><h2 class="close-title" style="font-size:clamp(2.2rem,4.6vw,3.8rem);margin-bottom:8px">All Free. All Public.</h2><p class="close-sub" style="margin-bottom:26px">github.com/ibrews &middot; scan any project</p><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px 24px;max-width:1060px;width:92%;margin:0 auto">`+RES.map(r=>`<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://github.com/ibrews/${r[0]}" style="width:80px;height:80px;border-radius:8px;background:#fff;padding:5px" alt="${r[0]}" loading="lazy"><div style="font:600 .78rem var(--font);color:#f0f4ff">${r[0]}</div><div style="font:.64rem var(--font);line-height:1.3;color:rgba(255,255,255,.5)">${r[1]}</div></div>`).join('')+`</div><div style="margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:22px;justify-content:center;align-items:flex-start"><div style="width:100%;text-align:center;font:.6rem var(--font);letter-spacing:.2em;font-weight:600;color:rgba(240,244,255,.35);margin-bottom:2px;text-transform:uppercase">Talks &amp; Open Source</div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;width:150px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&amp;data=https://ibrews.github.io/spatial-deck/" style="width:90px;height:90px;border-radius:8px;background:#fff;padding:5px" loading="lazy"><div style="font:600 .76rem var(--font);color:#f0f4ff">Spatial Deck</div><div style="font:.62rem var(--font);line-height:1.3;color:rgba(255,255,255,.45)">This deck's engine</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;width:150px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&amp;data=https://ibrews.github.io/harvardxr-keynote/" style="width:90px;height:90px;border-radius:8px;background:#fff;padding:5px" loading="lazy"><div style="font:600 .76rem var(--font);color:#f0f4ff">HarvardXR Talk</div><div style="font:.62rem var(--font);line-height:1.3;color:rgba(255,255,255,.45)">2025 keynote</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;width:150px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&amp;data=https://ibrews.github.io/fmx-2026-spatial-storytelling/" style="width:90px;height:90px;border-radius:8px;background:#fff;padding:5px" loading="lazy"><div style="font:600 .76rem var(--font);color:#f0f4ff">FMX 2026 Talk</div><div style="font:.62rem var(--font);line-height:1.3;color:rgba(255,255,255,.45)">Spatial Storytelling</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;width:150px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&amp;data=https://ibrews.github.io/nxtbld-2026-productizing-xr/" style="width:90px;height:90px;border-radius:8px;background:#fff;padding:5px" loading="lazy"><div style="font:600 .76rem var(--font);color:#f0f4ff">NXT BLD 2026 Talk</div><div style="font:.62rem var(--font);line-height:1.3;color:rgba(255,255,255,.45)">Productizing XR</div></div></div>`;
 deck.appendChild(res);allSlides.push(res);
 deck.appendChild(cls);allSlides.push(cls);
 
@@ -2186,8 +2230,13 @@ setTimeout(updateDurationDisplay,100);
   function ensureHero(){
     if(hero) return;
     hero=document.createElement('div');
-    hero.style.cssText='position:absolute;left:50%;bottom:9%;width:64px;height:64px;margin-left:-32px;transform:scale(0);transform-origin:center bottom;will-change:transform';
-    hero.innerHTML='<svg viewBox="0 0 64 64"><circle cx="32" cy="40" r="30" fill="rgba(0,212,255,0.10)"/><circle cx="32" cy="24" r="11" fill="none" stroke="#00d4ff" stroke-width="3"/><path d="M16 54 a16 15 0 0 1 32 0" fill="none" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/></svg>';
+    hero.style.cssText='position:absolute;left:50%;bottom:9%;width:72px;height:124px;margin-left:-36px;transform:scale(0);transform-origin:center bottom;will-change:transform';
+    const _hsvg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    _hsvg.setAttribute('viewBox','-22 -48 44 76');
+    _hsvg.setAttribute('preserveAspectRatio','xMidYMax meet');
+    _hsvg.style.cssText='width:100%;height:100%;overflow:visible';
+    buildAvatar(_hsvg,{withBeard:true,hairColor:'#484848',hairDark:'#2a2a2a',hairLight:'#888',hairShadow:'#0f0f0f',beardColor:'#484848',beardLight:'#6a6a6a',shirtColor:'#5a7c5a',shirtDark:'#4a6548'});
+    hero.appendChild(_hsvg);
     layer.appendChild(hero);
   }
 
@@ -2277,6 +2326,29 @@ setTimeout(updateDurationDisplay,100);
   new MutationObserver(sync).observe(slide,{attributes:true,attributeFilter:['class']});
   document.addEventListener('visibilitychange',()=>{ if(document.hidden) stopLoop(); else sync(); });
   setTimeout(()=>{ slideSteps.set(slide,{current:0,steps,reset:clearAll}); },0);
+})();
+
+// FEATURE: What We Will Cover - clickable section links
+(function(){
+  var wc=null;
+  for(var _i=0;_i<allSlides.length;_i++){
+    var _t=allSlides[_i].querySelector&&allSlides[_i].querySelector('.case-title');
+    if(_t&&_t.textContent.indexOf('What We Will Cover')>=0){wc=allSlides[_i];break;}
+  }
+  if(!wc)return;
+  var lis=wc.querySelectorAll('.case-bl li');
+  var secIdxForBullet=[0,1,4,5,9];
+  for(var i=0;i<lis.length;i++){
+    (function(li,si){
+      if(si===undefined||!lessonIdxs||lessonIdxs[si]===undefined)return;
+      li.style.cursor='pointer';
+      li.style.transition='color .18s,padding-left .15s';
+      li.title='Jump to section';
+      li.addEventListener('mouseenter',function(){li.style.color='#00d4ff';li.style.paddingLeft='6px';});
+      li.addEventListener('mouseleave',function(){li.style.color='';li.style.paddingLeft='';});
+      li.addEventListener('click',function(e){e.stopPropagation();goTo(lessonIdxs[si]);});
+    })(lis[i],secIdxForBullet[i]);
+  }
 })();
 
 // =====================================================================

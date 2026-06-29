@@ -5,6 +5,7 @@
     </filter>
     <marker id="aco" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
     <marker id="aco2" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="rgba(240,244,255,.4)"/></marker>
+    <marker id="acoRet" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="rgba(167,139,250,.65)"/></marker>
     <linearGradient id="lco" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>
     </linearGradient>
@@ -15,8 +16,8 @@
   <!-- divider -->
   <line x1="410" y1="92" x2="410" y2="540" stroke="rgba(240,244,255,.12)" stroke-width="1.5" stroke-dasharray="4 6"/>
 
-  <!-- ===== LEFT: COPILOT ===== -->
-  <text x="210" y="120" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="14" letter-spacing="2">COPILOT</text>
+  <!-- ===== LEFT: AUTOCOMPLETE ===== -->
+  <text x="210" y="120" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="14" letter-spacing="2">AUTOCOMPLETE</text>
 
   <!-- AI suggestion bubble -->
   <rect x="70" y="142" width="280" height="78" rx="18" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gco)"/>
@@ -59,6 +60,10 @@
   <text x="610" y="444" text-anchor="middle" fill="#efe9ff" font-size="24" font-weight="700">TOOL / SCENE</text>
   <text x="610" y="472" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">the change lands here</text>
   <text x="610" y="492" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12.5">no human in the middle</text>
+
+  <!-- return arc: TOOL/SCENE -> AI AGENT (right side, curved) -->
+  <path d="M752 460 C 800 460, 800 196, 752 196" fill="none" stroke="rgba(167,139,250,.6)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#acoRet)" filter="url(#gco)"/>
+  <text x="806" y="332" text-anchor="middle" fill="rgba(167,139,250,.55)" font-size="11" writing-mode="tb" glyph-orientation-vertical="0" transform="rotate(90,806,332)">result</text>
 
   <text x="410" y="588" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">The agent closes the loop inside the tool.</text>
 </svg>

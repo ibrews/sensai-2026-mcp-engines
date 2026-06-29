@@ -28,7 +28,7 @@
     }
     .loop-up {
       stroke-dasharray: 10 7;
-      animation: flowUp 1.8s linear infinite;
+      animation: flowDown 1.8s linear infinite;
     }
 
     /* ── HEADLESS side: sequential downward pulse through AI -> PIPELINE -> OUTPUT ── */
