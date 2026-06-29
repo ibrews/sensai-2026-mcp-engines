@@ -198,14 +198,14 @@ const SECTIONS = [
       tags:'Broadcast · Unreal Engine · MetaHumans · Perforce',
       notes:'Context: a broadcast game-show project with a real deadline and a small team.\nKeep the project and the celebrity abstract throughout.\nThe through-line: every hard task here had an agent on it.\nLet the individual cases tell the story.' },
     cases: [
-      { title:'Version Control That Just Works', subtitle:'Claude on Perforce',
+      { title:'Version Control That Just Works', subtitle:'GitHub by default \u2014 Perforce only when a client requires it',
         img:'media/cs-git-log.png', bullets:[
-          'Perforce is the broadcast standard — not git, not GitHub',
-          'Claude resolves merge conflicts, writes structured commit notes, navigates the depot',
-          'The agent understands the changelist model without hand-holding',
+          'We default to GitHub; some broadcast clients mandate Perforce, so we meet them there',
+          'Claude resolves merge conflicts and writes clean, structured commit notes either way',
+          'On this project it navigated the Perforce changelist model with no hand-holding',
           'Net result: fewer integration headaches, better audit trail, faster iteration'
         ],
-        notes:'Perforce is what broadcast shops use. Not git.\nClaude reads changelists, resolves conflicts, writes proper descriptions.\nIt just works without needing a tutorial on P4 conventions.' },
+        notes:'We are GitHub by default; this client required Perforce, so Claude met them there.\nSame discipline either way: clean conventional commits, real conflict resolution.\nNo P4 tutorial needed. The screenshot is our own GitHub history.' },
       { title:'You Do Not Always Need an MCP', subtitle:'A CLI and a clean agent is enough',
         img:'media/cs-no-mcp-blendshapes.png', bullets:[
           'Ready Player Me characters were missing blendshapes; MetaHumans have the full set',
