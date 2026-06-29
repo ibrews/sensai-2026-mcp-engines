@@ -258,15 +258,14 @@ const SECTIONS = [
           'Rigging: useful for structure and symmetry, less reliable for weights'
         ],
         notes:'Geometry Nodes and materials: describe the look, get the node graph.\nBatch operations across dozens of objects in one prompt.\nHonest caveat: great for structure, shaky on rig weights.' },
-      { title:'Watch a Local 8B Build It', subtitle:'qwen3:8b · typed tools · zero cloud tokens',
+      { title:'Watch a Local 8B Build It', subtitle:'qwen3:8b · composite tools · zero cloud tokens',
         img:'MEDIA_CYCLER', bullets:[
-          '“Add a red cube, scatter cones around it” — a clean multi-call plan, run in Blender',
-          'Every object here was placed by a local 8B model through typed MCP tools',
-          'No internet, no API key — this whole shot was generated on a laptop',
-          'Stock free-form tool: unreliable. Typed tools: 100% clean. Same model.',
-          'Key insight: TYPED tools beat one free-form code tool. Tool design beats model size.'
+          'Same brief, two tool surfaces — atomic tools: a plane and one cube; composite tools: a 45-tower neon city',
+          'A local 8B, on a laptop, chose and called every tool in about 30 seconds — no internet, no API key',
+          'The composite tools bake in the taste (window grids, wet-street reflections, an auto-framed hero camera) — the model just picks and parameterizes',
+          'Same model both times. Only the tool surface changed. Tool design beats model size.'
         ],
-        notes:'The fleet-first payoff, rendered from what the local model actually emitted.\nEvery object placed by a local 8B through typed tools  -  no cloud.\nContrast the stock free-form tool that leaked; typed tools fixed it.\nThis is the scene the live demo recreates.' },
+        notes:'The fleet-first payoff: a local 8B, on a laptop, built this neon city in ~30 seconds.\nSame model, two tool surfaces - atomic gave a plane and a cube; composite gave a city.\nThe tools carry the taste; the model only picks and parameterizes. Tool design beats model size.\nThis is the kind of scene the live demo builds.' },
       { title:'Where Local Ends, Claude Begins', subtitle:'Same brief, same tools — the gap is judgment',
         img:'media/local-vs-claude.png', bullets:[
           'Local reliably CALLS the tools — places objects, applies materials, adds lights',
@@ -440,19 +439,19 @@ const SECTIONS = [
       { title:'The Setup', subtitle:'What you’re looking at',
         img:'images/demo-setup.svg', bullets:[
           'Blender with an MCP server running in the background',
-          'qwen3:8b (local, via Ollama) drives via typed tools — Claude on standby for judgment calls',
-          'A starting scene ready to be modified',
-          'Goal: natural language in — visible change in the viewport out'
+          'qwen3:8b (local, via Ollama) drives via typed composite tools — Claude on standby for judgment calls',
+          'An empty scene, ready to be built up from a single sentence',
+          'Goal: natural language in — a whole scene in the viewport out'
         ],
         notes:'Orient them: Blender open, MCP server running, scene ready.\nDriver is qwen3:8b via typed tools. Claude is the backup for hard asks.\nPlain language in, viewport change out. Keep it short; the tasks are the show.' },
-      { title:'Task: Scene Edit', subtitle:'Natural language → visible change',
+      { title:'Task: Build a Robust Scene', subtitle:'Natural language → a whole scene, live',
         img:'', bullets:[
-          'Alex gives a creative direction — no code, no menus',
-          'Local model one-shots it or asks one clarifying question',
-          'The change appears in Blender’s viewport',
-          'We iterate on the prompt — live'
+          'Alex gives a themed brief — “build a neon city at night” — no code, no menus',
+          'The local 8B picks and parameterizes composite tools; a full scene appears in about 30 seconds',
+          'Swap the brief — “make it an ember sunset” — and the palette, lights, and mood adapt',
+          'Then a hard, open-ended ask → escalate to Claude, the one-key backup — live'
         ],
-        notes:'Give one creative direction in plain language, no menus.\nLet it one-shot or ask one question, then iterate live.\nHave two backup tasks if it finishes fast or stalls.' },
+        notes:'The headline task: a themed brief builds a whole scene, not one primitive.\nThe local 8B picks composite tools; a city appears in ~30 seconds.\nSwap the theme to show range, then hand a truly open-ended ask to Claude.\nHave a fallback brief ready if it finishes fast or stalls.' },
       { title:'Task: The Clarification Moment', subtitle:'What good AI behavior looks like',
         img:'images/demo-clarification.svg', bullets:[
           'Intentionally ambiguous prompt: the model asks before acting',
@@ -2126,17 +2125,15 @@ setTimeout(updateDurationDisplay,100);
 })();
 
 (function(){
+  // Robust-scene proof: a local 8B built a neon city via COMPOSITE tools.
+  // Cycle the atomic-vs-composite contrast (the "tool design beats model size"
+  // money shot) with a turntable orbit of the model-built city.
   const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Watch a Local 8B Build It'));
-  if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(!m) return; m.innerHTML='';
-  m.style.cssText='position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#000';
-  const v=document.createElement('video');
-  v.src='media/blender-build.mp4'; v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto';
-  v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
-  m.appendChild(v);
-  const sync=()=>{ if(sl.classList.contains('active')){ v.play().catch(()=>{}); } else { try{v.pause();}catch(_){} } };
-  new MutationObserver(sync).observe(sl,{attributes:true,attributeFilter:['class']});
-  v.addEventListener('canplay',sync); v.addEventListener('loadeddata',sync);
-  sync();
+  if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(m) m.innerHTML='';
+  buildMediaCycler(sl, [
+    {type:'image', src:'media/cs-tool-contrast.png'},
+    {type:'video', src:'media/local-city.mp4', loop:true},
+  ], {imageDuration:6500});
 })();
 
 // =====================================================================
