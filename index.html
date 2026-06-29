@@ -286,6 +286,68 @@ const SECTIONS = [
 
   // ── CH 6: Second Brain ──────────────────────────────────────────────────
   { year: 'CH 6', accent: 'teal',
+    lesson: { title:'Godot:\nSmall Engine, Big Reach', short:'GODOT',
+      tagline:'Open source, scriptable to the core, and it runs where we need it \u2014 <br>including places people assume you need Unreal.',
+      tags:'Godot \u00b7 GDScript \u00b7 Apple Vision Pro \u00b7 CC0',
+      notes:'The ad promised Godot equal billing - here it is.\nGodot is open, tiny, and scriptable end to end.\nThat makes it ideal for headless and AI-driven work.\nAnd it reaches platforms people assume need Unreal.' },
+    cases: [
+      { title:'Cascade Countdown', subtitle:'A hand-tracked Godot game, live on Apple Vision Pro',
+        img:'media/cascade-gameplay.jpg', bullets:[
+          'RigidBody3D physics + procedural audio at a locked 90fps',
+          'Built in Godot; runs in the visionOS immersive space on-device',
+          'Same scene runs naked in the Godot editor AND on the headset',
+          'Proof: Godot ships to platforms people assume need Unreal'
+        ],
+        notes:'Cascade is a real shipping Godot game on Vision Pro.\nHand-tracked, 90fps, procedural audio - all in Godot.\nThe point: Godot reaches the headset too, not just Unreal.' },
+      { title:'A CC0 Human, No EULA', subtitle:'VitruvianGodot \u2014 photoreal head in stock Godot',
+        img:'', bullets:[
+          'A CC0 photoreal human head in stock Godot 4.6 Forward+',
+          'Same skin-shader quality, with no MetaHuman EULA strings',
+          'The agent helped port the look-dev and the shader graph',
+          'Open assets + open engine = freedom to actually ship'
+        ],
+        notes:'You do not need MetaHumans to get a photoreal human.\nVitruvianGodot is CC0, EULA-free, in stock Godot.\nThe agent ported the look-dev. Open all the way down.' },
+      { title:'Why the Small Engine Wins', subtitle:'Iteration speed, zero cost, total scriptability',
+        img:'', bullets:[
+          'Tiny footprint and instant iteration - the loop is fast',
+          'Scriptable end to end, which is perfect for headless + AI',
+          'A visionOS simulator kit keeps the device loop tight',
+          'Lessons here transfer straight to Unreal and Blender'
+        ],
+        notes:'Godot is small, free, and fully scriptable.\nThat is exactly what makes it great for AI loops.\nAnd the skills transfer to the bigger engines.' }
+    ] },
+  { year: 'CH 7', accent: 'purple',
+    lesson: { title:'Into Apple\u2019s Stack:\nRealityKit, Swift, Xcode', short:'REALITYKIT + SWIFT',
+      tagline:'The title tweak was not a joke \u2014 a huge share of our work lives in Apple\u2019s stack. <br>The same agent workflows drive Swift, Xcode, and RealityKit.',
+      tags:'RealityKit \u00b7 Swift \u00b7 Xcode \u00b7 visionOS',
+      notes:'Callback to the title: we live in Apple platforms too.\nThe same agent loop drives Swift, Xcode, RealityKit.\nThis is a big chunk of our actual day to day.\nNo MCP plugin needed - just an agent and the CLIs.' },
+    cases: [
+      { title:'The Simulator Is the Loop Machine', subtitle:'You cannot keep a Vision Pro awake like a Quest',
+        img:'', bullets:[
+          'A real Vision Pro sleeps; you cannot leave it running loops',
+          'The visionOS Simulator gives you endless headless iterations',
+          'Build, install, screenshot, read logs, fix, repeat - unattended',
+          'The agent runs that loop while you are asleep'
+        ],
+        notes:'Big practical tip for Apple work: lean on the simulator.\nThe AVP sleeps; the sim does not.\nThat is where the agent gets its loops.' },
+      { title:'MetaHumans, Native in RealityKit', subtitle:'A real rig posing at 90fps, on device',
+        img:'media/metahuman-jaw-open.png', bullets:[
+          'Epic\u2019s OpenRigLogic driving a MetaHuman skeleton in RealityKit',
+          '90fps on Apple Vision Pro - no Unreal running at runtime',
+          'Proven two ways: UsdSkel jointTransforms and a Metal LBS skinner',
+          'The cross-engine KB is what made this port fast'
+        ],
+        notes:'We run real MetaHuman rigs natively in RealityKit.\n90fps on device, no Unreal at runtime.\nThe KB from the Godot work made the port quick.' },
+      { title:'Splats, Swift, and the Bridge', subtitle:'RealityKit + Swift, no game engine required',
+        img:'', bullets:[
+          'SplatStage: walk inside a Gaussian-splat scene on visionOS 27',
+          'Native RealityKit GaussianSplatComponent - device-proven recipe',
+          'The agent writes Swift, builds with xcodebuild, reads logs, fixes',
+          'Headless TestFlight pipeline for iOS + visionOS; UE to RealityKit bridge'
+        ],
+        notes:'RealityKit + Swift covers a lot: splats, bridges, pipelines.\nThe agent drives xcodebuild and device logs headlessly.\nSame routing: Sonnet for the loop, Opus for the ABI bug.' }
+    ] },
+  { year: 'CH 8', accent: 'teal',
     lesson: { title:'Your Second Brain\nIs the Real Tool', short:'COMPOUND KNOWLEDGE',
       tagline:'“Give me six hours to chop down a tree and I’ll spend the first four sharpening the axe.” <br>— Abraham Lincoln (probably not). Building your second brain is sharpening the axe.',
       tags:'Godot · Knowledge Base · Cross-Engine Transfer',
@@ -327,7 +389,7 @@ const SECTIONS = [
     ] },
 
   // ── CH 7: Pro-Tips ──────────────────────────────────────────────────────
-  { year: 'CH 7', accent: 'purple',
+  { year: 'CH 9', accent: 'purple',
     lesson: { title:'Pro-Tips From\nthe Trenches', short:'HARD-WON LESSONS',
       tagline:'What we learned running agents daily — <br>the habits that make the difference',
       tags:'Workflow · Models · Hardware · Honesty',
