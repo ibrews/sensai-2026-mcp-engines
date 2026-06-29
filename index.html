@@ -99,7 +99,7 @@ const SECTIONS = [
         ],
         notes:'Everyone knows the copy-paste tax: ask, copy, paste, debug, repeat.\nAgents close that loop inside the tool and make the change directly.\nThis is the difference between suggests and does.' },
       { title:'Two Ways to Work', subtitle:'Interactive vs. headless — same protocol, different loops',
-        img:'images/ch1-two-modes.svg', bullets:[
+        img:'images/ch1-two-modes-anim.svg', bullets:[
           'Interactive: AI edits the live scene as you watch — instant feedback, back-and-forth',
           'Headless: AI runs your pipeline without opening the editor — batch, scale, schedule',
           'Choose by the task: iteration → interactive; automation → headless'
@@ -139,7 +139,7 @@ const SECTIONS = [
         ],
         notes:'Three tiers. Sonnet handles about 80 percent of the real log.\nOpus only when Sonnet stalls twice on the same root cause.\nHaiku for mechanical tasks: rename files, check status, shuffle assets.\nThe billing is real. Default cheap; escalate deliberately.' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
-        img:'images/ch2-setup-pattern.svg', bullets:[
+        img:'images/ch2-setup-pattern-anim.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
           'AI client: Claude (or any LLM) sends structured calls to the server',
           'Config file: tells your AI where each server lives',
@@ -308,7 +308,7 @@ const SECTIONS = [
         ],
         notes:'These are our real projects, not stock demos.\nCascade on Vision Pro; MetaHumans posing natively at 90 fps.\nEach solved problem becomes a template the AI can reuse.' },
       { title:'The KB as Triangulation', subtitle:'Three known points give you the fourth for free',
-        img:'images/ch5-triangulation.svg', bullets:[
+        img:'images/ch5-triangulation-anim.svg', bullets:[
           'A→B: Godot to AVP taught us RealityKit constraints, scale bugs, the LowLevelMesh skinner',
           'A→C: Unreal to AVP had the same constraints — solved in a fraction of the time',
           'B→C: “Do what we did in Cascade, but in Unreal” is now a one-sentence brief',
@@ -316,7 +316,7 @@ const SECTIONS = [
         ],
         notes:'Here is the payoff. Three solved projects, one knowledge base.\nGodot to Vision Pro taught us the constraints the hard way.\nUnreal to Vision Pro hit the same wall and we solved it fast.\nDo it like Cascade but in Unreal is now a one-sentence brief.' },
       { title:'Building for Transferability', subtitle:'Document the why, not just the what',
-        img:'images/ch5-transferability.svg', bullets:[
+        img:'images/ch5-transferability-anim.svg', bullets:[
           'Gotchas + their fixes are the most valuable KB entries you can write',
           'Decision records beat code comments: “tried X, failed because Y, chose Z”',
           'The AI that helped you build the thing can help the next person understand it',

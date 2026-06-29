@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gtr" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="atr" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
+    <marker id="atrp" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#a78bfa"/></marker>
+    <linearGradient id="ltr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    /*
+      Total cycle: 6s.
+      Sequence:
+        0-20%  (0-1.2s):  A->B arrow fires (dot travels)
+        20-45% (1.2-2.7s): B->C arrow fires (dot travels, slightly faster)
+        (B->C fires quicker to show "faster still")
+
+      Then KB read/write pulses overlap throughout:
+        A->KB write pulse: 0-30%
+        KB->B read pulse: 15-50%
+        B->KB write pulse: 30-60%
+        KB->C read pulse: 45-85%
+    */
+
+    /* Compounding arrow A->B dot */
+    @keyframes dotAB {
+      0%    { offset-distance:0%; opacity:0; }
+      3%    { opacity:1; }
+      18%   { offset-distance:100%; opacity:1; }
+      22%   { opacity:0; }
+      100%  { opacity:0; }
+    }
+    /* Compounding arrow B->C dot — fires faster (shorter active window) */
+    @keyframes dotBC {
+      0%,20%  { offset-distance:0%; opacity:0; }
+      23%     { opacity:1; }
+      40%     { offset-distance:100%; opacity:1; }
+      44%     { opacity:0; }
+      100%    { opacity:0; }
+    }
+
+    .dot-ab {
+      offset-path: path('M260,494 L306,494');
+      animation: dotAB 6s ease-out infinite;
+    }
+    .dot-bc {
+      offset-path: path('M510,494 L556,494');
+      animation: dotBC 6s ease-out infinite;
+    }
+
+    /* Flowing dashes on compounding arrows */
+    @keyframes dashAB {
+      0%,100%{ stroke-dashoffset:16; stroke-opacity:0.4; }
+      0%     { stroke-opacity:0.9; stroke-dashoffset:16; }
+      22%    { stroke-dashoffset:0; stroke-opacity:0.9; }
+      30%    { stroke-opacity:0.4; }
+    }
+    @keyframes dashBC {
+      0%,100%{ stroke-dashoffset:16; stroke-opacity:0.4; }
+      20%    { stroke-dashoffset:16; stroke-opacity:0.4; }
+      40%    { stroke-dashoffset:0; stroke-opacity:1; }
+      48%    { stroke-opacity:0.4; }
+    }
+    .arr-ab {
+      stroke-dasharray:7 5;
+      animation: dashAB 6s ease-out infinite;
+    }
+    .arr-bc {
+      stroke-dasharray:7 5;
+      animation: dashBC 6s ease-out infinite;
+    }
+
+    /* KB write pulse from A: path "M160 446 C 160 400, 240 372, 296 350" */
+    @keyframes writeA {
+      0%,100%{ stroke-opacity:0.2; }
+      5%     { stroke-opacity:0.9; }
+      28%    { stroke-opacity:0.9; }
+      35%    { stroke-opacity:0.2; }
+    }
+    /* KB read pulse to B: "M410 366 -> 410 446" (vertical down from KB to B) */
+    @keyframes readB {
+      0%,100% { stroke-opacity:0.2; }
+      18%     { stroke-opacity:0.2; }
+      25%     { stroke-opacity:0.9; }
+      48%     { stroke-opacity:0.9; }
+      55%     { stroke-opacity:0.2; }
+    }
+    /* B writes to KB: (reuse vertical up line) */
+    @keyframes writeB {
+      0%,100%{ stroke-opacity:0.2; }
+      35%    { stroke-opacity:0.2; }
+      42%    { stroke-opacity:0.9; }
+      60%    { stroke-opacity:0.9; }
+      67%    { stroke-opacity:0.2; }
+    }
+    /* KB read pulse to C: "M524 348 -> 660 446" */
+    @keyframes readC {
+      0%,100%{ stroke-opacity:0.2; }
+      45%    { stroke-opacity:0.2; }
+      52%    { stroke-opacity:1; }
+      80%    { stroke-opacity:1; }
+      88%    { stroke-opacity:0.2; }
+    }
+
+    .kb-write-a { animation: writeA 6s ease-in-out infinite; }
+    .kb-read-b  { animation: readB  6s ease-in-out infinite; }
+    .kb-write-b { animation: writeB 6s ease-in-out infinite; }
+    .kb-read-c  { animation: readC  6s ease-in-out infinite; }
+
+    /* Moving dot on write-A arc path */
+    @keyframes dotWriteA {
+      0%   { offset-distance:0%; opacity:0; }
+      5%   { opacity:1; }
+      28%  { offset-distance:100%; opacity:1; }
+      33%  { opacity:0; }
+      100% { opacity:0; }
+    }
+    /* Moving dot on read-B arc path */
+    @keyframes dotReadB {
+      0%,18%{ offset-distance:0%; opacity:0; }
+      23%  { opacity:1; }
+      50%  { offset-distance:100%; opacity:1; }
+      55%  { opacity:0; }
+      100% { opacity:0; }
+    }
+    /* Moving dot on write-B vertical path */
+    @keyframes dotWriteB {
+      0%,35%{ offset-distance:0%; opacity:0; }
+      40%  { opacity:1; }
+      62%  { offset-distance:100%; opacity:1; }
+      67%  { opacity:0; }
+      100% { opacity:0; }
+    }
+    /* Moving dot on read-C arc path */
+    @keyframes dotReadC {
+      0%,45%{ offset-distance:0%; opacity:0; }
+      50%  { opacity:1; }
+      82%  { offset-distance:100%; opacity:1; }
+      88%  { opacity:0; }
+      100% { opacity:0; }
+    }
+
+    .dotWriteA { offset-path: path('M160 446 C 160 400, 240 372, 296 350'); animation: dotWriteA 6s ease-in-out infinite; }
+    .dotReadB  { offset-path: path('M410,366 L410,446'); animation: dotReadB  6s ease-in-out infinite; }
+    .dotWriteB { offset-path: path('M410,446 L410,366'); animation: dotWriteB 6s ease-in-out infinite; }
+    .dotReadC  { offset-path: path('M524 348 C 580 372, 660 404, 660 446'); animation: dotReadC  6s ease-in-out infinite; }
+
+    /* KB hub gentle glow pulse */
+    @keyframes kbPulse {
+      0%,100%{ opacity:0.14; }
+      50%    { opacity:0.28; }
+    }
+    .kb-bg { animation: kbPulse 3s ease-in-out infinite; }
+  </style>
+
+  <text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">EVERY PROJECT COMPOUNDS THE LAST</text>
+
+  <!-- KB / Second Brain (center hub) — pulsing background fill -->
+  <rect class="kb-bg" x="290" y="248" width="240" height="116" rx="20" fill="#a78bfa"/>
+  <rect x="290" y="248" width="240" height="116" rx="20" fill="none" stroke="#a78bfa" stroke-width="3" filter="url(#gtr)"/>
+  <text x="410" y="294" text-anchor="middle" fill="#efe9ff" font-size="24" font-weight="700">KB / Second Brain</text>
+  <text x="410" y="320" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="13">notes, patterns, gotchas</text>
+  <text x="410" y="340" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12.5">read &#8596; write</text>
+
+  <!-- three project nodes -->
+  <rect x="60" y="448" width="200" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gtr)"/>
+  <text x="160" y="488" text-anchor="middle" fill="#e9fbff" font-size="21" font-weight="700">Project A</text>
+  <text x="160" y="514" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13">first pass</text>
+
+  <rect x="310" y="448" width="200" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gtr)"/>
+  <text x="410" y="488" text-anchor="middle" fill="#e9fbff" font-size="21" font-weight="700">Project B</text>
+  <text x="410" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">faster</text>
+
+  <rect x="560" y="448" width="200" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gtr)"/>
+  <text x="660" y="488" text-anchor="middle" fill="#e9fbff" font-size="21" font-weight="700">Project C</text>
+  <text x="660" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">faster still</text>
+
+  <!-- compounding arrows A->B and B->C (animated dashes + dots) -->
+  <line class="arr-ab" x1="260" y1="494" x2="306" y2="494" stroke="url(#ltr)" stroke-width="3.5" marker-end="url(#atr)"/>
+  <line class="arr-bc" x1="510" y1="494" x2="556" y2="494" stroke="url(#ltr)" stroke-width="3.5" marker-end="url(#atr)"/>
+
+  <!-- KB connection arcs — animated opacity pulses -->
+  <path class="kb-write-a" d="M160 446 C 160 400, 240 372, 296 350" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#atrp)"/>
+  <path class="kb-read-c" d="M524 348 C 580 372, 660 404, 660 446" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#atr)"/>
+  <!-- B->KB write (upward) -->
+  <line class="kb-write-b" x1="410" y1="446" x2="410" y2="368" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#atrp)"/>
+  <!-- KB->B read (downward) -->
+  <line class="kb-read-b" x1="410" y1="366" x2="410" y2="446" stroke="rgba(0,212,255,.55)" stroke-width="2.5" marker-end="url(#atr)"/>
+
+  <text x="190" y="404" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">write</text>
+  <text x="628" y="404" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">read</text>
+
+  <!-- Travelling dots on KB connection paths -->
+  <circle class="dotWriteA" r="5" fill="#a78bfa" opacity="0" filter="url(#gtr)"/>
+  <circle class="dotReadB"  r="5" fill="#00d4ff" opacity="0" filter="url(#gtr)"/>
+  <circle class="dotWriteB" r="5" fill="#a78bfa" opacity="0" filter="url(#gtr)"/>
+  <circle class="dotReadC"  r="5" fill="#a78bfa" opacity="0" filter="url(#gtr)"/>
+
+  <!-- Compounding dots -->
+  <circle class="dot-ab" r="6" fill="#00d4ff" opacity="0" filter="url(#gtr)"/>
+  <circle class="dot-bc" r="6" fill="#00d4ff" opacity="0" filter="url(#gtr)"/>
+
+  <text x="410" y="588" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">The smarter your notes, the smarter your AI gets.</text>
+</svg>

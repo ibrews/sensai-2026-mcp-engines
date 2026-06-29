@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 640" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="g2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="a2" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#a78bfa"/></marker>
+    <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    /*
+      Call pulse travels: AI CLIENT -> MCP SERVER (horizontal) -> EDITOR (vertical, server->editor)
+      One continuous "packet" traveling the path, with a gap between segments.
+      Total cycle = 4s.
+      Segment 1: CLIENT->SERVER horizontal (x 360->452, y 158), duration ~1.2s of cycle
+      Segment 2: SERVER->EDITOR vertical (x 600, y 206->372), duration ~1.4s of cycle
+    */
+
+    /* Segment 1: horizontal arrow CLIENT->SERVER — dot travels along it */
+    @keyframes dotSeg1 {
+      0%    { offset-distance:0%;   opacity:0; }
+      3%    { opacity:1; }
+      28%   { offset-distance:100%; opacity:1; }
+      30%   { opacity:0; }
+      100%  { opacity:0; }
+    }
+    /* Segment 2: vertical arrow SERVER->EDITOR — dot travels, after seg1 finishes */
+    @keyframes dotSeg2 {
+      0%,30%  { offset-distance:0%; opacity:0; }
+      33%     { opacity:1; }
+      68%     { offset-distance:100%; opacity:1; }
+      70%     { opacity:0; }
+      100%    { opacity:0; }
+    }
+
+    .dot-seg1 {
+      offset-path: path('M360,158 L452,158');
+      animation: dotSeg1 4s ease-in-out infinite;
+    }
+    .dot-seg2 {
+      offset-path: path('M600,206 L600,372');
+      animation: dotSeg2 4s ease-in-out infinite;
+    }
+
+    /* Flowing dash on horizontal arrow */
+    @keyframes dashH {
+      0%   { stroke-dashoffset: 20; }
+      100% { stroke-dashoffset: 0; }
+    }
+    /* Flowing dash on vertical server->editor arrow */
+    @keyframes dashV {
+      0%   { stroke-dashoffset: 20; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .arrow-horiz {
+      stroke-dasharray: 9 5;
+      animation: dashH 1.2s linear infinite;
+    }
+    .arrow-vert {
+      stroke-dasharray: 9 5;
+      animation: dashV 1.2s linear infinite 0.3s;
+    }
+
+    /* Glow pulse on each node when the pulse "arrives" */
+    @keyframes clientGlow {
+      0%,100%   { opacity:0.1; }
+      0%        { opacity:0.3; }
+      8%        { opacity:0.1; }
+    }
+    @keyframes serverGlow {
+      0%,100%   { opacity:0.12; }
+      28%       { opacity:0.35; }
+      36%       { opacity:0.12; }
+    }
+    @keyframes editorGlow {
+      0%,100%   { opacity:0.04; }
+      68%       { opacity:0.14; }
+      76%       { opacity:0.04; }
+    }
+    .client-fill  { animation: clientGlow 4s ease-in-out infinite; }
+    .server-fill  { animation: serverGlow 4s ease-in-out infinite; }
+    .editor-fill  { animation: editorGlow 4s ease-in-out infinite; }
+  </style>
+
+  <text x="410" y="52" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">ONE PATTERN &#183; EVERY ENGINE</text>
+
+  <!-- AI CLIENT -->
+  <rect class="client-fill" x="80" y="110" width="280" height="96" rx="18" fill="#00d4ff"/>
+  <rect x="80" y="110" width="280" height="96" rx="18" fill="none" stroke="#00d4ff" stroke-width="2.5" filter="url(#g2)"/>
+  <text x="220" y="152" text-anchor="middle" fill="#e9fbff" font-size="24" font-weight="700">AI CLIENT</text>
+  <text x="220" y="180" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="15">Claude &#183; sends structured calls</text>
+
+  <!-- MCP SERVER -->
+  <rect class="server-fill" x="460" y="110" width="280" height="96" rx="18" fill="#a78bfa"/>
+  <rect x="460" y="110" width="280" height="96" rx="18" fill="none" stroke="#a78bfa" stroke-width="2.5" filter="url(#g2)"/>
+  <text x="600" y="152" text-anchor="middle" fill="#efe9ff" font-size="24" font-weight="700">MCP SERVER</text>
+  <text x="600" y="180" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="15">runs beside your editor</text>
+
+  <!-- arrow client -> server (animated flowing dash) -->
+  <line class="arrow-horiz" x1="360" y1="158" x2="452" y2="158" stroke="url(#ln)" stroke-width="3.5" marker-end="url(#a2)"/>
+
+  <!-- config file (between, below the arrow) -->
+  <rect x="330" y="250" width="160" height="62" rx="12" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="410" y="280" text-anchor="middle" fill="#ffe9c2" font-size="17" font-weight="600">config file</text>
+  <text x="410" y="301" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">where each server lives</text>
+  <line x1="410" y1="206" x2="410" y2="248" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 4"/>
+
+  <!-- arrow server -> editor (down) — animated flowing dash -->
+  <line class="arrow-vert" x1="600" y1="206" x2="600" y2="372" stroke="#a78bfa" stroke-width="3.5" marker-end="url(#a2)" filter="url(#g2)"/>
+  <text x="618" y="295" fill="rgba(240,244,255,.55)" font-size="13">translates calls &#8594; editor commands</text>
+
+  <!-- EDITOR with three engine chips -->
+  <rect class="editor-fill" x="200" y="380" width="420" height="170" rx="20" fill="#f0f4ff"/>
+  <rect x="200" y="380" width="420" height="170" rx="20" fill="none" stroke="rgba(240,244,255,.22)" stroke-width="2"/>
+  <text x="410" y="418" text-anchor="middle" fill="#f0f4ff" font-size="22" font-weight="700">YOUR EDITOR</text>
+
+  <!-- engine chips -->
+  <rect x="232" y="442" width="116" height="78" rx="14" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="290" y="478" text-anchor="middle" fill="#ffe9c2" font-size="16" font-weight="600">Unreal</text>
+  <text x="290" y="500" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">amber</text>
+
+  <rect x="352" y="442" width="116" height="78" rx="14" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2"/>
+  <text x="410" y="478" text-anchor="middle" fill="#ffd7df" font-size="16" font-weight="600">Blender</text>
+  <text x="410" y="500" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">rose</text>
+
+  <rect x="472" y="442" width="116" height="78" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2"/>
+  <text x="530" y="478" text-anchor="middle" fill="#e9fbff" font-size="16" font-weight="600">Godot</text>
+  <text x="530" y="500" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">teal</text>
+
+  <!-- Travelling pulse dots -->
+  <circle class="dot-seg1" r="6" fill="#00d4ff" opacity="0" filter="url(#g2)"/>
+  <circle class="dot-seg2" r="6" fill="#a78bfa" opacity="0" filter="url(#g2)"/>
+
+  <text x="410" y="592" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="15">different server &#8212; same mental model</text>
+</svg>

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 680" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="gh" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4b5fd"/><stop offset="60%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c5cf0"/>
+    </radialGradient>
+    <radialGradient id="ghost" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#f59e0b"/>
+    </radialGradient>
+    <!-- glow gradient for hub breathing -->
+    <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.6"/><stop offset="100%" stop-color="#7c5cf0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clipping path to contain ray flow inside the ray line length -->
+    <!-- Ray1: top (410,300)->(410,150) vertical, length~150 -->
+    <!-- Ray2: bottom-left (410,300)->(185,435) -->
+    <!-- Ray3: bottom-right (410,300)->(635,435) -->
+  </defs>
+
+  <style>
+    /* Hub glow breathe */
+    @keyframes hubBreathe {
+      0%,100% { opacity:0.55; transform:scale(1); }
+      50%      { opacity:1;    transform:scale(1.12); }
+    }
+    .hub-glow {
+      transform-origin: 410px 300px;
+      animation: hubBreathe 4s ease-in-out infinite;
+    }
+
+    /* Ray flow: flowing dash offset, staggered per ray */
+    @keyframes flowDash {
+      0%   { stroke-dashoffset: 24; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .ray1 { stroke-dasharray: 8 6; animation: flowDash 1.4s linear infinite; }
+    .ray2 { stroke-dasharray: 8 6; animation: flowDash 1.4s linear infinite 0.47s; }
+    .ray3 { stroke-dasharray: 8 6; animation: flowDash 1.4s linear infinite 0.94s; }
+
+    /* Moving dot travelling along each ray toward center */
+    @keyframes dotRay1 {
+      0%   { offset-distance: 0%; opacity:0; }
+      10%  { opacity:1; }
+      80%  { opacity:1; }
+      100% { offset-distance:100%; opacity:0; }
+    }
+    @keyframes dotRay2 {
+      0%   { offset-distance: 0%; opacity:0; }
+      10%  { opacity:1; }
+      80%  { opacity:1; }
+      100% { offset-distance:100%; opacity:0; }
+    }
+    @keyframes dotRay3 {
+      0%   { offset-distance: 0%; opacity:0; }
+      10%  { opacity:1; }
+      80%  { opacity:1; }
+      100% { offset-distance:100%; opacity:0; }
+    }
+    .dot-r1 {
+      offset-path: path('M410,150 L410,300');
+      animation: dotRay1 2.4s ease-in infinite;
+    }
+    .dot-r2 {
+      offset-path: path('M185,435 L410,300');
+      animation: dotRay2 2.4s ease-in infinite 0.8s;
+    }
+    .dot-r3 {
+      offset-path: path('M635,435 L410,300');
+      animation: dotRay3 2.4s ease-in infinite 1.6s;
+    }
+
+    /* 4th node (NEW PROJECT) fade+scale in, then stays */
+    @keyframes fourthFadeIn {
+      0%,55%  { opacity:0; transform: scale(0.6); }
+      70%,100%{ opacity:1; transform: scale(1); }
+    }
+    .fourth-node {
+      transform-origin: 620px 600px;
+      animation: fourthFadeIn 5s ease-out infinite;
+    }
+    /* dashed line to 4th node pulses with same timing */
+    @keyframes dashPulse {
+      0%,55%  { opacity:0; }
+      70%,100%{ opacity:0.85; }
+    }
+    .dash-to-fourth {
+      animation: dashPulse 5s ease-out infinite;
+    }
+  </style>
+
+  <text x="410" y="46" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="16" letter-spacing="3">THREE KNOWN POINTS &#8594; THE FOURTH FOR FREE</text>
+
+  <!-- triangle edges (subtle) -->
+  <polygon points="410,118 150,452 670,452" fill="rgba(0,212,255,.03)" stroke="rgba(0,212,255,.25)" stroke-width="1.5"/>
+
+  <!-- hub-to-corner rays (the triangulation) — animated flowing dashes -->
+  <line class="ray1" x1="410" y1="300" x2="410" y2="150" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+  <line class="ray2" x1="410" y1="300" x2="185" y2="435" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+  <line class="ray3" x1="410" y1="300" x2="635" y2="435" stroke="#00d4ff" stroke-width="2" stroke-opacity=".6" filter="url(#gh)"/>
+
+  <!-- Moving dots travelling toward the center hub -->
+  <circle class="dot-r1" r="4" fill="#00d4ff" opacity="0"/>
+  <circle class="dot-r2" r="4" fill="#00d4ff" opacity="0"/>
+  <circle class="dot-r3" r="4" fill="#00d4ff" opacity="0"/>
+
+  <!-- edge transfer labels -->
+  <text x="245" y="270" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600" transform="rotate(-52 245 270)">RealityKit limits</text>
+  <text x="575" y="270" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600" transform="rotate(52 575 270)">scale + skeleton</text>
+  <text x="410" y="486" text-anchor="middle" fill="#7be8ff" font-size="13.5" font-weight="600">&#8220;do it like Cascade, but in Unreal&#8221;</text>
+
+  <!-- corner nodes -->
+  <!-- top -->
+  <g filter="url(#gh)">
+    <rect x="300" y="92" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="410" y="120" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">GODOT &#8594; visionOS</text>
+  <text x="410" y="141" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">Cascade on AVP</text>
+
+  <!-- bottom-left -->
+  <g filter="url(#gh)">
+    <rect x="40" y="430" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="150" y="458" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">UNREAL &#8594; visionOS</text>
+  <text x="150" y="479" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">solved in a fraction</text>
+
+  <!-- bottom-right -->
+  <g filter="url(#gh)">
+    <rect x="560" y="430" width="220" height="62" rx="14" fill="rgba(0,212,255,.12)" stroke="#00d4ff" stroke-width="2.5"/>
+  </g>
+  <text x="670" y="458" text-anchor="middle" fill="#e9fbff" font-size="19" font-weight="700">MetaHuman runtime</text>
+  <text x="670" y="479" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">RigLogic @ 90fps</text>
+
+  <!-- central KB hub — glow halo behind, then solid circle -->
+  <circle class="hub-glow" cx="410" cy="300" r="82" fill="url(#hubGlow)"/>
+  <circle cx="410" cy="300" r="62" fill="url(#hub)" filter="url(#gh)"/>
+  <text x="410" y="294" text-anchor="middle" fill="#1a1230" font-size="20" font-weight="800">SECOND</text>
+  <text x="410" y="318" text-anchor="middle" fill="#1a1230" font-size="20" font-weight="800">BRAIN</text>
+  <text x="410" y="384" text-anchor="middle" fill="#c4b5fd" font-size="13.5" font-weight="600">your knowledge base</text>
+
+  <!-- derived 4th node (animated) -->
+  <line class="dash-to-fourth" x1="470" y1="345" x2="600" y2="590" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 6" filter="url(#gh)"/>
+  <g class="fourth-node">
+    <circle cx="620" cy="600" r="48" fill="url(#ghost)" filter="url(#gh)"/>
+    <text x="620" y="596" text-anchor="middle" fill="#2a1c02" font-size="15" font-weight="800">NEW</text>
+    <text x="620" y="615" text-anchor="middle" fill="#2a1c02" font-size="15" font-weight="800">PROJECT</text>
+  </g>
+
+  <text x="250" y="600" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">The AI reasons</text>
+  <text x="250" y="624" text-anchor="middle" fill="#f0f4ff" font-size="17" font-weight="600">across your past work</text>
+  <text x="250" y="650" text-anchor="middle" fill="rgba(245,158,11,.95)" font-size="15" font-weight="700">&#8594; the next one is faster</text>
+</svg>

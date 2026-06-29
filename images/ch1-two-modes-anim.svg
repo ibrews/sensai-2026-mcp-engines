@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 620" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <filter id="glowT" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowA" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrT" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#00d4ff"/></marker>
+    <marker id="arrA" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#f59e0b"/></marker>
+  </defs>
+
+  <style>
+    /* ── INTERACTIVE side: bidirectional loop arrows flow in both directions simultaneously ── */
+    /* Down arrow (left arc): dash flows downward = decreasing offset */
+    @keyframes flowDown {
+      0%   { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+    /* Up arrow (right arc): dash flows upward = increasing offset */
+    @keyframes flowUp {
+      0%   { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 40; }
+    }
+    .loop-down {
+      stroke-dasharray: 10 7;
+      animation: flowDown 1.8s linear infinite;
+    }
+    .loop-up {
+      stroke-dasharray: 10 7;
+      animation: flowUp 1.8s linear infinite;
+    }
+
+    /* ── HEADLESS side: sequential downward pulse through AI -> PIPELINE -> OUTPUT ── */
+    /* Each arrow fades in then out, staggered for batch-conveyor feel */
+    @keyframes arrowPulse1 {
+      0%,100%{ stroke-opacity:0.2; }
+      0%     { stroke-opacity:0.2; }
+      10%    { stroke-opacity:1; }
+      33%    { stroke-opacity:1; }
+      50%    { stroke-opacity:0.2; }
+    }
+    @keyframes arrowPulse2 {
+      0%,100%{ stroke-opacity:0.2; }
+      33%    { stroke-opacity:0.2; }
+      43%    { stroke-opacity:1; }
+      66%    { stroke-opacity:1; }
+      80%    { stroke-opacity:0.2; }
+    }
+    /* Flowing dash offsets for the headless arrows */
+    @keyframes batchFlow {
+      0%   { stroke-dashoffset: 20; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .arrow-h1 {
+      stroke-dasharray: 8 5;
+      animation: batchFlow 0.9s linear infinite, arrowPulse1 2.7s ease-in-out infinite;
+    }
+    .arrow-h2 {
+      stroke-dasharray: 8 5;
+      animation: batchFlow 0.9s linear infinite 0.9s, arrowPulse2 2.7s ease-in-out infinite;
+    }
+
+    /* Moving dots for headless: travel down each arrow segment, staggered */
+    @keyframes dotH1 {
+      0%   { offset-distance:0%; opacity:0; }
+      5%   { opacity:1; }
+      90%  { opacity:1; }
+      100% { offset-distance:100%; opacity:0; }
+    }
+    @keyframes dotH2 {
+      0%   { offset-distance:0%; opacity:0; }
+      5%   { opacity:1; }
+      90%  { opacity:1; }
+      100% { offset-distance:100%; opacity:0; }
+    }
+    .dot-h1 {
+      offset-path: path('M630,193 L630,262');
+      animation: dotH1 2.7s ease-in infinite;
+    }
+    .dot-h2 {
+      offset-path: path('M630,323 L630,392');
+      animation: dotH2 2.7s ease-in infinite 0.9s;
+    }
+  </style>
+
+  <!-- divider -->
+  <line x1="420" y1="70" x2="420" y2="560" stroke="rgba(240,244,255,.12)" stroke-width="1.5" stroke-dasharray="4 7"/>
+
+  <!-- ================= INTERACTIVE (left, teal) ================= -->
+  <text x="210" y="56" text-anchor="middle" fill="#00d4ff" font-size="30" font-weight="700" letter-spacing="2">INTERACTIVE</text>
+  <text x="210" y="84" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16">edit the live scene</text>
+
+  <!-- AI node -->
+  <rect x="120" y="150" width="180" height="70" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2"/>
+  <text x="210" y="183" text-anchor="middle" fill="#e9fbff" font-size="20" font-weight="600">AI AGENT</text>
+  <text x="210" y="206" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13">prompts &amp; acts</text>
+
+  <!-- Editor node -->
+  <rect x="120" y="360" width="180" height="70" rx="14" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2"/>
+  <text x="210" y="393" text-anchor="middle" fill="#e9fbff" font-size="20" font-weight="600">EDITOR</text>
+  <text x="210" y="416" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13">scene updates live</text>
+
+  <!-- bidirectional loop — animated flowing dashes -->
+  <path class="loop-down" d="M165 222 C 120 270, 120 310, 165 358" fill="none" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arrT)" filter="url(#glowT)"/>
+  <path class="loop-up" d="M255 358 C 300 310, 300 270, 255 222" fill="none" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arrT)" filter="url(#glowT)"/>
+  <text x="210" y="295" text-anchor="middle" fill="#7be8ff" font-size="13" font-weight="600">tight loop</text>
+
+  <text x="210" y="500" text-anchor="middle" fill="rgba(240,244,255,.7)" font-size="15">you watch it happen</text>
+  <text x="210" y="524" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13">iteration &#183; lighting &#183; prototyping</text>
+
+  <!-- ================= HEADLESS (right, amber) ================= -->
+  <text x="630" y="56" text-anchor="middle" fill="#f59e0b" font-size="30" font-weight="700" letter-spacing="2">HEADLESS</text>
+  <text x="630" y="84" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16">no editor window</text>
+
+  <!-- AI -->
+  <rect x="540" y="135" width="180" height="58" rx="13" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="630" y="170" text-anchor="middle" fill="#ffe9c2" font-size="19" font-weight="600">AI AGENT</text>
+  <!-- Pipeline -->
+  <rect x="540" y="265" width="180" height="58" rx="13" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="630" y="300" text-anchor="middle" fill="#ffe9c2" font-size="19" font-weight="600">PIPELINE</text>
+  <!-- Output -->
+  <rect x="540" y="395" width="180" height="58" rx="13" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="630" y="430" text-anchor="middle" fill="#ffe9c2" font-size="19" font-weight="600">OUTPUT</text>
+
+  <!-- Headless arrows — animated sequential flow -->
+  <line class="arrow-h1" x1="630" y1="193" x2="630" y2="262" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)" filter="url(#glowA)"/>
+  <line class="arrow-h2" x1="630" y1="323" x2="630" y2="392" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)" filter="url(#glowA)"/>
+
+  <!-- Moving dots for sequential batch feel -->
+  <circle class="dot-h1" r="4.5" fill="#f59e0b" opacity="0"/>
+  <circle class="dot-h2" r="4.5" fill="#f59e0b" opacity="0"/>
+
+  <text x="630" y="500" text-anchor="middle" fill="rgba(240,244,255,.7)" font-size="15">runs at scale, on a schedule</text>
+  <text x="630" y="524" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13">batch &#183; CI &#183; automation</text>
+</svg>
