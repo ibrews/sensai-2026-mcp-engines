@@ -12,13 +12,15 @@
 
   <!-- top arc: YOU -> AGENT (teal, flowf = left→right along path) -->
   <path class="flowf" d="M212,196 C320,96 480,96 588,196" fill="none" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
-  <path d="M580,182 L592,198 L572,202" fill="none" stroke="#00d4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- filled arrowhead at AGENT end: tangent from (480,96)→(588,196), unit≈(0.734,0.679) -->
+  <polygon points="588,196 574,191 582,183" fill="#00d4ff"/>
   <text x="400" y="72" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700" letter-spacing="1.5">YOU TEACH IT</text>
   <text x="400" y="93" text-anchor="middle" fill="rgba(240,244,255,0.6)" font-size="13">hit STOP · clarify intent · add the constraint</text>
 
   <!-- bottom arc: AGENT -> YOU (purple, flowf = right→left along path direction) -->
   <path class="flowf" d="M588,304 C480,424 320,424 212,304" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
-  <path d="M220,318 L208,302 L228,298" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- filled arrowhead at YOU end: tangent from (320,424)→(212,304), unit≈(-0.669,-0.743) -->
+  <polygon points="212,304 226,310 217,318" fill="#a78bfa"/>
   <text x="400" y="452" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="700" letter-spacing="1.5">IT TEACHES YOU</text>
   <text x="400" y="474" text-anchor="middle" fill="rgba(240,244,255,0.6)" font-size="13">new APIs · engine behaviors · patterns you'd never ask for</text>
 
@@ -26,14 +28,14 @@
   <circle cx="180" cy="250" r="58" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.8"/>
   <circle cx="180" cy="234" r="15" fill="none" stroke="#00d4ff" stroke-width="2.4"/>
   <path d="M156,280 a24,22 0 0 1 48,0" fill="none" stroke="#00d4ff" stroke-width="2.4" stroke-linecap="round"/>
-  <text x="180" y="318" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700" letter-spacing="2">YOU</text>
+  <text x="180" y="342" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700" letter-spacing="2">YOU</text>
 
   <!-- AGENT node -->
   <circle cx="620" cy="250" r="58" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.8"/>
   <rect x="598" y="226" width="44" height="38" rx="8" fill="none" stroke="#a78bfa" stroke-width="2.4"/>
   <circle cx="610" cy="245" r="3.5" fill="#a78bfa"/><circle cx="630" cy="245" r="3.5" fill="#a78bfa"/>
   <line x1="620" y1="226" x2="620" y2="214" stroke="#a78bfa" stroke-width="2.4"/><circle cx="620" cy="211" r="3.5" fill="#a78bfa"/>
-  <text x="620" y="318" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="700" letter-spacing="2">AGENT</text>
+  <text x="620" y="342" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="700" letter-spacing="2">AGENT</text>
 
   <!-- SHARED KB — node-link graph cluster -->
   <g class="core">
