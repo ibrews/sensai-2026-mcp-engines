@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Space Grotesk',system-ui,sans-serif">
+  <defs>
+    <style>
+      @keyframes wobble{0%,100%{transform:rotate(-1.3deg)}50%{transform:rotate(1.3deg)}}
+      @keyframes eq{0%,100%{opacity:.6;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+      .beam{animation:wobble 5s ease-in-out infinite;transform-origin:400px 150px}
+      .eq{animation:eq 2.4s ease-in-out infinite;transform-origin:400px 150px}
+    </style>
+  </defs>
+
+  <rect x="10" y="10" width="780" height="480" rx="22" fill="rgba(255,255,255,0.018)" stroke="rgba(255,255,255,0.07)"/>
+  <text x="400" y="56" text-anchor="middle" fill="rgba(240,244,255,0.5)" font-size="14" font-weight="600" letter-spacing="3">FOR ROUTINE WORK, THE SCALE IS LEVEL</text>
+
+  <!-- balance -->
+  <g class="beam">
+    <rect x="186" y="144" width="428" height="12" rx="6" fill="rgba(255,255,255,0.55)"/>
+    <!-- hangers -->
+    <line x1="232" y1="156" x2="232" y2="196" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    <line x1="568" y1="156" x2="568" y2="196" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    <!-- left pan: LOCAL -->
+    <g>
+      <rect x="150" y="196" width="164" height="64" rx="14" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1.6"/>
+      <text x="232" y="225" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="700">LOCAL 8B</text>
+      <text x="232" y="247" text-anchor="middle" fill="rgba(240,244,255,0.62)" font-size="12.5">$0 · laptop · offline</text>
+    </g>
+    <!-- right pan: FRONTIER -->
+    <g>
+      <rect x="486" y="196" width="164" height="64" rx="14" fill="rgba(167,139,250,0.1)" stroke="#a78bfa" stroke-width="1.6"/>
+      <text x="568" y="225" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="700">FRONTIER</text>
+      <text x="568" y="247" text-anchor="middle" fill="rgba(240,244,255,0.62)" font-size="12.5">$$$ · API · cloud</text>
+    </g>
+  </g>
+  <!-- fulcrum -->
+  <path d="M400,150 L380,210 L420,210 Z" fill="rgba(255,255,255,0.18)"/>
+  <text class="eq" x="400" y="138" text-anchor="middle" fill="#f0f4ff" font-size="46" font-weight="700">≈</text>
+
+  <!-- routine task checklist (3 legible pills) -->
+  <text x="400" y="322" text-anchor="middle" fill="rgba(240,244,255,0.72)" font-size="16" font-weight="600" letter-spacing="0.5">Both nail the mechanical 80% — with typed tools</text>
+  <g font-size="15" fill="rgba(240,244,255,0.82)">
+    <g><rect x="58" y="350" width="214" height="38" rx="19" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.4)"/><circle cx="84" cy="369" r="9" fill="rgba(0,212,255,0.16)" stroke="#00d4ff"/><path d="M80,369 l3,3.5 l5.5-7" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="102" y="374">batch &amp; file ops</text></g>
+    <g><rect x="295" y="350" width="210" height="38" rx="19" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.4)"/><circle cx="321" cy="369" r="9" fill="rgba(0,212,255,0.16)" stroke="#00d4ff"/><path d="M317,369 l3,3.5 l5.5-7" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="339" y="374">status checks</text></g>
+    <g><rect x="528" y="350" width="214" height="38" rx="19" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.4)"/><circle cx="554" cy="369" r="9" fill="rgba(0,212,255,0.16)" stroke="#00d4ff"/><path d="M550,369 l3,3.5 l5.5-7" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="572" y="374">recolor · export</text></g>
+  </g>
+
+  <!-- honest footnote -->
+  <rect x="232" y="418" width="336" height="48" rx="12" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.35)"/>
+  <text x="400" y="440" text-anchor="middle" fill="#a78bfa" font-size="13.5" font-weight="600">taste · composition · judgment</text>
+  <text x="400" y="458" text-anchor="middle" fill="rgba(240,244,255,0.55)" font-size="12">→ that's where you still reach for the frontier</text>
+</svg>

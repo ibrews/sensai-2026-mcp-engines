@@ -68,7 +68,7 @@ const SECTIONS = [
         ],
         notes:'MCP in one sentence: your editor is the server, your AI is the client.\nUSB-C analogy lands well: one connector spec, any device.\nThis is the mental model for everything that follows.' },
       { title:'You Do Not Need Deep Pockets', subtitle:'A well-trained local model handles routine tasks as well as a frontier model',
-        img:'', bullets:[
+        img:'images/intro-local-frontier.svg', bullets:[
           'Frontier models are powerful but expensive — assume the cost scales with usage',
           'For mechanical tasks (batch ops, file ops, status checks) a local 7–8B model is enough',
           'Typed tools close the gap: a small model with structured calls beats a big model with free-form ones',
@@ -405,7 +405,7 @@ const SECTIONS = [
         ],
         notes:'Compaction is tempting but breaks loops and loses in-flight work.\nInstead have the agent write a chip: a self-contained handoff note for a fresh session.\nEnd every session by logging to the KB. The local copy is the secret weapon.' },
       { title:'Teach Them, Let Them Teach You', subtitle:'Follow the discovery, not just the result',
-        img:'', bullets:[
+        img:'images/ch9-teach-learn.svg', bullets:[
           'Read the agent’s reasoning, not just its output',
           'Hit STOP to add an insight or clarify intent before the agent goes further',
           'The agent will surface things you did not know to ask about',

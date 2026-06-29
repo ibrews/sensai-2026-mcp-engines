@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Space Grotesk',system-ui,sans-serif">
+  <defs>
+    <style>
+      @keyframes flowf{to{stroke-dashoffset:-44}}
+      @keyframes flowr{to{stroke-dashoffset:44}}
+      @keyframes glow{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+      .flowf{stroke-dasharray:10 12;animation:flowf 1.3s linear infinite}
+      .flowr{stroke-dasharray:10 12;animation:flowr 1.3s linear infinite}
+      .core{animation:glow 2.6s ease-in-out infinite;transform-origin:400px 250px}
+    </style>
+  </defs>
+
+  <rect x="10" y="10" width="780" height="480" rx="22" fill="rgba(255,255,255,0.018)" stroke="rgba(255,255,255,0.07)"/>
+
+  <!-- top arc: YOU -> AGENT (teach) -->
+  <path class="flowf" d="M212,196 C320,96 480,96 588,196" fill="none" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M580,182 L592,198 L572,202" fill="none" stroke="#00d4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="72" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700" letter-spacing="1.5">YOU TEACH IT</text>
+  <text x="400" y="93" text-anchor="middle" fill="rgba(240,244,255,0.6)" font-size="13">hit STOP · clarify intent · add the constraint</text>
+
+  <!-- bottom arc: AGENT -> YOU (learn) -->
+  <path class="flowr" d="M588,304 C480,404 320,404 212,304" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+  <path d="M220,318 L208,302 L228,298" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="384" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="700" letter-spacing="1.5">IT TEACHES YOU</text>
+  <text x="400" y="406" text-anchor="middle" fill="rgba(240,244,255,0.6)" font-size="13">new APIs · engine behaviors · patterns you'd never ask for</text>
+
+  <!-- YOU node -->
+  <g>
+    <circle cx="180" cy="250" r="58" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.8"/>
+    <circle cx="180" cy="234" r="15" fill="none" stroke="#00d4ff" stroke-width="2.4"/>
+    <path d="M156,280 a24,22 0 0 1 48,0" fill="none" stroke="#00d4ff" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="180" y="318" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="700" letter-spacing="2">YOU</text>
+  </g>
+
+  <!-- AGENT node -->
+  <g>
+    <circle cx="620" cy="250" r="58" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.8"/>
+    <rect x="598" y="226" width="44" height="38" rx="8" fill="none" stroke="#a78bfa" stroke-width="2.4"/>
+    <circle cx="610" cy="245" r="3.5" fill="#a78bfa"/><circle cx="630" cy="245" r="3.5" fill="#a78bfa"/>
+    <line x1="620" y1="226" x2="620" y2="214" stroke="#a78bfa" stroke-width="2.4"/><circle cx="620" cy="211" r="3.5" fill="#a78bfa"/>
+    <text x="620" y="318" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="700" letter-spacing="2">AGENT</text>
+  </g>
+
+  <!-- shared knowledge core -->
+  <g class="core">
+    <path d="M400,224 L408,246 L430,250 L408,254 L400,276 L392,254 L370,250 L392,246 Z" fill="#f59e0b"/>
+    <circle cx="400" cy="250" r="34" fill="none" stroke="rgba(245,158,11,0.4)" stroke-width="1.2"/>
+  </g>
+  <text x="400" y="250" text-anchor="middle" dy="58" fill="rgba(245,158,11,0.85)" font-size="12" font-weight="600" letter-spacing="2">SHARED KB</text>
+</svg>
