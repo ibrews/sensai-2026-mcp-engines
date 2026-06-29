@@ -34,9 +34,8 @@ case study stays anonymized ("broadcast game-show").
      `media/local-vs-claude.png`, or make an on-brand SVG (local ≈ frontier for routine).
    - #39 "Teach Them, Let Them Teach You" (gradient): on-brand SVG of the teach/learn
      loop (Gemini image-gen is 404 right now, so use SVG).
-   - #38 "Chips Over Compaction": Alex is capturing a "Claude spawning a chip"
-     screenshot — look for it (likely `~/Desktop`) or ask, then crop + wire as
-     `media/cs-chip-spawn.png`. (No chip got spawned this session — the tool was down.)
+   - #38 "Chips Over Compaction": ✅ DONE — wired `media/cs-chip-spawn.png` (Alex's
+     screenshot of the chip-spawn, cropped to just the chip card, no transcript leak).
 
 3. **#2 intro power-up sprite sequence** on the "Hi, I'm Alex" slide — the centerpiece.
    Study the intro of ibrews/harvardxr-keynote (https://ibrews.github.io/harvardxr-keynote/,
