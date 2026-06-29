@@ -25,11 +25,11 @@
 
   <rect x="310" y="448" width="200" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gtr)"/>
   <text x="410" y="488" text-anchor="middle" fill="#e9fbff" font-size="21" font-weight="700">Project B</text>
-  <text x="410" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">&#8722;time</text>
+  <text x="410" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">faster</text>
 
   <rect x="560" y="448" width="200" height="92" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gtr)"/>
   <text x="660" y="488" text-anchor="middle" fill="#e9fbff" font-size="21" font-weight="700">Project C</text>
-  <text x="660" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">&#8722;&#8722;time</text>
+  <text x="660" y="514" text-anchor="middle" fill="#7dd3fc" font-size="13" font-weight="600">faster still</text>
 
   <!-- compounding arrows A -> B -> C -->
   <line x1="260" y1="494" x2="306" y2="494" stroke="url(#ltr)" stroke-width="3.5" marker-end="url(#atr)"/>
