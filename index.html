@@ -66,8 +66,8 @@ const SECTIONS = [
           'One mental model, any engine, unlimited pipelines — USB-C for AI'
         ],
         notes:'MCP in one sentence: your editor is the server, your AI is the client.\nUSB-C analogy lands well: one connector spec, any device.\nThis is the mental model for everything that follows.' },
-      { title:'You Do Not Need Deep Pockets', subtitle:'Fleet-first: local models handle more than you think',
-        img:'media/local-vs-claude.png', bullets:[
+      { title:'You Do Not Need Deep Pockets', subtitle:'A well-trained local model handles routine tasks as well as a frontier model',
+        img:'', bullets:[
           'Frontier models are powerful but expensive — assume the cost scales with usage',
           'For mechanical tasks (batch ops, file ops, status checks) a local 7–8B model is enough',
           'Typed tools close the gap: a small model with structured calls beats a big model with free-form ones',
@@ -86,12 +86,12 @@ const SECTIONS = [
 
   // ── CH 1: Agents Changed the Game ──────────────────────────────────────
   { year: 'CH 1', accent: 'teal',
-    lesson: { title:'Agents Changed\nthe Game', short:'AGENTS > COPILOTS',
+    lesson: { title:'Agents Changed\nthe Game', short:'AGENTS > AUTOCOMPLETE',
       tagline:'From text generation to tool operation — <br>the shift that makes AI useful in production',
       tags:'Blender · Unreal Engine · Godot',
-      notes:'AI used to write code about your scene. Now it acts inside it.\nAgents operate tools, not just autocomplete. That is the whole talk.\nQuick read of the room: who has used an AI agent vs a copilot?\nPromise: by the end you can wire this into your own engine.' },
+      notes:'AI used to write code about your scene. Now it acts inside it.\nAgents operate tools, not just autocomplete. That is the whole talk.\nQuick read of the room: who has used an AI agent, not just autocomplete?\nPromise: by the end you can wire this into your own engine.' },
     cases: [
-      { title:'From Copilot to Operator', subtitle:'The gap between “suggests” and “does” is everything',
+      { title:'From Suggestion to Action', subtitle:'The gap between “suggests” and “does” is everything',
         img:'images/ch1-copilot-operator.svg', bullets:[
           'Old workflow: ask AI for code — copy — paste — debug — repeat',
           'New workflow: AI opens your scene and makes the change directly',
@@ -150,17 +150,17 @@ const SECTIONS = [
 
   // ── CH 3: Epic's Official Answer ────────────────────────────────────────
   { year: 'CH 3', accent: 'amber',
-    lesson: { title:'Epic’s Official\nAnswer', short:'UNREAL + MCP',
-      tagline:'The engine maker shipped a production MCP plugin — <br>here’s what it actually unlocks',
-      tags:'Unreal Engine · Epic Games · World-Building',
-      notes:'Lead with the news: the engine maker shipped an official MCP plugin.\nWhen Epic ships the server, that tells you where this is going.\nWe have also built our own in-house tooling on top.\nKeep names abstract here; let the visuals do the talking.' },
+    lesson: { title:'Unreal:\nSpoiled for Choice', short:'UNREAL + MCP',
+      tagline:'AI driving Unreal is not new — Promethean AI shipped it in 2018. <br>Today there is a crowded field of strong tools; Epic’s official plugin is just the newest.',
+      tags:'Promethean AI (2018) · Neostack · Epic · + many more',
+      notes:'Reframe: AI in Unreal is not new and not Epic-only.\nPromethean AI was doing this back in 2018; today there are many strong third-party tools.\nEpic shipping an official plugin is validation, not invention.\nWe also built our own in-house tooling. Keep names abstract; let visuals talk.' },
     cases: [
-      { title:'The Official Plugin', subtitle:'Epic’s MCP server, 2025',
+      { title:'Plenty of Plugins', subtitle:'Epic’s is one option — not the first, not the only',
         img:'images/ch3-official-plugin.svg', bullets:[
           'Direct editor access: spawn actors, set properties, run console commands',
           'Built-in auth, stable API surface — supported and versioned by Epic',
           'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
-          'Announced alongside the Worlds in Action hackathon ecosystem',
+          'Third-party tools (Neostack and many more) match or beat the official one',
           'We’ve also built our own in-house UE5 MCP tooling — scene building, character setup, and headless automation'
         ],
         notes:'Direct editor access: spawn actors, set properties, run commands.\nSupported and versioned by Epic, works with any MCP client.\nWe extended it in-house for scene building and character setup.' },
@@ -193,8 +193,8 @@ const SECTIONS = [
 
   // ── CH 4: Case Study ────────────────────────────────────────────────────
   { year: 'CH 4', accent: 'amber',
-    lesson: { title:'A Small Team,\na Big Ask', short:'CASE STUDY',
-      tagline:'A broadcast game-show project — what an agent made possible <br>when the deadline was real and the team was small',
+    lesson: { title:'Case Study:\nA Small Team, a Big Ask', short:'CASE STUDY',
+      tagline:'A broadcast game-show project, a real deadline, a small team — and an agent on every hard task.',
       tags:'Broadcast · Unreal Engine · MetaHumans · Perforce',
       notes:'Context: a broadcast game-show project with a real deadline and a small team.\nKeep the project and the celebrity abstract throughout.\nThe through-line: every hard task here had an agent on it.\nLet the individual cases tell the story.' },
     cases: [
@@ -274,20 +274,20 @@ const SECTIONS = [
           'The handoff: local for the mechanical 80%, the frontier model for taste and open-ended work'
         ],
         notes:'This is the honest ceiling. Local nailed every tool call  -  objects, materials, lights.\nWhat it could not do is COMPOSE: frame the camera, scale the shapes, harmonize color.\nSame brief, same tools  -  the only difference is judgment.\nThe handoff rule: local for the mechanical 80%, Claude for taste and the open-ended 20%.' },
-      { title:'The Production Pattern', subtitle:'Verify every structural change',
+      { title:'Request, Change, Inspect', subtitle:'Watch the work, not just the result',
         img:'images/ch4-production-pattern.svg', bullets:[
-          'Blender’s undo stack is your safety net — use it at every step',
-          'Script generation beats direct manipulation for complex multi-object operations',
-          'Keep a scratch .blend next to your production file for AI experiments',
-          'AI is confident even when it’s wrong — review before anything destructive'
+          'The loop: request a change → the AI makes it → you inspect the result',
+          'Watch the AI WORK, not just the output — its reasoning is where you learn',
+          'Reading its process catches wrong turns early: hit stop, clarify, continue',
+          'Looking only at results limits you — the how is half the value'
         ],
-        notes:'The undo stack is your safety net; use it every step.\nFor complex multi-object work, have it generate a script.\nAI is confident even when wrong. Review before anything destructive.' },
+        notes:'The real loop is request, change, inspect - not endless undo.\nWatch HOW it works, not only the result; the reasoning teaches you.\nIf you see a wrong turn, hit stop and redirect mid-stream.\nLooking only at outputs limits what you learn.' },
     ] },
 
   // ── CH 6: Second Brain ──────────────────────────────────────────────────
   { year: 'CH 6', accent: 'teal',
     lesson: { title:'Your Second Brain\nIs the Real Tool', short:'COMPOUND KNOWLEDGE',
-      tagline:'Give me six hours to chop down a tree and I will spend the first four sharpening the axe — <br>building your knowledge base IS sharpening the axe',
+      tagline:'“Give me six hours to chop down a tree and I’ll spend the first four sharpening the axe.” <br>— Abraham Lincoln (probably not). Building your second brain is sharpening the axe.',
       tags:'Godot · Knowledge Base · Cross-Engine Transfer',
       notes:'This is the lesson nobody else is teaching today.\nYour documentation is training data for your own workflows.\nThe better your notes, the smarter your AI gets on your work.\nSlow down here; this is the idea I want them to leave with.' },
     cases: [
@@ -1005,7 +1005,7 @@ function playBing(){try{const c=sfxCtx(),t=c.currentTime,o=c.createOscillator(),
   apply();window._sdCfg=C;function save(){localStorage.setItem('sd-cfg',JSON.stringify(C));}
   const s=document.createElement('div');s.className='slide slide-settings';s.dataset.type='settings';s.dataset.hidden='1';
   const fo=['Space Grotesk','Inter','Outfit','JetBrains Mono','Playfair Display','Custom'].map(f=>`<option value="${f}"${C.fontFamily===f?' selected':''}>${f}</option>`).join('');
-  s.innerHTML=`<div style="text-align:center;margin-bottom:18px"><div style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:#fff">Spatial Deck Creator <span style="color:var(--dim);font-weight:400">v0.0.5</span></div><div style="font-size:.8rem;color:var(--dim);margin-top:4px">by Alex Coulombe</div></div><div class="cfg-panel"><div class="cfg-title">Presentation Settings</div><div class="cfg-subtitle">Full Theme Editor &middot; Changes apply live &middot; Saved to localStorage</div><div class="cfg-grid">
+  s.innerHTML=`<div style="text-align:center;margin-bottom:18px"><div style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:#fff">Spatial Deck Creator <span style="color:var(--dim);font-weight:400">v0.0.5</span></div><div style="font-size:.8rem;color:var(--dim);margin-top:4px">by Alex Coulombe</div></div><div class="cfg-panel"><div class="cfg-title">Presentation Settings</div><div class="cfg-subtitle">Full Theme Editor &middot; Changes apply live &middot; Saved to localStorage</div><div class="cfg-subtitle" style="margin-top:16px;text-align:left;line-height:2;font-size:.8rem"><b style="color:var(--teal)">KEYBOARD</b> &nbsp; &rarr;/Space next &middot; &larr; prev &middot; <b>N</b> speaker notes &middot; <b>Shift+N</b> notes drawer &middot; <b>Shift+P</b> split notes &middot; <b>A</b> annotate &middot; <b>G</b> layout grid &middot; <b>/</b> search &middot; <b>H</b> toggle chrome<br><b style="color:var(--amber)">URL</b> &nbsp; <b>?edit</b> edit mode &middot; <b>?notes</b> phone speaker view &middot; <b>?print</b> PDF pages &middot; <b>?shot=N</b> one slide &middot; <b>#N</b> jump to slide</div><div class="cfg-grid">
     <div class="cfg-row"><label class="cfg-label">Primary Color</label><div class="cfg-color"><input type="color" id="cfg-pc" value="${C.primaryColor}"><input type="text" id="cfg-ph" value="${C.primaryColor}"></div></div>
     <div class="cfg-row"><label class="cfg-label">Secondary Color</label><div class="cfg-color"><input type="color" id="cfg-sc" value="${C.secondaryColor}"><input type="text" id="cfg-sh" value="${C.secondaryColor}"></div></div>
     <div class="cfg-row"><label class="cfg-label">Background</label><div class="cfg-color"><input type="color" id="cfg-bc" value="${C.bgDark}"><input type="text" id="cfg-bh" value="${C.bgDark}"></div></div>
