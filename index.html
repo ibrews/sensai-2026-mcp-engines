@@ -52,7 +52,8 @@ const SECTIONS = [
           '2016: Revit, 3ds Max, Rhino, SketchUp, Unity + Unreal — the full toolbox',
           '2023: All in on Unreal — mastered one tool, went deep',
           '2026: Claude pushing me to the right tool for each job',
-          'Blender for geometry; Godot for games; RealityKit for spatial. UE stays the hub.'
+          'Blender for geometry; Godot for games; RealityKit for spatial. UE stays the hub.',
+          'Open source is sprinting in the AI era — Three.js, Godot, and Blender innovate fast; staying tool-agnostic rides that wave'
         ],
         notes:'Personal arc. Broad toolbox early in career, narrowed to Unreal for efficiency.\nNow expanding again as Claude reveals where Unreal isn’t the right fit.\nThe best tool wins; comfort zone is the enemy.' },
       { title:'The Talk Title… Plus One More Stack', layout:'big',
@@ -92,7 +93,7 @@ const SECTIONS = [
     lesson: { title:'Agents Changed\nthe Game', short:'AGENTS > AUTOCOMPLETE',
       tagline:'From text generation to tool operation — <br>the shift that makes AI useful in production',
       tags:'Blender · Unreal Engine · Godot',
-      notes:'AI used to write code about your scene. Now it acts inside it.\nAgents operate tools, not just autocomplete. That is the whole talk.\nQuick read of the room: who has used an AI agent, not just autocomplete?\nPromise: by the end you can wire this into your own engine.' },
+      notes:'AI used to write code about your scene. Now it acts inside it.\nAgents operate tools, not just autocomplete. That is the whole talk.\nQuick read of the room: who has used an AI agent, not just autocomplete?\nPromise: by the end you can wire this into your own engine.\nMeta moment: this very deck was built exactly this way — I handed Claude a pile of raw notes and it generated the whole thing, slides, animations and all.' },
     cases: [
       { title:'From Suggestion to Action', subtitle:'The gap between “suggests” and “does” is everything',
         img:'images/ch1-copilot-operator.svg', bullets:[
@@ -198,7 +199,7 @@ const SECTIONS = [
           'Direct editor access: spawn actors, set properties, run console commands',
           'Epic’s official plugin (UE 5.8+) is built-in and versioned — but its <a href="https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor?lang=en-US" target="_blank" rel="noopener">docs lag reality</a>: the screenshots don’t even show you must enable the “All Toolsets” plugin',
           'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
-          'Third-party tools match or beat it — <a href="https://betide.studio/neostack" target="_blank" rel="noopener">NeoStack’s Agent Integration Kit</a>, and <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a> lines every option up side by side',
+          'Third-party tools match or beat it — <a href="https://betide.studio/neostack" target="_blank" rel="noopener">NeoStack’s <span style="white-space:nowrap">Agent Integration Kit</span></a>, and <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a> lines every option up side by side',
           'We’ve also built our own in-house UE5 MCP tooling — scene building, character setup, and headless automation'
         ],
         notes:'Direct editor access: spawn actors, set properties, run commands.\nSupported and versioned by Epic, works with any MCP client.\nWe extended it in-house for scene building and character setup.' },
@@ -219,7 +220,7 @@ const SECTIONS = [
           'Pairs naturally with Datasmith, Python scripting, and the Asset Registry'
         ],
         notes:'No editor window: batch import, LODs, material binding at scale.\nThis clip is Forage: it scouts Fab packs and builds handoff manifests.\nTriggered by a script, not a human click. This is the 10x lane.' },
-      { title:'What Breaks (and How to Fix It)', subtitle:'Lessons from real use',
+      { title:'What Breaks<br>(and How to Fix It)', subtitle:'Lessons from real use',
         img:'images/ch3-what-breaks.svg', bullets:[
           'Deep hierarchies confuse navigation: flatten or scope before prompting',
           'Large scenes need context scoping: “the hero character” not “the scene”',
@@ -348,7 +349,7 @@ const SECTIONS = [
       notes:'The ad promised Godot equal billing - here it is.\nGodot is open, tiny, and scriptable end to end.\nThat makes it ideal for headless and AI-driven work.\nAnd it reaches platforms people assume need Unreal.' },
     cases: [
       { title:'Cascade Countdown', subtitle:'A hand-tracked Godot game, shipping on Apple Vision Pro',
-        img:'media/cascade-avp.mp4', bullets:[
+        img:'media/cascade-countdown-trailer.mp4', bullets:[
           'A real game — built in Godot, hand-tracked, running on-device on Apple Vision Pro',
           'Catch and stack the falling blocks with your hands — RigidBody3D physics + procedural audio at a locked 90fps',
           'Stock Godot — no Unreal, no Reality Composer Pro; the same scene runs in the editor AND in the visionOS immersive space',
@@ -893,7 +894,7 @@ body.pr-dragging,body.pr-dragging *{user-select:none!important;-webkit-user-sele
 .slide[data-type="cover"] .cover-logo-strip{position:absolute;bottom:clamp(20px,3vh,46px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;opacity:.62;z-index:2;pointer-events:auto}
 .cover-logo-strip .logo-badge{height:34px}
 .speaker-card .speaker-avatar{width:clamp(48px,4.2vw,70px);height:clamp(48px,4.2vw,70px);border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);flex-shrink:0}
-.cover-logo-strip .logo-acp-marquee{height:34px}
+.cover-logo-strip .logo-acp-marquee{height:48px}
 .cover-logo-strip a{display:inline-flex;align-items:center;opacity:.85;transition:opacity .15s}
 .cover-logo-strip a:hover{opacity:1}
 .cover-logo-strip .logo-al{height:23px;filter:brightness(0) invert(1)}
