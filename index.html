@@ -175,6 +175,15 @@ const SECTIONS = [
           'Same idea as the Claude tiers, one rung lower: local first, cloud only when it earns it'
         ],
         notes:'The routing philosophy in one picture: cheapest capable model wins.\nThe local fleet handles the bulk for zero cloud tokens; Claude is reserved for genuine judgment.\nSame “default cheap, escalate deliberately” rule as the Claude tiers — one level down.\nThat discipline is what keeps the weekly budget alive.' },
+      { title:'Build the AI Out', subtitle:'Frontier → local fleet → tools that, once refined, need no AI at runtime',
+        img:'images/beyond-ai-ladder-anim.svg', bullets:[
+          'Frontier → local fleet was step one; the next rung needs no model at all at runtime',
+          'Blueprint Auto-Layout: AI helped design it, but tidying a graph is pure deterministic algorithm now',
+          'Forage: an AI-first asset scout whose owned-library search is plain heuristic — zero LLM calls',
+          'UnReality Kit: a headless Unreal → RealityKit pipeline that just runs — no agent in the loop',
+          'The pattern: use AI to build the tool, refine it, then let it do the AI-like work without the AI'
+        ],
+        notes:'The punchline of the cost-down ladder: frontier model → local fleet → no AI at runtime.\nWe build the tool WITH AI, then refine it until it does the AI-like job deterministically.\nBlueprint Auto-Layout, Forage, UnReality Kit all started as AI projects and now run with zero AI.\nThe cheapest, most reliable inference is the one you never have to run — use AI to build the tools that no longer need it.' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
         img:'images/ch2-setup-pattern-anim.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
