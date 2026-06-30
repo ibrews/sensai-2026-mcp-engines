@@ -539,6 +539,15 @@ const SECTIONS = [
           'Just use Claude Code, not Cowork; OpenClaw was my Jarvis, now it is my Iron Man dummy'
         ],
         notes:'The sim is underrated. It gives more loops than any physical device.\nTailscale plus SSH ties every machine together without VPN overhead.\nHonesty note on OpenClaw: I built it to be Jarvis. It is now the dummy I toss a small task to.\nThat is fine. Tools earn their place or they get demoted.' },
+      { title:'Know When to Walk Away', subtitle:'Sunk cost is real — drop AI the moment it stops delivering',
+        img:'media/tree-megaplant-field.png', bullets:[
+          'The ask: turn a scanned tree into a lush “megaplant” — and we threw AI at it, hard',
+          'Attempt after attempt: close-ish, never right — a whole field of almost-trees',
+          'Sunk cost whispers “just one more prompt” — that is exactly the moment to stop',
+          'We dropped the AI path; the team did it by hand — better, and faster than the next ten retries would have been',
+          'The real skill isn’t using AI — it’s noticing when it isn’t giving you what you want, and walking away'
+        ],
+        notes:'Sunk-cost lesson. We tried to turn a scanned tree into a lush megaplant and threw a lot of AI at it — attempt after attempt, never quite right. The trap is the next prompt. We stopped; the team did it by hand, better and faster. Knowing when to abandon the AI path is its own skill.' },
       { title:'From Jarvis to Dummy', subtitle:'OpenClaw’s problem was reliability and friction — so I demoted it',
         img:'media/iron-man-dummy.jpg', bullets:[
           'I built OpenClaw in early 2026 to be my Jarvis — one always-on agent orchestrating the whole fleet',
@@ -1547,9 +1556,10 @@ deck.appendChild(mapS);allSlides.push(mapS);
 
 // Close slide with Alex Coulombe Presents logo
 const cls=document.createElement('div');cls.className='slide';cls.dataset.type='close';
-cls.innerHTML=`<video class="close-clip" src="media/final-loop.mp4" autoplay loop muted playsinline></video><img src="media/alex-headshot.png" alt="Alex Coulombe" class="close-avatar"><div class="close-ey">Thank You</div><h2 class="close-title">Let\u2019s Build.</h2><p class="close-sub">Start this weekend.</p>
-<div class="contact-row"><div class="contact-pill"><span class="lbl">Web</span>agilelens.com</div><div class="contact-pill"><span class="lbl">Email</span>info@agilelens.com</div></div>
+cls.innerHTML=`<img src="media/alex-headshot.png" alt="Alex Coulombe" class="close-avatar"><div class="close-ey">Thank You</div><h2 class="close-title">Let\u2019s Build.</h2><p class="close-sub">Start this weekend.</p>
+<div class="contact-row"><div class="contact-pill"><span class="lbl">Web</span>agilelens.com</div><div class="contact-pill"><span class="lbl">Email</span>alex@agilelens.com</div></div>
 <div class="close-qr-row"><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://github.com/ibrews/sensai-2026-mcp-engines" alt="QR"><div class="qr-label">This Deck + Resources</div><div class="qr-badge b-teal">github.com/ibrews/sensai-2026-mcp-engines</div></div></div>
+<div class="close-puppet" style="display:flex;justify-content:center;margin-top:12px"><video src="media/final-loop.mp4" autoplay loop muted playsinline style="width:clamp(150px,15vw,210px);aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 30px rgba(0,0,0,.5)"></video></div>
 <div class="close-brands"><a href="https://agilelens.com" target="_blank" rel="noopener"><img src="media/agilelens_logo.svg" alt="Agile Lens" class="b-al"></a><a href="https://alexcoulombepresents.com" target="_blank" rel="noopener"><img src="media/acp-logo-marquee.svg" alt="Alex Coulombe Presents" class="b-acp"></a><a href="https://sensaihack.com/" target="_blank" rel="noopener"><img src="media/sensai-logo.png" alt="SensAI Hackademy" class="b-sensai"></a><a href="https://credential.unrealengine.com/ae75c735-f7c6-4fc5-a633-f400ec2efd4b#acc.Mpe8GrAh" target="_blank" rel="noopener"><img src="GoldAuthorized.png" alt="UE Gold Authorized Instructor" class="b-badge"></a></div>`;
 const RES=[['spatial-deck',"This deck's engine - one HTML file"],['claude-fleet','Claude Code across many machines'],['godot-visionos-simulator-kit','Godot on the visionOS simulator'],['SplatStage','Walk inside Gaussian splats on AVP'],['ue-openxr-passthrough','UE5 PCVR passthrough plugin - XR_FB_passthrough, no Meta XR dep','https://github.com/AgileLens/ue-openxr-passthrough'],['MetaHumanGodot','Live MetaHuman look-dev in Godot'],['godot-avp-cascade','Cascade - hand-tracked Godot on AVP'],['blueprint-auto-layout','Auto-tidy Unreal Blueprint graphs'],['ue5-testflight','UE5 to TestFlight, automated'],['apple-platform-skills','Claude skills for Apple dev'],['crystal-caper','Playable platformer - every sprite AI-generated via PixelLab MCP'],['UE5_AndroidXR','UE5 VR template pre-wired for Samsung Galaxy XR','https://github.com/AgileLens/UE5_AndroidXR']];
 const TALKS=[["HarvardXR Talk","https://ibrews.github.io/harvardxr-keynote/","media/cards/talk-harvardxr.jpg","2026 keynote"],["FMX 2026 Talk","https://ibrews.github.io/fmx-2026-spatial-storytelling/","media/cards/talk-fmx-2026.jpg","Spatial Storytelling"],["NXT BLD 2026 Talk","https://ibrews.github.io/nxtbld-2026-productizing-xr/","media/cards/talk-nxtbld-2026.jpg","Productizing XR"]];
@@ -2513,6 +2523,26 @@ setTimeout(updateDurationDisplay,100);
 
 // =====================================================================
 // =====================================================================
+// =====================================================================
+// FEATURE: WALK AWAY — sunk-cost tree→megaplant experiments (2 imgs + video)
+// =====================================================================
+(function(){
+  var sl=null;
+  for(var _i=0;_i<allSlides.length;_i++){
+    var _t=allSlides[_i].querySelector&&allSlides[_i].querySelector('.case-title');
+    if(_t&&_t.textContent.indexOf('Know When to Walk Away')>=0){sl=allSlides[_i];break;}
+  }
+  if(!sl)return;
+  var box=sl.querySelector('.case-image'); if(!box)return;
+  var cap='font:600 .54rem var(--font);letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px';
+  box.innerHTML=`<div style="display:flex;flex-direction:column;gap:8px;width:100%;height:100%;justify-content:center">`
+    +`<figure style="margin:0"><img src="media/tree-megaplant-field.png" style="width:100%;border-radius:10px;display:block"><figcaption style="${cap}">A field of AI attempts — none quite right</figcaption></figure>`
+    +`<div style="display:flex;gap:8px;align-items:flex-start">`
+    +`<figure style="margin:0;flex:1"><img src="media/tree-megaplant-scan.png" style="width:100%;border-radius:10px;display:block"><figcaption style="${cap}">Scan vs. the look we wanted</figcaption></figure>`
+    +`<figure style="margin:0;flex:1"><video src="media/tree-megaplant.mp4" autoplay loop muted playsinline style="width:100%;border-radius:10px;display:block"></video><figcaption style="${cap}">Iterating live — still off</figcaption></figure>`
+    +`</div></div>`;
+})();
+
 // FEATURE: JARVIS → DUMMY — OpenClaw honest-arc slide (two images)
 // =====================================================================
 (function(){
