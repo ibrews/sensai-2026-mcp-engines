@@ -2643,6 +2643,260 @@ setTimeout(updateDurationDisplay,100);
   },0);
 })();
 
+
+// FEATURE: CH1 MCP PUNCH-OUT — avatar KOs the MCP hub, AI goes direct (headless/wifi path)
+// =====================================================================
+(function(){
+  // Find the "What Is an MCP?" case slide
+  var sl = null;
+  for (var _i = 0; _i < allSlides.length; _i++) {
+    var _t = allSlides[_i].querySelector && allSlides[_i].querySelector('.case-title');
+    if (_t && _t.textContent.indexOf('What Is an MCP') >= 0) { sl = allSlides[_i]; break; }
+  }
+  if (!sl) return;
+
+  // ── Replace <img src="images/ch1-what-mcp.svg"> with inline SVG ──────────
+  var ci = sl.querySelector('.case-image');
+  if (!ci) return;
+  ci.innerHTML = '';
+  ci.style.overflow = 'visible';
+
+  // Inline copy of images/ch1-what-mcp.svg with added IDs for animation targets.
+  // Also adds: #directLines (hidden teal paths) and #puncher (avatar group).
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var wrapper = document.createElement('div');
+  wrapper.style.cssText = 'width:100%;position:relative';
+  wrapper.innerHTML = [
+    '<svg id="mcp-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 620"',
+    ' style="width:100%;display:block;border-radius:18px"',
+    ' font-family="\'Space Grotesk\',\'Helvetica Neue\',Arial,sans-serif">',
+    '<defs>',
+      '<filter id="gw2" x="-50%" y="-50%" width="200%" height="200%">',
+        '<feGaussianBlur stdDeviation="5" result="b"/>',
+        '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>',
+      '</filter>',
+      '<marker id="aw2" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto">',
+        '<path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/>',
+      '</marker>',
+      '<marker id="aw3" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto">',
+        '<path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/>',
+      '</marker>',
+      '<linearGradient id="lw2" gradientUnits="userSpaceOnUse" x1="290" y1="310" x2="360" y2="310">',
+        '<stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>',
+      '</linearGradient>',
+    '</defs>',
+
+    '<text x="410" y="50" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="16" letter-spacing="3">ONE PROTOCOL &#183; ANY TOOL &#183; ANY MODEL</text>',
+
+    '<!-- AI MODEL (client) -->',
+    '<rect x="70" y="250" width="220" height="120" rx="18" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5" filter="url(#gw2)"/>',
+    '<text x="180" y="300" text-anchor="middle" fill="#e9fbff" font-size="24" font-weight="700">AI MODEL</text>',
+    '<text x="180" y="328" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="14">the client &#8212; local or cloud</text>',
+    '<text x="180" y="349" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13">picks a tool, fills the args</text>',
+
+    '<!-- MCP hub — wrapped in group for punch-out animation -->',
+    '<g id="mcpNode">',
+      '<rect x="360" y="244" width="140" height="132" rx="20" fill="rgba(167,139,250,.14)" stroke="#a78bfa" stroke-width="3" filter="url(#gw2)"/>',
+      '<text x="430" y="300" text-anchor="middle" fill="#efe9ff" font-size="30" font-weight="700">MCP</text>',
+      '<text x="430" y="326" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="12.5">one connector</text>',
+      '<text x="430" y="344" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="12">&#8220;USB-C for AI&#8221;</text>',
+    '</g>',
+
+    '<!-- client <-> MCP line -->',
+    '<line id="lnClient" x1="290" y1="310" x2="352" y2="310" stroke="url(#lw2)" stroke-width="3.5" marker-end="url(#aw2)"/>',
+
+    '<!-- three engine chips -->',
+    '<rect x="600" y="120" width="170" height="80" rx="16" fill="rgba(244,63,94,.10)" stroke="#f43f5e" stroke-width="2.5"/>',
+    '<text x="685" y="158" text-anchor="middle" fill="#ffe1e7" font-size="22" font-weight="700">Blender</text>',
+    '<text x="685" y="180" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>',
+
+    '<rect x="600" y="270" width="170" height="80" rx="16" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2.5"/>',
+    '<text x="685" y="308" text-anchor="middle" fill="#ffe9c2" font-size="22" font-weight="700">Unreal</text>',
+    '<text x="685" y="330" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>',
+
+    '<rect x="600" y="420" width="170" height="80" rx="16" fill="rgba(0,212,255,.10)" stroke="#00d4ff" stroke-width="2.5"/>',
+    '<text x="685" y="458" text-anchor="middle" fill="#e9fbff" font-size="22" font-weight="700">Godot</text>',
+    '<text x="685" y="480" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">MCP server</text>',
+
+    '<!-- MCP fan-out paths — wrapped for fade-out -->',
+    '<g id="mcpFan">',
+      '<path d="M500 290 C 555 230, 565 180, 598 160" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw2)"/>',
+      '<path d="M500 310 L 598 310" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw2)"/>',
+      '<path d="M500 330 C 555 390, 565 440, 598 460" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity=".85" marker-end="url(#aw2)"/>',
+    '</g>',
+
+    '<!-- Direct AI -> tool lines (drawn in on punch) — initially hidden -->',
+    '<g id="directLines" opacity="0">',
+      '<!-- Blender: curve up -->',
+      '<path id="dlBlender" d="M290,310 C 380,230 490,160 600,160"',
+        ' fill="none" stroke="#00d4ff" stroke-width="2.8" marker-end="url(#aw3)"',
+        ' stroke-dasharray="420" stroke-dashoffset="420"/>',
+      '<!-- Unreal: straight -->',
+      '<path id="dlUnreal" d="M290,310 L 600,310"',
+        ' fill="none" stroke="#00d4ff" stroke-width="2.8" marker-end="url(#aw3)"',
+        ' stroke-dasharray="312" stroke-dashoffset="312"/>',
+      '<!-- Godot: curve down -->',
+      '<path id="dlGodot" d="M290,310 C 380,390 490,460 600,460"',
+        ' fill="none" stroke="#00d4ff" stroke-width="2.8" marker-end="url(#aw3)"',
+        ' stroke-dasharray="420" stroke-dashoffset="420"/>',
+    '</g>',
+
+    '<!-- POW burst — shown during punch, removed after -->',
+    '<g id="powBurst" opacity="0" transform="translate(430,310)">',
+      '<circle r="38" fill="rgba(167,139,250,.22)" stroke="#a78bfa" stroke-width="2"/>',
+      '<circle r="28" fill="rgba(167,139,250,.18)"/>',
+      '<text x="0" y="10" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" letter-spacing="1">POW!</text>',
+    '</g>',
+
+    '<!-- Avatar puncher — starts below diagram (y=610), arms up, hidden -->',
+    '<g id="puncher" transform="translate(430,610) scale(2.2)" opacity="0">',
+    '</g>',
+
+    '<text x="410" y="565" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">Learn the shape once &#8212; every engine after this is the same wiring.</text>',
+    '</svg>'
+  ].join('');
+  ci.appendChild(wrapper);
+
+  // Get references to animated elements
+  var svg = wrapper.querySelector('#mcp-diagram-svg');
+  var mcpNode = svg.querySelector('#mcpNode');
+  var lnClient = svg.querySelector('#lnClient');
+  var mcpFan = svg.querySelector('#mcpFan');
+  var directLines = svg.querySelector('#directLines');
+  var powBurst = svg.querySelector('#powBurst');
+  var puncherG = svg.querySelector('#puncher');
+  var dlBlender = svg.querySelector('#dlBlender');
+  var dlUnreal = svg.querySelector('#dlUnreal');
+  var dlGodot = svg.querySelector('#dlGodot');
+
+  // Build the avatar inside #puncher (arms-up starts hidden, arms-down visible)
+  buildAvatar(puncherG, {
+    withBeard: true,
+    hairColor: '#7a4020', hairDark: '#4a2410', hairLight: '#a0601a',
+    hairShadow: '#2d1508', beardColor: '#6b3d18', beardLight: '#8a5028',
+    shirtColor: '#5a7c5a', shirtDark: '#4a6548'
+  });
+  // arms-up hidden by default; arms-down visible
+  var armsUp = puncherG.querySelector('.av-arms-up');
+  var armsDown = puncherG.querySelector('.av-arms-down');
+  if (armsUp) armsUp.style.display = 'none';
+
+  // ── helpers ──────────────────────────────────────────────────────────────
+  function animCSS(el, keyframes, opts) {
+    try { return el.animate(keyframes, opts); } catch(e) { return null; }
+  }
+
+  // ── resetFn — called by goTo() on slide re-entry ─────────────────────────
+  function resetFn() {
+    // Stop any running animations
+    try { [mcpNode,lnClient,mcpFan,directLines,powBurst,puncherG,dlBlender,dlUnreal,dlGodot]
+      .forEach(function(el){ if(el&&el.getAnimations) el.getAnimations().forEach(function(a){a.cancel();}); }); } catch(e){}
+
+    mcpNode.style.cssText = '';
+    mcpNode.style.opacity = '1';
+    lnClient.style.opacity = '1';
+    mcpFan.style.opacity = '1';
+    directLines.style.opacity = '0';
+    powBurst.style.opacity = '0';
+    puncherG.style.opacity = '0';
+    puncherG.setAttribute('transform', 'translate(430,610) scale(2.2)');
+    dlBlender.setAttribute('stroke-dashoffset', '420');
+    dlUnreal.setAttribute('stroke-dashoffset', '312');
+    dlGodot.setAttribute('stroke-dashoffset', '420');
+    if (armsUp) armsUp.style.display = 'none';
+    if (armsDown) armsDown.style.display = '';
+  }
+
+  // ── punchFn — the slide step ──────────────────────────────────────────────
+  function punchFn() {
+    // 1. Show avatar, arms still down, fly up from below
+    puncherG.style.opacity = '1';
+    if (armsDown) armsDown.style.display = '';
+    if (armsUp) armsUp.style.display = 'none';
+
+    // Fly avatar up (translate Y from 610 to ~405 in SVG space, scale 2.2 throughout)
+    // We animate the CSS transform for the <g> element (modern Chrome supports this on SVG elements)
+    var flyUp = animCSS(puncherG, [
+      { transform: 'translate(430px, 610px) scale(2.2)' },
+      { transform: 'translate(430px, 420px) scale(2.2)', offset: 0.85 },
+      { transform: 'translate(430px, 405px) scale(2.2)' }
+    ], { duration: 520, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'forwards' });
+
+    if (flyUp) {
+      flyUp.onfinish = function() {
+        // 2. Swap to arms-up
+        if (armsDown) armsDown.style.display = 'none';
+        if (armsUp) armsUp.style.display = '';
+
+        // 3. Quick punch bounce
+        animCSS(puncherG, [
+          { transform: 'translate(430px, 405px) scale(2.2)' },
+          { transform: 'translate(430px, 390px) scale(2.4)' },
+          { transform: 'translate(430px, 405px) scale(2.2)' }
+        ], { duration: 180, easing: 'ease-out', fill: 'forwards' });
+
+        // 4. POW burst flash
+        powBurst.style.opacity = '1';
+        animCSS(powBurst, [
+          { opacity: 0, transform: 'translate(430px,310px) scale(0.5)' },
+          { opacity: 1, transform: 'translate(430px,310px) scale(1.15)', offset: 0.3 },
+          { opacity: 1, transform: 'translate(430px,310px) scale(1)', offset: 0.6 },
+          { opacity: 0, transform: 'translate(430px,310px) scale(0.9)' }
+        ], { duration: 600, easing: 'ease-out', fill: 'forwards' });
+
+        // 5. MCP node flies off (up-right + rotate + fade)
+        animCSS(mcpNode, [
+          { opacity: 1, transform: 'translate(0,0) rotate(0deg)' },
+          { opacity: 0, transform: 'translate(120px,-160px) rotate(28deg)' }
+        ], { duration: 500, easing: 'ease-in', delay: 100, fill: 'forwards' });
+
+        // 6. Fade client->MCP line and fan
+        animCSS(lnClient, [{ opacity: 1 }, { opacity: 0 }],
+          { duration: 300, delay: 80, fill: 'forwards' });
+        animCSS(mcpFan, [{ opacity: 1 }, { opacity: 0 }],
+          { duration: 300, delay: 80, fill: 'forwards' });
+
+        // 7. Show direct lines and draw them in (staggered)
+        directLines.style.opacity = '1';
+        function drawLine(el, dashLen, delay) {
+          animCSS(el, [
+            { strokeDashoffset: String(dashLen) },
+            { strokeDashoffset: '0' }
+          ], { duration: 480, easing: 'ease-out', delay: delay, fill: 'forwards' });
+        }
+        drawLine(dlBlender, 420, 350);
+        drawLine(dlUnreal, 312, 500);
+        drawLine(dlGodot, 420, 650);
+
+        // 8. Celebratory bob
+        setTimeout(function() {
+          animCSS(puncherG, [
+            { transform: 'translate(430px, 405px) scale(2.2)' },
+            { transform: 'translate(430px, 395px) scale(2.2)' },
+            { transform: 'translate(430px, 405px) scale(2.2)' },
+            { transform: 'translate(430px, 397px) scale(2.2)' },
+            { transform: 'translate(430px, 405px) scale(2.2)' }
+          ], { duration: 700, easing: 'ease-in-out', fill: 'forwards' });
+        }, 300);
+      };
+    } else {
+      // Fallback if WAAPI unavailable — instant state
+      puncherG.setAttribute('transform', 'translate(430,405) scale(2.2)');
+      mcpNode.style.opacity = '0';
+      lnClient.style.opacity = '0';
+      mcpFan.style.opacity = '0';
+      directLines.style.opacity = '1';
+      dlBlender.setAttribute('stroke-dashoffset', '0');
+      dlUnreal.setAttribute('stroke-dashoffset', '0');
+      dlGodot.setAttribute('stroke-dashoffset', '0');
+    }
+  }
+
+  setTimeout(function() {
+    slideSteps.set(sl, { current: 0, reset: resetFn, steps: [punchFn] });
+  }, 0);
+})();
+
 // FEATURE: EXPORT-MODE STATIC MEDIA (?print / ?shot=N)
 // =====================================================================
 // In export modes the media cycler renders its first item as a static
