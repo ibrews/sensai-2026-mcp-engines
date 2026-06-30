@@ -351,7 +351,16 @@ const SECTIONS = [
           'Contrast Unreal: binary .uasset / .umap and no headless validate loop — that’s when you actually need a running editor (an MCP)',
           'The Godot MCPs (GDAI, Coding-Solo…) solve a different problem — live editor introspection. We iterate in files, so we never needed one'
         ],
-        notes:'The Godot payoff: we never used an MCP because we never had to.\nGDScript and scene files are plain text — the agent edits them like code.\nThen it shells out to godot --headless to validate and export, exactly like CI.\nUnreal needs a bridge because its files are binary and there is no headless validate loop.\nThe Godot MCPs solve live editor introspection — a different need we did not have.' }
+        notes:'The Godot payoff: we never used an MCP because we never had to.\nGDScript and scene files are plain text — the agent edits them like code.\nThen it shells out to godot --headless to validate and export, exactly like CI.\nUnreal needs a bridge because its files are binary and there is no headless validate loop.\nThe Godot MCPs solve live editor introspection — a different need we did not have.' },
+      { title:'Unreal Fluency Is a Godot Superpower', subtitle:'Engine mastery is portable — and the Metal Compositor is the bridge to Apple Vision Pro',
+        img:'images/ch6-unreal-godot-transfer.svg', bullets:[
+          'The Unreal mental model — scene graph, transforms, materials, render passes — maps straight onto Godot; you start fluent, not from zero',
+          'You read and debug Godot faster because you already know what a renderer is doing under the hood',
+          'Both engines reach Apple Vision Pro through the same Metal compositor — Apple’s Compositor Services',
+          'So our Godot + AVP lessons fed straight back into improving Unreal’s own visionOS source — one shared substrate, fixes cross over',
+          'Mastery isn’t locked to one engine; it’s portable understanding the agent applies across all of them'
+        ],
+        notes:'The point to land: knowing Unreal makes you dangerous in Godot, fast.\nThe whole mental model transfers — you are not learning an engine from scratch.\nBoth reach Vision Pro through Apple’s Metal compositor, the same substrate.\nThat is why our Godot and AVP lessons fed back into improving Unreal’s own visionOS source.\nMastery is portable; the agent carries it across every engine.' }
     ] },
   { year: 'CH 7', accent: 'purple',
     lesson: { title:'Into Apple\u2019s Stack:\nRealityKit, Swift, Xcode', short:'REALITYKIT + SWIFT',
@@ -2316,8 +2325,9 @@ setTimeout(updateDurationDisplay,100);
     const ang=(-90 + (Math.random()-0.5)*150)*Math.PI/180;
     const dist=(0.62+Math.random()*0.5)*Math.hypot(W,H);
     const dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist;
-    const spin=(Math.random()*4-2)*360;
-    const dur=1200+Math.random()*800;
+    const _lv=Math.max(1,Math.min(level,5));
+    const spin=(Math.random()*2-1)*360*(0.35+_lv*0.32);   // gentle spin early so the logo reads; spinnier as it escalates
+    const dur=(2600-_lv*250)+Math.random()*450;            // slower flight at the start, ramps up toward the overload
     const a=sp.animate([
       {transform:'translate(0,0) rotate(0deg) scale(.6)',opacity:0},
       {offset:.12,transform:'translate('+(dx*.12)+'px,'+(dy*.12)+'px) rotate('+(spin*.12)+'deg) scale(1)',opacity:1},
@@ -2548,16 +2558,32 @@ setTimeout(updateDurationDisplay,100);
   var sd16=sideLabel('Full Toolbox',Y16);
   var sd23=sideLabel('All In on Unreal',Y23);
   var sd26=sideLabel('Expanding',Y26);
-  // Sprite inside panel, bottom-right; ONLY arms-down pose (hide arms-up)
+  // Sprite — wanders the diagram, arms toggling up/down, happy to be here (mirrors the slide-2 hero)
   var av=document.createElement('div');
-  av.style.cssText='position:absolute;top:60%;right:12px;width:40px;height:66px;opacity:0;transition:opacity .5s;pointer-events:none;z-index:10';
+  av.style.cssText='position:absolute;left:78%;top:60%;width:40px;height:66px;opacity:0;transition:left 2.3s cubic-bezier(.45,.05,.5,.95),top 2.3s cubic-bezier(.45,.05,.5,.95),opacity .5s;pointer-events:none;z-index:10';
   var avSvg=document.createElementNS(svgNS,'svg');
   avSvg.setAttribute('viewBox','-22 -48 44 76');
   avSvg.setAttribute('preserveAspectRatio','xMidYMax meet');
   avSvg.style.cssText='width:100%;height:100%;overflow:visible';
   buildAvatar(avSvg,{withBeard:true,hairColor:'#7a4020',hairDark:'#4a2410',hairLight:'#a0601a',hairShadow:'#2d1508',beardColor:'#6b3d18',beardLight:'#8a5028',shirtColor:'#5a7c5a',shirtDark:'#4a6548'});
-  var _au=avSvg.querySelector('.av-arms-up');if(_au)_au.style.display='none';
+  var avUp=avSvg.querySelector('.av-arms-up'), avDown=avSvg.querySelector('.av-arms-down');
+  if(avUp)avUp.style.display='none';
   av.appendChild(avSvg);wrap.appendChild(av);
+  var _avBob=avSvg.animate([{transform:'translateY(0)'},{transform:'translateY(-3px)'},{transform:'translateY(0)'}],{duration:560,iterations:Infinity,easing:'ease-in-out'});try{_avBob.pause();}catch(e){}
+  var _avArms=null,_avRoam=null;
+  function avWander(){av.style.left=(8+Math.random()*78)+'%';av.style.top=(24+Math.random()*52)+'%';}
+  function avStart(){
+    if(!_avArms)_avArms=setInterval(function(){if(avUp&&avDown){var u=avUp.style.display!=='none';avUp.style.display=u?'none':'';avDown.style.display=u?'':'none';}},520);
+    if(!_avRoam)_avRoam=setInterval(avWander,2600);
+    try{_avBob.play();}catch(e){}
+  }
+  function avStop(){
+    if(_avArms){clearInterval(_avArms);_avArms=null;}
+    if(_avRoam){clearInterval(_avRoam);_avRoam=null;}
+    try{_avBob.pause();}catch(e){}
+    if(avUp)avUp.style.display='none';if(avDown)avDown.style.display='';
+    av.style.left='78%';av.style.top='60%';
+  }
   var dots=hsvg.querySelectorAll('.fd-dot');
   var allLabels=[yl16,yl23,yl26,sd16,sd23,sd26];
   function animateIn(){
@@ -2567,13 +2593,13 @@ setTimeout(updateDurationDisplay,100);
     setTimeout(function(){showLogo(logos23[0]);},680);
     logos26.forEach(function(el,i){setTimeout(function(){showLogo(el);},i*80+1220);});
     dots.forEach(function(d){d.setAttribute('opacity','0.8');});
-    setTimeout(function(){av.style.opacity='1';},1700);
+    setTimeout(function(){av.style.opacity='1';avStart();avWander();},1700);
   }
   function reset(){
     allLabels.forEach(function(l){l.style.opacity='0';});
     logos16.concat(logos23).concat(logos26).forEach(hideLogo);
     dots.forEach(function(d){d.setAttribute('opacity','0');});
-    av.style.opacity='0';
+    av.style.opacity='0';avStop();
   }
   new MutationObserver(function(){
     if(sl.classList.contains('active'))setTimeout(animateIn,350);else reset();

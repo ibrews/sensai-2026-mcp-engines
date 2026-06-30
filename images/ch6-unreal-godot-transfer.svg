@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <marker id="a1" markerWidth="9" markerHeight="9" refX="5.5" refY="4.5" orient="auto">
+      <path d="M0,0 L7,4.5 L0,9" fill="none" stroke="#00d4ff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+      <path d="M0,0 L8,5 L0,10" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="410" y="30" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="13" letter-spacing="2.5">ONE MENTAL MODEL · TWO ENGINES · ONE METAL COMPOSITOR</text>
+
+  <!-- Transfer label -->
+  <text x="410" y="62" text-anchor="middle" fill="#f59e0b" font-size="11.5" font-weight="600" letter-spacing="1.5">SKILLS TRANSFER BOTH WAYS</text>
+
+  <!-- Unreal box -->
+  <rect x="96" y="72" width="262" height="78" rx="13" fill="rgba(0,212,255,.06)" stroke="rgba(0,212,255,.4)" stroke-width="1.3"/>
+  <text x="227" y="106" text-anchor="middle" fill="#cfe9ff" font-size="20" font-weight="700">Unreal</text>
+  <text x="227" y="129" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="11.5">scene graph · materials · render passes</text>
+
+  <!-- Godot box -->
+  <rect x="462" y="72" width="262" height="78" rx="13" fill="rgba(0,212,255,.06)" stroke="rgba(0,212,255,.4)" stroke-width="1.3"/>
+  <text x="593" y="106" text-anchor="middle" fill="#cfe9ff" font-size="20" font-weight="700">Godot</text>
+  <text x="593" y="129" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="11.5">same model, smaller engine</text>
+
+  <!-- bidirectional transfer arrow -->
+  <line x1="372" y1="111" x2="448" y2="111" stroke="#f59e0b" stroke-width="2.2" marker-start="url(#a2)" marker-end="url(#a2)"/>
+
+  <!-- down arrows into compositor -->
+  <line x1="227" y1="150" x2="227" y2="236" stroke="#00d4ff" stroke-width="1.7" marker-end="url(#a1)"/>
+  <line x1="593" y1="150" x2="593" y2="236" stroke="#00d4ff" stroke-width="1.7" marker-end="url(#a1)"/>
+
+  <!-- Metal Compositor bar -->
+  <rect x="120" y="244" width="580" height="74" rx="15" fill="rgba(0,212,255,.1)" stroke="rgba(0,212,255,.5)" stroke-width="1.5"/>
+  <text x="410" y="278" text-anchor="middle" fill="#7fe3ff" font-size="19" font-weight="700">Metal Compositor</text>
+  <text x="410" y="301" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="12.5">Apple’s Compositor Services — the shared substrate on visionOS</text>
+
+  <!-- down arrow to AVP -->
+  <line x1="410" y1="318" x2="410" y2="356" stroke="#00d4ff" stroke-width="1.7" marker-end="url(#a1)"/>
+
+  <!-- AVP box -->
+  <rect x="296" y="364" width="228" height="58" rx="13" fill="rgba(167,139,250,.08)" stroke="rgba(167,139,250,.45)" stroke-width="1.3"/>
+  <text x="410" y="400" text-anchor="middle" fill="#d6c9ff" font-size="17" font-weight="700">Apple Vision Pro</text>
+
+  <!-- caption -->
+  <text x="410" y="452" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12.5">improve one engine’s AVP path → you’ve improved the other</text>
+</svg>
