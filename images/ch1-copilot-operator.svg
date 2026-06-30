@@ -6,7 +6,7 @@
     <marker id="aco" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
     <marker id="aco2" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="rgba(240,244,255,.4)"/></marker>
     <marker id="acoRet" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="rgba(167,139,250,.65)"/></marker>
-    <linearGradient id="lco" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="lco" gradientUnits="userSpaceOnUse" x1="610" y1="246" x2="610" y2="392">
       <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#a78bfa"/>
     </linearGradient>
   </defs>
@@ -40,7 +40,6 @@
   <text x="148" y="484" text-anchor="middle" fill="#e9fbff" font-size="15" font-weight="600">paste</text>
   <text x="200" y="484" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="15">&#183;</text>
   <text x="252" y="484" text-anchor="middle" fill="#e9fbff" font-size="15" font-weight="600">fix</text>
-  <path d="M300 470 a18 18 0 1 1 -0.1 0" fill="none" stroke="rgba(240,244,255,.3)" stroke-width="2" marker-end="url(#aco2)"/>
   <line x1="210" y1="368" x2="210" y2="388" stroke="rgba(240,244,255,.35)" stroke-width="2.5" marker-end="url(#aco2)"/>
 
   <!-- ===== RIGHT: OPERATOR / AGENT ===== -->
@@ -52,7 +51,7 @@
   <text x="610" y="220" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="13">it acts &#8212; no copy-paste</text>
 
   <!-- direct arrow down into the tool -->
-  <line x1="610" y1="246" x2="610" y2="392" stroke="url(#lco)" stroke-width="3.5" marker-end="url(#aco)" filter="url(#gco)"/>
+  <line x1="610" y1="246" x2="610" y2="392" stroke="url(#lco)" stroke-width="3.5" marker-end="url(#aco)"/>
   <text x="628" y="324" fill="rgba(240,244,255,.55)" font-size="13">acts directly</text>
 
   <!-- TOOL / SCENE box -->
@@ -63,7 +62,7 @@
 
   <!-- return arc: TOOL/SCENE -> AI AGENT (right side, curved) -->
   <path d="M752 460 C 800 460, 800 196, 752 196" fill="none" stroke="rgba(167,139,250,.6)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#acoRet)" filter="url(#gco)"/>
-  <text x="806" y="332" text-anchor="middle" fill="rgba(167,139,250,.55)" font-size="11" writing-mode="tb" glyph-orientation-vertical="0" transform="rotate(90,806,332)">result</text>
+  <text x="806" y="332" text-anchor="middle" fill="rgba(167,139,250,.55)" font-size="11" transform="rotate(-90,806,332)">result</text>
 
   <text x="410" y="588" text-anchor="middle" fill="rgba(240,244,255,.62)" font-size="16">The agent closes the loop inside the tool.</text>
 </svg>
