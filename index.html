@@ -43,12 +43,8 @@ const SECTIONS = [
     lesson: { title:'Hi, I’m Alex', short:'WHO + WHY',
       tagline:'Agile Lens founder · Unreal Authorized Instructor · <br>building AI-first creative pipelines since early 2026',
       tags:'Agile Lens · OpenClaw · Claude · Local Fleet',
-      notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLet\'s get into it.' },
+      notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLet’s get into it.' },
     cases: [
-      { title:'ALT \u00b7 Hi, I\u2019m Alex', short:'WHO + WHY',
-        tagline:'Agile Lens founder \u00b7 Unreal Authorized Instructor \u00b7 <br>building AI-first creative pipelines since early 2026',
-        tags:'Agile Lens \u00b7 Claude \u00b7 Local Fleet \u00b7 Spatial Deck',
-        notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLet\'s get into it.' },
       { title:'My Tool Journey', subtitle:'Expand — contract — expand again',
         img:'', bullets:[
           '2016: Revit, 3ds Max, Rhino, SketchUp, Unity + Unreal — the full toolbox',
@@ -95,14 +91,6 @@ const SECTIONS = [
           'The best tools are ones you understand completely and can fix yourself'
         ],
         notes:'Quick story: hated every slide tool, so we built one.\nSingle HTML file, no npm, no bundler. You can read the whole thing.\nThe lesson: if a tool is slowing you down, you have permission to replace it.' },
-      { title:'ALT \u00b7 Love Your Work, Not Your Tools', subtitle:'When the tool is holding you back \u2014 build the one you need',
-        img:'media/deck-ui-social.png', bullets:[
-          'Loving your work means refusing to be slowed down by the wrong tool',
-          'This deck IS our tool: Spatial Deck, born from frustration with PowerPoint and Google Slides',
-          'Open source at <a href="https://github.com/ibrews/spatial-deck" target="_blank" rel="noopener">github.com/ibrews/spatial-deck</a> \u2014 single HTML file, no build step',
-          'The best tools are ones you understand completely and can fix yourself'
-        ],
-        notes:'The title is the thesis: don\'t be loyal to a tool that fights you \u2014 be loyal to the work.\nWhen every slide tool was slowing us down, we built one.\nSingle HTML file, no npm, no bundler. You can read the whole thing.\nThe lesson: if a tool is holding you back, you have permission to replace it.' },
     ] },
 
   // ── CH 1: Agents Changed the Game ──────────────────────────────────────
@@ -135,15 +123,6 @@ const SECTIONS = [
           'Rule: reach for CLI first; add MCP when you need the editor’s live state'
         ],
         notes:'Quick reference.\nAll four: build, test, batch = headless.\nBlender wins on scene edits: bpy headless API is comprehensive.\nGodot partial: .tscn editable as text, but GDAI MCP is cleaner.\nUnreal scene changes need the editor running = MCP.\nXcode: no MCP ecosystem, but xcodebuild + simctl cover most of the dev loop.\nRule: reach for CLI; add MCP when you need live editor state.' },
-      { title:'ALT \u00b7 Headless or MCP? \u2014 Quick Reference', subtitle:'When do you actually need the editor running?',
-        img:'images/headless-vs-mcp.svg', bullets:[
-          'Build, test, batch exports \u2014 all four tools handle these without a running editor',
-          'Write code and scripts: agent + file system; no editor needed for any tool',
-          'Scene edits: Blender = fully headless (bpy); Godot = partial; Unreal = needs MCP',
-          'Xcode: MCP servers exist but the ecosystem is thin \u2014 xcodebuild + simctl cover most of the dev loop without one',
-          'Rule: reach for CLI first; add MCP when you need the editor\'s live state'
-        ],
-        notes:'Quick reference.\nAll four: build, test, batch = headless.\nBlender wins on scene edits: bpy headless API is comprehensive.\nGodot partial: .tscn editable as text, but GDAI MCP is cleaner.\nUnreal scene changes need the editor running = MCP.\nXcode: a few community MCP servers exist, but coverage is thin \u2014 xcodebuild + simctl are the reliable path for most of the dev loop.\nRule: reach for CLI; add MCP when you need live editor state.' },
     ] },
 
   // ── CH 2: Structure + Routing ───────────────────────────────────────────
@@ -169,14 +148,6 @@ const SECTIONS = [
           'Then a local 8B emits clean calls 100% of the time. Tool design beats model size.'
         ],
         notes:'This is where the token budget actually lives.\nHonest result: a free-form code tool made local models print the call as text, not run it.\nThe fix was typed tools, not a bigger model  -  then an 8B was 100% reliable.\nLand the line: tool design beats model size.' },
-      { title:'ALT \u00b7 Local LLM Routing', subtitle:'Tool design beats model size',
-        img:'media/blender-typed-hero.png', bullets:[
-          'Simple tasks (create, recolor, scatter, export): a local model handles them fine',
-          'We tested it: a free-form "run any code" tool caused local models to print the call as text instead of executing it',
-          'The fix was typed tools \u2014 small structured args, not raw code strings',
-          'With typed tools an 8B model became fully reliable. Tool design beats model size.'
-        ],
-        notes:'This is where the token budget actually lives.\nHonest result: a free-form code tool made local models print the call as text, not run it.\nThe fix was typed tools, not a bigger model \u2014 then an 8B was fully reliable.\nLand the line: tool design beats model size.\n(Numbers 0-of-6 / 100% removed pending KB citation \u2014 rephrase if the test doc is confirmed.)' },
       { title:'How We Actually Route', subtitle:'The model tier for every task',
         img:'media/fleet-control.png', bullets:[
           'Sonnet 4.6 (loop default ~80%): feature impl, build/deploy/verify, tests, refactors, device-log triage, KB writeups, most Unreal MCP work',
@@ -185,14 +156,6 @@ const SECTIONS = [
           'Heuristic: start on Sonnet; escalate to Opus only when Sonnet stalls twice on the same root-cause'
         ],
         notes:'Three tiers. Sonnet handles about 80 percent of the real log.\nOpus only when Sonnet stalls twice on the same root cause.\nHaiku for mechanical tasks: rename files, check status, shuffle assets.\nThe billing is real. Default cheap; escalate deliberately.' },
-      { title:'ALT \u00b7 How We Actually Route', subtitle:'The model tier for every task',
-        img:'media/fleet-control.png', bullets:[
-          'Sonnet (loop default ~80%): feature impl, build/deploy/verify, tests, refactors, device-log triage, KB writeups, most Unreal MCP work',
-          'Opus (reserve): novel architecture, subtle root-causes \u2014 the ABI/stride-mismatch class of bug, MaterialX design calls, "why is this collapsing" diagnosis',
-          'Haiku: mechanical edits, icon gen, file shuffling, status checks',
-          'Heuristic: start on Sonnet; escalate to Opus only when Sonnet stalls twice on the same root-cause'
-        ],
-        notes:'Three tiers. Sonnet handles about 80 percent of the real log.\nOpus only when Sonnet stalls twice on the same root cause.\nHaiku for mechanical tasks: rename files, check status, shuffle assets.\nThe billing is real. Default cheap; escalate deliberately.\n(Specific version numbers removed \u2014 verify current model IDs against anthropic.com before reinserting.)' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
         img:'images/ch2-setup-pattern-anim.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
@@ -219,15 +182,6 @@ const SECTIONS = [
           'We’ve also built our own in-house UE5 MCP tooling — scene building, character setup, and headless automation'
         ],
         notes:'Direct editor access: spawn actors, set properties, run commands.\nSupported and versioned by Epic, works with any MCP client.\nWe extended it in-house for scene building and character setup.' },
-      { title:'ALT \u00b7 Plenty of Plugins', subtitle:'Epic\'s is one option \u2014 not the first, not the only',
-        img:'images/ch3-official-plugin.svg', bullets:[
-          'Direct editor access: spawn actors, set properties, run console commands',
-          'Epic\'s official plugin (UE 5.5+) is built-in and versioned \u2014 but its <a href="https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor?lang=en-US" target="_blank" rel="noopener">docs lag reality</a>: screenshots don\'t show you must enable the "All Toolsets" plugin',
-          'Works with any MCP-compatible AI client: Claude, GPT-4o, local models',
-          'Third-party tools match or beat it \u2014 <a href="https://betide.studio/neostack" target="_blank" rel="noopener">NeoStack\'s Agent Integration Kit</a> (Blueprint-first, one-time purchase), and <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a> lines every option up side by side',
-          'We\'ve also built our own in-house UE5 MCP tooling \u2014 scene building, character setup, and headless automation'
-        ],
-        notes:'Direct editor access: spawn actors, set properties, run commands.\nEpic official: most future-proof, bundled with 5.5+; check current docs for version at time of talk.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nWe extended it in-house for scene building and character setup.' },
       { title:'Interactive Scene Editing', subtitle:'AI edits the live scene as you watch',
         img:'MEDIA_CYCLER', bullets:[
           'Prompt: “Add a three-point lighting setup to the hero character”',
@@ -245,15 +199,6 @@ const SECTIONS = [
           'Pairs naturally with Datasmith, Python scripting, and the Asset Registry'
         ],
         notes:'No editor window: batch import, LODs, material binding at scale.\nThis clip is Forage: it scouts Fab packs and builds handoff manifests.\nTriggered by a script, not a human click. This is the 10x lane.' },
-      { title:'ALT \u00b7 Headless Asset Pipelines', subtitle:'No editor window required',
-        img:'MEDIA_CYCLER', bullets:[
-          'Batch import, LOD assignment, material binding \u2014 at scale',
-          'Triggered by a script or CI step, not a human click',
-          'The automation layer most Unreal teams haven\'t touched yet',
-          'Example: an AI agent sources asset packs, scores them, and generates handoff manifests \u2014 no editor open',
-          'Pairs naturally with Datasmith, Python scripting, and the Asset Registry'
-        ],
-        notes:'No editor window: batch import, LODs, material binding at scale.\nThis clip shows the headless pipeline in action: asset scouting and manifest generation.\nTriggered by a script, not a human click. This is the 10x lane.' },
       { title:'What Breaks (and How to Fix It)', subtitle:'Lessons from real use',
         img:'images/ch3-what-breaks.svg', bullets:[
           'Deep hierarchies confuse navigation: flatten or scope before prompting',
@@ -273,17 +218,6 @@ const SECTIONS = [
           '→ Compare all options: <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a>'
         ],
         notes:'Six options, pick by trade-off.\nEpic official: most future-proof, bundled with 5.8.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nchongdashu: most-starred open source, solid actor + Blueprint coverage.\nflopperam: 50+ tools, or skip local setup and use the hosted server.\nue-mcp.com: widest subsystem coverage — Blueprint, materials, Niagara, PCG, GAS, sequencer.\nOne command to wire any of these into Claude Code, then enable the plugin and you are live.' },
-      { title:'ALT · Get Running: Unreal MCP', subtitle:'Six options — Epic to open source to commercial',
-        img:'images/ch3-get-running.svg', bullets:[
-          'Epic Official (UE 5.5+, check current release): built-in — enable ModelContextProtocol in Plugin Browser, port 8000',
-          'NeoStack (Betide Studio): <a href="https://betide.studio/neostack" target="_blank" rel="noopener">betide.studio/neostack</a> — one-time purchase, Blueprint-first',
-          'chongdashu/unreal-mcp: <a href="https://github.com/chongdashu/unreal-mcp" target="_blank" rel="noopener">github.com/chongdashu/unreal-mcp</a> — most-starred open source, solid actor + Blueprint coverage',
-          'flopperam/unreal-engine-mcp: <a href="https://github.com/flopperam/unreal-engine-mcp" target="_blank" rel="noopener">github.com/flopperam/unreal-engine-mcp</a> — or hosted at <a href="https://agent.flopperam.com/mcp" target="_blank" rel="noopener">agent.flopperam.com/mcp</a>',
-          'ue-mcp: <a href="https://ue-mcp.com" target="_blank" rel="noopener">ue-mcp.com</a> — widest subsystem coverage: Niagara, PCG, GAS, sequencer, landscape',
-          'Connect any: claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp',
-          '→ Compare all options: <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a>'
-        ],
-        notes:'Six options, pick by trade-off.\nEpic official: most future-proof — verify the current shipping version before the talk.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nchongdashu: most-starred open source, solid actor + Blueprint coverage.\nflopperam: 50+ tools, or skip local setup and use the hosted server.\nue-mcp.com: widest subsystem coverage.\nOne command to wire any of these into Claude Code, then enable the plugin and you are live.' },
     ] },
 
   // ── CH 4: Case Study ────────────────────────────────────────────────────
@@ -313,19 +247,10 @@ const SECTIONS = [
       { title:'Many MetaHumans, Tiny Hardware', subtitle:'Performance under real constraints',
         img:'media/cs-many-mh-tiny-hw.png', bullets:[
           'Multiple MetaHumans simultaneously — one a bespoke custom likeness',
-          'Target hardware: a Steam Deck — a fanless PC in a controller shell',
+          'Target hardware: a Steam Deck — a 15W-TDP shared-memory PC in a controller shell',
           'Found unusual cvars and project settings (including a facial-animation one) that moved the needle',
           'Wrote a launch script that simulates the target hardware profile on startup',
           'Profiled, triaged crashes, iterated — the agent kept the context across sessions'
-        ],
-        notes:'Steam Deck is not a dev PC. We had to find the right cvars.\nThe agent surfaced a facial-animation setting that nobody on the team had heard of.\nIt also wrote the hardware-simulation launch script from the profiling data.\nContext across sessions: that is where the KB pays off.' },
-      { title:'ALT \u00b7 Many MetaHumans, Tiny Hardware', subtitle:'Performance under real constraints',
-        img:'media/cs-many-mh-tiny-hw.png', bullets:[
-          'Multiple MetaHumans simultaneously \u2014 one a bespoke custom likeness',
-          'Target hardware: a Steam Deck \u2014 a handheld PC constrained to 15W TDP and shared memory bandwidth',
-          'Found unusual cvars and project settings (including a facial-animation one) that moved the needle',
-          'Wrote a launch script that simulates the target hardware profile on startup',
-          'Profiled, triaged crashes, iterated \u2014 the agent kept the context across sessions'
         ],
         notes:'Steam Deck is not a dev PC. We had to find the right cvars.\nThe agent surfaced a facial-animation setting that nobody on the team had heard of.\nIt also wrote the hardware-simulation launch script from the profiling data.\nContext across sessions: that is where the KB pays off.' },
       { title:'A Veteran Still Learned Things', subtitle:'The agent surfaces what experience misses',
@@ -345,14 +270,6 @@ const SECTIONS = [
       tags:'Blender · Python · Procedural · Open Source',
       notes:'Plot twist: Blender had reliable MCP servers before the engines did.\nOpen ecosystem, Python-native, and battle-tested today.\nIf you want to try this tonight, start here.\nThis is also where our live demo will run.' },
     cases: [
-      { title:'ALT \u00b7 The Community Built It First', subtitle:'Blender had MCP servers before the engines did',
-        img:'images/ch4-server-landscape.svg', bullets:[
-          'Blender\'s open-source Python ecosystem made it the first 3D engine with reliable MCP tooling',
-          'Community-built, actively maintained, and battle-tested in production today',
-          'The Blender Python API maps almost directly to MCP calls \u2014 the port is natural',
-          'If you want to try agent-driven 3D work tonight, this is where to start'
-        ],
-        notes:'Plot twist: Blender had reliable MCP servers before the engines did.\nOpen ecosystem, Python-native, and battle-tested today.\nIf you want to try this tonight, start here.\nThis is also where our live demo will run.' },
       { title:'The MCP Server Landscape', subtitle:'Open source, Python-native, actively maintained',
         img:'images/ch4-server-landscape.svg', bullets:[
           '<a href="https://github.com/ahujasid/blender-mcp" target="_blank" rel="noopener">github.com/ahujasid/blender-mcp</a> — install the addon in Blender, then: claude mcp add blender-mcp uvx blender-mcp',
@@ -434,14 +351,6 @@ const SECTIONS = [
           'Remarkably generous — that license, plus markerless single-camera mocap (Unreal Fest 2026), makes photoreal humans genuinely portable'
         ],
         notes:'The win: a real Epic MetaHuman running in stock Godot — look-dev, shaders, lighting, no Unreal.\nThe agent ported the rig and shader graph.\nEpic just open-sourced RigLogic + DNA (the runtime rig) under MIT at metahuman.com/devkit — load a MetaHuman with Unreal’s exact evaluation anywhere.\nThat is genuinely generous, and it makes this portable.' },
-      { title:'ALT · A Real MetaHuman, in Godot', subtitle:'MetaHumanGodot — Epic\'s human in stock Godot, no Unreal required',
-        img:'media/metahuman-godot.mp4', bullets:[
-          'A real Epic MetaHuman, running in stock Godot — live look-dev, skin shaders, lighting, no Unreal in the loop',
-          'The agent ported the shader graph and look-dev rig — same photoreal character, the small engine',
-          'Epic\'s MetaHuman Dev Kit open-sources RigLogic + DNA (the runtime rig), making photoreal humans genuinely portable — check <a href="https://www.metahuman.com/devkit" target="_blank" rel="noopener">metahuman.com/devkit</a> for current license terms',
-          'Markerless single-camera mocap previewed at Unreal Fest 2026 — the direction is clear: photoreal humans, anywhere'
-        ],
-        notes:'The win: a real Epic MetaHuman running in stock Godot — look-dev, shaders, lighting, no Unreal.\nThe agent ported the rig and shader graph.\nEpic open-sourced RigLogic + DNA via the MetaHuman Dev Kit — check metahuman.com/devkit for the exact license terms (generous, but verify before calling it MIT on stage).\nMarkerless single-camera mocap was previewed at Unreal Fest 2026 — flag as announced, not yet shipping.' },
       { title:'Why the Small Engine Wins', subtitle:'Iteration speed, zero cost, total scriptability',
         img:'media/ch6-godot-simkit.png', bullets:[
           'Tiny footprint and instant iteration - the loop is fast',
@@ -459,15 +368,6 @@ const SECTIONS = [
           'The Godot MCPs (GDAI, Coding-Solo…) solve a different problem — live editor introspection. We iterate in files, so we never needed one'
         ],
         notes:'The Godot payoff: we never used an MCP because we never had to.\nGDScript and scene files are plain text — the agent edits them like code.\nThen it shells out to godot --headless to validate and export, exactly like CI.\nUnreal needs a bridge because its files are binary and there is no headless validate loop.\nThe Godot MCPs solve live editor introspection — a different need we did not have.' },
-      { title:'ALT · Godot Never Needed a Plugin', subtitle:'We never even reached for an MCP — plain text + a headless CLI was enough',
-        img:'images/ch6-no-mcp-needed.svg', bullets:[
-          '.gd, .tscn, .tres are human-readable text — Claude\'s Read / Edit / Write work on them like any source code',
-          'Godot ships a real headless CLI: godot --headless runs the engine without a display, catching load-time GDScript errors and exporting the .pck — the intended CI path, not a hack',
-          'The whole device loop is five shell commands: edit → headless run → export .pck → xcodebuild → devicectl install',
-          'Contrast Unreal: binary .uasset / .umap and no headless run loop — that\'s when you actually need a running editor (an MCP)',
-          'The Godot MCPs (GDAI, Coding-Solo…) solve a different problem — live editor introspection. We iterate in files, so we never needed one'
-        ],
-        notes:'The Godot payoff: we never used an MCP because we never had to.\nGDScript and scene files are plain text — the agent edits them like code.\nThen it shells out to godot --headless to run and export, exactly like CI.\nNote: --headless catches load-time errors, not a static linter — fine for the CI loop but worth being precise on stage.\nUnreal needs a bridge because its files are binary and there is no headless run loop.\nThe Godot MCPs solve live editor introspection — a different need we did not have.' },
       { title:'Unreal Fluency Is a Godot Superpower', subtitle:'Engine mastery is portable — and the Metal Compositor is the bridge to Apple Vision Pro',
         img:'images/ch6-unreal-godot-transfer.svg', bullets:[
           'The Unreal mental model — scene graph, transforms, materials, render passes — maps straight onto Godot; you start fluent, not from zero',
@@ -476,16 +376,7 @@ const SECTIONS = [
           'So our Godot + AVP lessons fed straight back into improving Unreal’s own visionOS source — one shared substrate, fixes cross over',
           'Mastery isn’t locked to one engine; it’s portable understanding the agent applies across all of them'
         ],
-        notes:'The point to land: knowing Unreal makes you dangerous in Godot, fast.\nThe whole mental model transfers — you are not learning an engine from scratch.\nBoth reach Vision Pro through Apple’s Metal compositor, the same substrate.\nThat is why our Godot and AVP lessons fed back into improving Unreal’s own visionOS source.\nMastery is portable; the agent carries it across every engine.' },
-      { title:'ALT · Unreal Fluency Is a Godot Superpower', subtitle:'Engine mastery is portable — and visionOS is the shared destination',
-        img:'images/ch6-unreal-godot-transfer.svg', bullets:[
-          'The Unreal mental model — scene graph, transforms, materials, render passes — maps straight onto Godot; you start fluent, not from zero',
-          'You read and debug Godot faster because you already know what a renderer is doing under the hood',
-          'Both engines ship to Apple Vision Pro — Unreal via Compositor Services, Godot via a SwiftUI/visionOS wrapper; same destination, different plumbing',
-          'So our Godot + AVP lessons fed straight back into improving Unreal\'s own visionOS source — the destination is shared, fixes cross over',
-          'Mastery isn\'t locked to one engine; it\'s portable understanding the agent applies across all of them'
-        ],
-        notes:'The point to land: knowing Unreal makes you dangerous in Godot, fast.\nThe whole mental model transfers — you are not learning an engine from scratch.\nBoth reach Vision Pro — Unreal uses Compositor Services directly; Godot wraps inside a SwiftUI visionOS app. Same destination, different integration paths; avoid claiming identical substrate on stage.\nThat is why our Godot and AVP lessons fed back into improving Unreal\'s own visionOS source.\nMastery is portable; the agent carries it across every engine.' }
+        notes:'The point to land: knowing Unreal makes you dangerous in Godot, fast.\nThe whole mental model transfers — you are not learning an engine from scratch.\nBoth reach Vision Pro through Apple’s Metal compositor, the same substrate.\nThat is why our Godot and AVP lessons fed back into improving Unreal’s own visionOS source.\nMastery is portable; the agent carries it across every engine.' }
     ] },
   { year: 'CH 7', accent: 'purple',
     lesson: { title:'Into Apple\u2019s Stack:\nRealityKit, Swift, Xcode', short:'REALITYKIT + SWIFT',
@@ -517,15 +408,6 @@ const SECTIONS = [
           'Headless TestFlight pipeline for iOS + visionOS; UE to RealityKit bridge'
         ],
         notes:'RealityKit + Swift covers a lot: splats, bridges, pipelines.\nThe agent drives xcodebuild and device logs headlessly.\nSame routing: Sonnet for the loop, Opus for the ABI bug.' },
-      { title:'ALT \u00b7 Splats, Swift, and the Bridge', subtitle:'RealityKit + Swift \u2014 from splat scenes to engine bridges',
-        img:'media/splat-clip.mp4', bullets:[
-          'SplatStage: walk inside a Gaussian-splat scene on visionOS 27',
-          'Native RealityKit GaussianSplatComponent \u2014 device-proven recipe',
-          'The agent writes Swift, builds with xcodebuild, reads logs, fixes',
-          'Headless TestFlight pipeline for iOS + visionOS',
-          'When you do need Unreal: a UE-to-RealityKit bridge keeps the same agent loop'
-        ],
-        notes:'RealityKit + Swift covers a lot of ground. SplatStage is the no-engine path \u2014 GaussianSplatComponent, Swift, xcodebuild, the full headless loop. The bridge is the hybrid path when content lives in Unreal. Show both as options, not contradictions.\nSame model routing: Sonnet for the loop, Opus for the ABI bug.' },
       { title:'Vitrine, Built Overnight', subtitle:'One-shotting a visionOS 27 showcase app — almost hands-off',
         img:'media/vitrine-clip.mp4', bullets:[
           'The brief: an app to show off the new visionOS 27 features — windows, volumes, immersive scenes',
@@ -554,19 +436,11 @@ const SECTIONS = [
       { title:'Real Projects, Real Transfers', subtitle:'Cascade, MetaHumans, RealityKit, visionOS — all connected',
         img:'MEDIA_CYCLER', bullets:[
           'Cascade (Godot + AVP): immersive spatial scenes built — patterns now map to Unreal’s visionOS pipeline',
-          'MetaHuman on visionOS: RigLogic proved native RealityKit skeleton posing at 90fps — applies to every future avatar pipeline',
+          'MetaHuman on visionOS: RigLogic + a custom Metal skinning kernel drove the full cast at 90fps on device — applies to every future avatar pipeline',
           'RTX fork: Godot rendering research translated to Unreal material strategies in under one session',
           'Each solved problem is a template; the AI finds the connection if it can read the map'
         ],
         notes:'These are our real projects, not stock demos.\nCascade on Vision Pro; MetaHumans posing natively at 90 fps.\nEach solved problem becomes a template the AI can reuse.' },
-      { title:'ALT \u00b7 Real Projects, Real Transfers', subtitle:'Cascade, MetaHumans, RealityKit, visionOS \u2014 all connected',
-        img:'MEDIA_CYCLER', bullets:[
-          'Cascade (Godot + AVP): immersive physics + hand-tracking scenes shipped \u2014 grab, throw, audio-reactive collisions confirmed at 90 fps',
-          'MetaHuman on visionOS: RigLogic joint posing works natively in RealityKit (R1 gating test confirmed); full-cast 90 fps on device uses a Metal LBS kernel \u2014 the harder path, but proven',
-          'RTX fork + Godot renderer research informed our Unreal material strategy \u2014 same quality ceiling, different workflow tradeoffs',
-          'Each solved problem is a template; the AI finds the connection if it can read the map'
-        ],
-        notes:'These are our real projects, not stock demos.\nCascade on Vision Pro: physics, grab, audio-reactive.\nMetaHuman: native RealityKit joint posing is confirmed; full-cast 90 fps uses a custom Metal skinning kernel over the rig.\nEach solved problem becomes a template the AI can reuse.' },
       { title:'The KB as Triangulation', subtitle:'Three known points give you the fourth for free',
         img:'images/ch5-triangulation-anim.svg', bullets:[
           'A→B: Godot to AVP taught us RealityKit constraints, scale bugs, the LowLevelMesh skinner',
@@ -575,14 +449,6 @@ const SECTIONS = [
           'The AI doesn’t just know your docs — it reasons across them to find the connection'
         ],
         notes:'Here is the payoff. Three solved projects, one knowledge base.\nGodot to Vision Pro taught us the constraints the hard way.\nUnreal to Vision Pro hit the same wall and we solved it fast.\nDo it like Cascade but in Unreal is now a one-sentence brief.' },
-      { title:'ALT \u00b7 The KB as Triangulation', subtitle:'Three known points give you the fourth for free',
-        img:'images/ch5-triangulation-anim.svg', bullets:[
-          'Godot \u2192 AVP (top): taught us RealityKit constraints, scale bugs, the LowLevelMesh skinner the hard way',
-          'Unreal \u2192 AVP (bottom-left): hit the same wall \u2014 solved in a fraction of the time because the KB already held the map',
-          'MetaHuman \u2192 AVP (bottom-right): every avatar pipeline question now starts from a proven answer',
-          '"Do it like Cascade, but in Unreal" is now a one-sentence brief \u2014 the AI reasons across the three nodes to derive the fourth'
-        ],
-        notes:'Here is the payoff. Three solved projects, one knowledge base.\nGodot to Vision Pro taught us the constraints the hard way.\nUnreal to Vision Pro hit the same wall and we solved it fast.\nMetaHuman on AVP \u2014 proven.\nThe fourth project inherits all three.' },
       { title:'Building for Transferability', subtitle:'Document the why, not just the what',
         img:'images/ch5-transferability-anim.svg', bullets:[
           'Gotchas + their fixes are the most valuable KB entries you can write',
@@ -627,16 +493,6 @@ const SECTIONS = [
           'The agent can’t feel what’s right — but it can hand you the dial so you can'
         ],
         notes:'High-leverage trick: when the answer is “try things” — rotations, cvars, dampings — don’t guess serially.\nHave the agent build a cycler so you hot-swap options live and feel them.\nPinchwork hand skeleton, Cascade grab damping, visionOS translucency — all solved by cycling + feedback.\nThe agent cannot feel what is right; it can build the dial.' },
-      { title:'ALT · Build a Dial for the Unknowns', subtitle:'When the fix is "try things" — rotations, cvars, dampings — cycle them live and trust your gut',
-        img:'images/ch9-cycle-options.svg', bullets:[
-          'When you don\'t know the right value — a hand-skeleton rotation, a cvar, grab damping — don\'t guess one at a time',
-          'Have the agent build a quick cycler: hot-swap the options live while you watch on-device',
-          'Then you just react — "that one" — taste in the loop, converging in minutes instead of hours',
-          'Pinchwork\'s OpenXR hand skeleton: MakeFromX/Y/Z cycling found the answer in one session',
-          'Cascade grab damping: cycling 4 filter approaches in one session proved it wasn\'t the layer at all — fast negative results are wins too',
-          'The agent can\'t feel what\'s right — but it can build you the dial so you can'
-        ],
-        notes:'High-leverage trick: when the answer is "try things" — rotations, cvars, dampings — don\'t guess serially.\nHave the agent build a cycler so you hot-swap options live and feel them.\nTwo flavors of win: Pinchwork hand skeleton converged on the right axis; Cascade grab damping ruled out the entire follow-filter in ONE session (all four modes felt identical — redirected to pinch detection).\nThe agent cannot feel what is right; it can build the dial.' },
       { title:'Test One Thing at a Time', subtitle:'Discrete, modular checks — each answers exactly one question',
         img:'MEDIA_CYCLER', bullets:[
           'Don’t test “does the app work” — test one thing: do these materials look right? is Live Link connected? is this skinned mesh animating? is the framerate holding?',
@@ -651,14 +507,6 @@ const SECTIONS = [
           'Gemini, local models, Sonnet, Opus, Codex — they have different blind spots',
           'Point two different models at the same problem; one solves what the other cannot',
           'Run sessions across computers with claude-fleet — no context lost',
-          'Aim a whole AI team at the same problem from different angles'
-        ],
-        notes:'One model hitting a wall does not mean it cannot be solved.\nSwitch the model, switch the machine, switch the angle.\nClaude fleet lets you run sessions across computers and keep context.\nDifferent models, different blind spots, same goal.' },
-      { title:'ALT \u00b7 Bounce Models and Machines', subtitle:'Different models think differently',
-        img:'media/fleet-dashboard.jpg', bullets:[
-          'Gemini, local models (qwen3, llama3.1), Sonnet, Opus \u2014 they have different blind spots',
-          'Point two different models at the same problem; one solves what the other cannot',
-          'Run sessions across computers with claude-fleet \u2014 no context lost',
           'Aim a whole AI team at the same problem from different angles'
         ],
         notes:'One model hitting a wall does not mean it cannot be solved.\nSwitch the model, switch the machine, switch the angle.\nClaude fleet lets you run sessions across computers and keep context.\nDifferent models, different blind spots, same goal.' },
