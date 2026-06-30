@@ -45,6 +45,8 @@ const SECTIONS = [
       tags:'Agile Lens · OpenClaw · Claude · Local Fleet',
       notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLet’s get into it.' },
     cases: [
+      { title:'Agile Lens', subtitle:'Who built this and why', img:'',
+        bullets:[], notes:'Agile Lens orbit slide — auto-rendered by IIFE.' },
       { title:'My Tool Journey', subtitle:'Expand — contract — expand again',
         img:'', bullets:[
           '2016: Revit, 3ds Max, Rhino, SketchUp, Unity + Unreal — the full toolbox',
@@ -2481,6 +2483,146 @@ setTimeout(updateDurationDisplay,100);
       li.addEventListener('click',function(e){e.stopPropagation();goTo(lessonIdxs[si]);});
     })(lis[i],secIdxForBullet[i]);
   }
+})();
+
+// =====================================================================
+// FEATURE: AGILE LENS ORBIT  ("Agile Lens" case — starfield + client ring)
+// =====================================================================
+(function(){
+  var sl=null;
+  for(var _i=0;_i<allSlides.length;_i++){
+    var _t=allSlides[_i].querySelector&&allSlides[_i].querySelector('.case-title');
+    if(_t&&_t.textContent.indexOf('Agile Lens')>=0){sl=allSlides[_i];break;}
+  }
+  if(!sl)return;
+
+  // Full-bleed takeover — replace slide contents
+  sl.style.cssText='position:absolute;inset:0;display:block;overflow:hidden;background:#060810';
+  sl.innerHTML='';
+
+  // Canvas for starfield + orbit
+  var cv=document.createElement('canvas');
+  cv.style.cssText='position:absolute;inset:0;width:100%;height:100%';
+  sl.appendChild(cv);
+
+  // Center content overlay
+  var overlay=document.createElement('div');
+  overlay.style.cssText='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;z-index:10';
+  overlay.innerHTML=
+    '<div style="text-align:center;line-height:1.25">'
+    +'<div style="font-size:42px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.04em;font-family:var(--font)">AGILE LENS</div>'
+    +'<div style="font-size:16px;font-weight:400;color:rgba(255,255,255,.35);letter-spacing:.22em;text-transform:uppercase;margin-top:6px;font-family:var(--font)">IMMERSIVE DESIGN STUDIO</div>'
+    +'<div style="font-size:14px;color:rgba(255,255,255,.28);letter-spacing:.18em;text-transform:uppercase;margin-top:5px;font-family:var(--font)">EST. 2016</div>'
+    +'<div style="font-size:13px;color:rgba(255,255,255,.2);letter-spacing:.2em;text-transform:uppercase;margin-top:4px;font-family:var(--font)">NYC</div>'
+    +'</div>';
+  sl.appendChild(overlay);
+
+  // Bottom tagline
+  var tagline=document.createElement('div');
+  tagline.style.cssText='position:absolute;bottom:38px;left:0;right:0;text-align:center;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.18);font-family:var(--font);pointer-events:none;z-index:10';
+  tagline.textContent='BOOTSTRAPPED · XR SPECIALISTS · 10 YEARS';
+  sl.appendChild(tagline);
+
+  // Clients to orbit
+  var CLIENTS=['FOUR SEASONS','GOOGLE','ROYAL CARIBBEAN','LINCOLN CENTER','SAMSUNG','WALDORF ASTORIA','CBS','EPIC GAMES','KENNEDY CENTER','DISNEY','BELL','RBC'];
+
+  var ctx=null,W=0,H=0,cx=0,cy=0,R=0;
+  var stars=[];
+  var angle=0;
+  var rafId=null;
+
+  function resize(){
+    W=sl.clientWidth||1600;
+    H=sl.clientHeight||900;
+    cv.width=W;cv.height=H;
+    cx=W/2;cy=H/2;
+    R=Math.min(W,H)*0.28;
+    ctx=cv.getContext('2d');
+    // Regenerate stars
+    stars=[];
+    for(var i=0;i<220;i++){
+      stars.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:Math.random()*1.4+0.2,
+        a:Math.random()*0.6+0.1
+      });
+    }
+  }
+
+  function draw(){
+    if(!ctx)return;
+    ctx.clearRect(0,0,W,H);
+
+    // Starfield
+    for(var i=0;i<stars.length;i++){
+      var st=stars[i];
+      ctx.beginPath();
+      ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+st.a+')';
+      ctx.fill();
+    }
+
+    // Glowing ring — outer glow passes
+    var ringAlpha=[.06,.1,.16,.24];
+    var ringWidths=[18,12,6,2];
+    for(var g=0;g<ringAlpha.length;g++){
+      ctx.beginPath();
+      ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.strokeStyle='rgba(160,180,255,'+ringAlpha[g]+')';
+      ctx.lineWidth=ringWidths[g];
+      ctx.stroke();
+    }
+    // Crisp ring line
+    ctx.beginPath();
+    ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(200,210,255,.55)';
+    ctx.lineWidth=1.2;
+    ctx.stroke();
+
+    // Orbiting client labels
+    var n=CLIENTS.length;
+    for(var j=0;j<n;j++){
+      var theta=angle+(j/n)*Math.PI*2;
+      var lx=cx+Math.cos(theta)*R;
+      var ly=cy+Math.sin(theta)*R;
+
+      // Font scale by vertical position (perspective-ish)
+      var scale=0.85+0.15*((Math.sin(theta)+1)/2);
+      var alpha=0.55+0.35*((Math.sin(theta)+1)/2);
+
+      ctx.save();
+      ctx.translate(lx,ly);
+      ctx.font='600 '+(Math.round(11*scale))+'px var(--font, "Space Grotesk", system-ui, sans-serif)';
+      ctx.fillStyle='rgba(255,255,255,'+alpha+')';
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.letterSpacing='0.16em';
+      ctx.fillText(CLIENTS[j],0,0);
+      ctx.restore();
+    }
+
+    angle+=0.0025;
+    rafId=requestAnimationFrame(draw);
+  }
+
+  function start(){
+    if(rafId)return;
+    resize();
+    draw();
+  }
+  function stop(){
+    if(rafId){cancelAnimationFrame(rafId);rafId=null;}
+  }
+
+  // Start/stop with slide visibility
+  var obs=new MutationObserver(function(){
+    if(sl.classList.contains('active')){start();}else{stop();}
+  });
+  obs.observe(sl,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',function(){if(sl.classList.contains('active')){resize();}});
+
+  if(sl.classList.contains('active'))start();
 })();
 
 // =====================================================================
