@@ -114,6 +114,15 @@ const SECTIONS = [
           'Choose by the task: iteration → interactive; automation → headless'
         ],
         notes:'Two modes, and we come back to these all talk.\nInteractive: the AI edits the live scene while you watch.\nHeadless: it runs the pipeline with no editor open. Batch and scale.' },
+      { title:'Headless or MCP? — Quick Reference', subtitle:'When do you actually need the editor running?',
+        img:'images/headless-vs-mcp.svg', bullets:[
+          'Build, test, batch exports — all four tools handle these without a running editor',
+          'Write code and scripts: agent + file system; no editor needed for any tool',
+          'Scene edits: Blender = fully headless (bpy); Godot = partial; Unreal = needs MCP',
+          'Xcode has no real MCP ecosystem — the CLI (xcodebuild, simctl) covers most of the loop',
+          'Rule: reach for CLI first; add MCP when you need the editor’s live state'
+        ],
+        notes:'Quick reference.\nAll four: build, test, batch = headless.\nBlender wins on scene edits: bpy headless API is comprehensive.\nGodot partial: .tscn editable as text, but GDAI MCP is cleaner.\nUnreal scene changes need the editor running = MCP.\nXcode: no MCP ecosystem, but xcodebuild + simctl cover most of the dev loop.\nRule: reach for CLI; add MCP when you need live editor state.' },
     ] },
 
   // ── CH 2: Structure + Routing ───────────────────────────────────────────
@@ -205,7 +214,8 @@ const SECTIONS = [
           'chongdashu/unreal-mcp: <a href="https://github.com/chongdashu/unreal-mcp" target="_blank" rel="noopener">github.com/chongdashu/unreal-mcp</a> — 1900+ stars, open source',
           'flopperam/unreal-engine-mcp: <a href="https://github.com/flopperam/unreal-engine-mcp" target="_blank" rel="noopener">github.com/flopperam/unreal-engine-mcp</a> — or use hosted at <a href="https://agent.flopperam.com/mcp" target="_blank" rel="noopener">agent.flopperam.com/mcp</a>',
           'ue-mcp: <a href="https://ue-mcp.com" target="_blank" rel="noopener">ue-mcp.com</a> — 525+ actions, 18+ subsystems: Niagara, PCG, GAS, sequencer, landscape',
-          'Connect any: claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp'
+          'Connect any: claude mcp add --transport http unreal http://127.0.0.1:PORT/mcp',
+          '→ Compare all options: <a href="https://ue-mcp.com/compare" target="_blank" rel="noopener">ue-mcp.com/compare</a>'
         ],
         notes:'Six options, pick by trade-off.\nEpic official: most future-proof, bundled with 5.8.\nNeoStack: best commercial option, Blueprint-first, no subscription required.\nchongdashu: most-starred open source, solid actor + Blueprint coverage.\nflopperam: 50+ tools, or skip local setup and use the hosted server.\nue-mcp.com: widest subsystem coverage — Blueprint, materials, Niagara, PCG, GAS, sequencer.\nOne command to wire any of these into Claude Code, then enable the plugin and you are live.' },
     ] },
