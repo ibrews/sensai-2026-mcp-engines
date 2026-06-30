@@ -60,10 +60,10 @@ const SECTIONS = [
       { title:'What We Will Cover', subtitle:'A map before the territory',
         img:'media/unreal_demo.gif', bullets:[
           'INTRO: who this is for and what MCP actually is',
-          'CH 1–3: Agents, Structure + Routing, Unreal Engine',
-          'CH 4: Case study — a real broadcast project, small team, big ask',
-          'CH 5–6: Blender and your second brain',
-          'CH 7: Pro tips from the trenches — then a live demo'
+          'CH 1–3: Agents, structure + routing, and Unreal Engine',
+          'CH 4–5: A real broadcast case study, then community MCP servers — Blender and beyond',
+          'CH 6–7: Godot end to end, then Apple’s stack — RealityKit, Swift, Xcode',
+          'CH 8–9: Your second brain and pro tips — then a live demo'
         ],
         notes:'Walk the map quickly. No need to linger; they will see each stop.\nEmphasize: practical, honest, with real project examples.\nLet them know something will go wrong in the demo. That is part of it.' },
       { title:'What Is an MCP? (and Why)', subtitle:'Your editor becomes a server. Your AI becomes the client.',
@@ -2421,7 +2421,7 @@ setTimeout(updateDurationDisplay,100);
   }
   if(!wc)return;
   var lis=wc.querySelectorAll('.case-bl li');
-  var secIdxForBullet=[0,1,4,5,9];
+  var secIdxForBullet=[0,1,4,6,8];
   for(var i=0;i<lis.length;i++){
     (function(li,si){
       if(si===undefined||!lessonIdxs||lessonIdxs[si]===undefined)return;
