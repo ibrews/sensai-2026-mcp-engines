@@ -4,7 +4,7 @@
       <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <marker id="aop" markerWidth="11" markerHeight="11" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7.5,3.2 L0,6.4 Z" fill="#a78bfa"/></marker>
-    <linearGradient id="lop" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="lop" x1="440" y1="245" x2="552" y2="245" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#a78bfa"/>
     </linearGradient>
   </defs>
@@ -21,7 +21,7 @@
   <text x="280" y="286" text-anchor="middle" fill="rgba(240,244,255,.5)" font-size="12">2025 &#183; shipped by Epic</text>
 
   <!-- arrow out to client -->
-  <line x1="440" y1="245" x2="552" y2="245" stroke="url(#lop)" stroke-width="3.5" marker-end="url(#aop)" filter="url(#gop)"/>
+  <line x1="440" y1="245" x2="552" y2="245" stroke="url(#lop)" stroke-width="3.5" marker-end="url(#aop)"/>
 
   <!-- ANY MCP CLIENT -->
   <rect x="560" y="190" width="200" height="110" rx="18" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="2.5" filter="url(#gop)"/>

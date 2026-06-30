@@ -49,8 +49,8 @@
   <rect x="540" y="395" width="180" height="58" rx="13" fill="rgba(245,158,11,.10)" stroke="#f59e0b" stroke-width="2"/>
   <text x="630" y="430" text-anchor="middle" fill="#ffe9c2" font-size="19" font-weight="600">OUTPUT</text>
 
-  <line x1="630" y1="193" x2="630" y2="262" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)" filter="url(#glowA)"/>
-  <line x1="630" y1="323" x2="630" y2="392" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)" filter="url(#glowA)"/>
+  <line x1="630" y1="193" x2="630" y2="262" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)"/>
+  <line x1="630" y1="323" x2="630" y2="392" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrA)"/>
 
   <text x="630" y="500" text-anchor="middle" fill="rgba(240,244,255,.7)" font-size="15">runs at scale, on a schedule</text>
   <text x="630" y="524" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13">batch &#183; CI &#183; automation</text>
