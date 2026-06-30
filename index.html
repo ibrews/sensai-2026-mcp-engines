@@ -2323,16 +2323,13 @@ setTimeout(updateDurationDisplay,100);
 
 (function(){
   const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Headless Asset Pipelines'));
-  if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(!m) return; m.innerHTML='';
-  m.style.cssText='position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#000';
-  const v=document.createElement('video');
-  v.src='media/forage-demo.mp4'; v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto';
-  v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
-  m.appendChild(v);
-  const sync=()=>{ if(sl.classList.contains('active')){ v.play().catch(()=>{}); } else { try{v.pause();}catch(_){} } };
-  new MutationObserver(sync).observe(sl,{attributes:true,attributeFilter:['class']});
-  v.addEventListener('canplay',sync); v.addEventListener('loadeddata',sync);
-  sync();
+  if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(m) m.innerHTML='';
+  buildMediaCycler(sl, [
+    {type:'image', src:'media/forage/cyberpunk-wide.jpg'},
+    {type:'image', src:'media/forage/cyberpunk-alley.jpg'},
+    {type:'image', src:'media/forage/cyberpunk-hero.jpg'},
+    {type:'video', src:'media/forage/cyberpunk-flythrough.mp4', loop:true},
+  ], {imageDuration:5000});
 })();
 
 (function(){
