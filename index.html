@@ -319,6 +319,14 @@ const SECTIONS = [
       tags:'Godot \u00b7 GDScript \u00b7 Apple Vision Pro \u00b7 CC0',
       notes:'The ad promised Godot equal billing - here it is.\nGodot is open, tiny, and scriptable end to end.\nThat makes it ideal for headless and AI-driven work.\nAnd it reaches platforms people assume need Unreal.' },
     cases: [
+      { title:'Meet Cascade Countdown', subtitle:'A hand-tracked Godot game, shipping on Apple Vision Pro',
+        img:'media/cascade-intro.mp4', bullets:[
+          'A real game — built in Godot, hand-tracked, running on-device on Apple Vision Pro',
+          'Catch and stack the falling blocks with your hands; physics + procedural audio at 90fps',
+          'No Unreal, no Reality Composer Pro — stock Godot, shipped straight to the headset',
+          'The next slide breaks down how it actually runs'
+        ],
+        notes:'Introduce the game first: Cascade Countdown, a real hand-tracked Godot game on Vision Pro.\nHands catch falling blocks; 90fps, procedural audio.\nThen the next slide gets technical.' },
       { title:'Cascade Countdown', subtitle:'A hand-tracked Godot game, live on Apple Vision Pro',
         img:'media/cascade-avp.mp4', bullets:[
           'RigidBody3D physics + procedural audio at a locked 90fps',
@@ -327,6 +335,14 @@ const SECTIONS = [
           'Proof: Godot ships to platforms people assume need Unreal'
         ],
         notes:'Cascade is a real shipping Godot game on Vision Pro.\nHand-tracked, 90fps, procedural audio - all in Godot.\nThe point: Godot reaches the headset too, not just Unreal.' },
+      { title:'Godot in VR, Easy on the Eyes', subtitle:'On-device VR testing — and a depth-of-field trick that doesn’t cause strain',
+        img:'media/godot-vr-dof.mp4', bullets:[
+          'We test Godot scenes live in VR on the headset, not just in the editor',
+          'Found a depth-of-field setup that reads as natural — sharp where you look, gently soft beyond',
+          'It kills the flat “everything in focus” look without the eye-strain most VR DoF causes',
+          'Comfort is a feature: VR that doesn’t tire your eyes is VR people keep using'
+        ],
+        notes:'We test in VR on-device.\nThe discovery: a depth-of-field setup that does not hurt the eyes — soft periphery, sharp focus.\nComfort is the point.' },
       { title:'A Real MetaHuman, in Godot', subtitle:'MetaHumanGodot — Epic’s human in stock Godot, now MIT-licensed',
         img:'media/metahuman-godot.mp4', bullets:[
           'A real Epic MetaHuman, running in stock Godot — live look-dev, skin shaders, lighting, no Unreal in the loop',
@@ -385,13 +401,22 @@ const SECTIONS = [
         ],
         notes:'We run real MetaHuman rigs natively in RealityKit.\n90fps on device, no Unreal at runtime.\nThe KB from the Godot work made the port quick.' },
       { title:'Splats, Swift, and the Bridge', subtitle:'RealityKit + Swift, no game engine required',
-        img:'media/ch7-splatstage.png', bullets:[
+        img:'media/splat-clip.mp4', bullets:[
           'SplatStage: walk inside a Gaussian-splat scene on visionOS 27',
           'Native RealityKit GaussianSplatComponent - device-proven recipe',
           'The agent writes Swift, builds with xcodebuild, reads logs, fixes',
           'Headless TestFlight pipeline for iOS + visionOS; UE to RealityKit bridge'
         ],
-        notes:'RealityKit + Swift covers a lot: splats, bridges, pipelines.\nThe agent drives xcodebuild and device logs headlessly.\nSame routing: Sonnet for the loop, Opus for the ABI bug.' }
+        notes:'RealityKit + Swift covers a lot: splats, bridges, pipelines.\nThe agent drives xcodebuild and device logs headlessly.\nSame routing: Sonnet for the loop, Opus for the ABI bug.' },
+      { title:'Vitrine, Built Overnight', subtitle:'One-shotting a visionOS 27 showcase app — almost hands-off',
+        img:'media/vitrine-clip.mp4', bullets:[
+          'The brief: an app to show off the new visionOS 27 features — windows, volumes, immersive scenes',
+          'One overnight loop: the agent scaffolded and built most of it while I slept, with very little input from me',
+          'By morning: a real, running app — multiple feature demos, working UI, real polish',
+          'The only snag was Gaussian splats — and that was Apple’s docs lagging, not the agent',
+          'Takeaway: a clear brief + an overnight loop produces a real app; the gaps are usually missing docs, not missing capability'
+        ],
+        notes:'Vitrine: an overnight one-shot showcasing visionOS 27.\nBuilt almost hands-off in a single overnight loop.\nTons shipped by morning; the splat trouble was Apple doc gaps, not the agent.' }
     ] },
   { year: 'CH 8', accent: 'teal',
     lesson: { title:'Your Second Brain\nIs the Real Tool', short:'COMPOUND KNOWLEDGE',
