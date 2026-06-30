@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 460" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+
+  <text x="410" y="34" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="13" letter-spacing="3">HEADLESS vs MCP · WHEN DO YOU NEED THE EDITOR?</text>
+
+  <!-- Column separator verticals -->
+  <line x1="140" y1="46" x2="140" y2="386" stroke="rgba(240,244,255,.12)" stroke-width="1.5"/>
+  <line x1="276" y1="46" x2="276" y2="386" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="412" y1="46" x2="412" y2="386" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="548" y1="46" x2="548" y2="386" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="684" y1="46" x2="684" y2="386" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- Header row bg -->
+  <rect x="140" y="46" width="680" height="48" fill="rgba(240,244,255,.025)"/>
+
+  <!-- Column headers -->
+  <text x="208" y="65" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">BUILD &amp;</text>
+  <text x="208" y="81" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">TEST</text>
+
+  <text x="344" y="65" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">WRITE</text>
+  <text x="344" y="81" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">CODE</text>
+
+  <text x="480" y="65" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">SCENE &amp;</text>
+  <text x="480" y="81" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">OBJECTS</text>
+
+  <text x="616" y="65" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">BATCH</text>
+  <text x="616" y="81" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">ASSETS</text>
+
+  <text x="752" y="65" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">LIVE</text>
+  <text x="752" y="81" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="10.5" font-weight="600" letter-spacing="1">ITERATION</text>
+
+  <!-- ── ROW 1: Xcode ── y=94–166 -->
+  <rect x="0" y="94" width="140" height="72" fill="rgba(167,139,250,.06)"/>
+  <text x="70" y="126" text-anchor="middle" fill="#a78bfa" font-size="17" font-weight="700">Xcode</text>
+  <text x="70" y="146" text-anchor="middle" fill="rgba(167,139,250,.5)" font-size="10">Swift · visionOS</text>
+
+  <!-- Build: CLI ✓ -->
+  <rect x="145" y="98" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="208" y="122" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="208" y="140" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">xcodebuild</text>
+  <text x="208" y="154" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">xcrun · simctl</text>
+
+  <!-- Write: CLI ✓ -->
+  <rect x="281" y="98" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="344" y="122" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="344" y="140" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">agent edits</text>
+  <text x="344" y="154" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">Swift · configs</text>
+
+  <!-- Scene: N/A -->
+  <rect x="417" y="98" width="126" height="64" rx="8" fill="rgba(240,244,255,.03)" stroke="rgba(240,244,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="480" y="134" text-anchor="middle" fill="rgba(240,244,255,.28)" font-size="13">N / A</text>
+
+  <!-- Batch: CLI ✓ -->
+  <rect x="553" y="98" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="616" y="122" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="616" y="140" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">xcresulttool</text>
+  <text x="616" y="154" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">simctl · xcrun</text>
+
+  <!-- Live: Xcode GUI -->
+  <rect x="689" y="98" width="126" height="64" rx="8" fill="rgba(167,139,250,.09)" stroke="rgba(167,139,250,.28)" stroke-width="1.5"/>
+  <text x="752" y="120" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="600">Xcode GUI</text>
+  <text x="752" y="138" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">previews · debug</text>
+  <text x="752" y="154" text-anchor="middle" fill="rgba(167,139,250,.4)" font-size="10">no MCP ecosystem</text>
+
+  <!-- ── ROW 2: Unreal ── y=166–238 -->
+  <rect x="0" y="166" width="140" height="72" fill="rgba(245,158,11,.06)"/>
+  <text x="70" y="198" text-anchor="middle" fill="#f59e0b" font-size="17" font-weight="700">Unreal</text>
+  <text x="70" y="218" text-anchor="middle" fill="rgba(245,158,11,.5)" font-size="10">UE 5.x</text>
+
+  <!-- Build: UBT ✓ -->
+  <rect x="145" y="170" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="208" y="194" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="208" y="212" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">UBT / UAT</text>
+  <text x="208" y="226" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">BuildCookRun</text>
+
+  <!-- Write: CLI ✓ -->
+  <rect x="281" y="170" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="344" y="194" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="344" y="212" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">agent edits</text>
+  <text x="344" y="226" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">C++ · Python · BP</text>
+
+  <!-- Scene: MCP needed -->
+  <rect x="417" y="170" width="126" height="64" rx="8" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.38)" stroke-width="1.5"/>
+  <text x="480" y="193" text-anchor="middle" fill="#f43f5e" font-size="12" font-weight="700">MCP needed</text>
+  <text x="480" y="211" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">editor must run</text>
+  <text x="480" y="226" text-anchor="middle" fill="rgba(244,63,94,.45)" font-size="10">live actor edits</text>
+
+  <!-- Batch: partial -->
+  <rect x="553" y="170" width="126" height="64" rx="8" fill="rgba(245,158,11,.1)" stroke="rgba(245,158,11,.38)" stroke-width="1.5"/>
+  <text x="616" y="194" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">partial</text>
+  <text x="616" y="212" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">Python commandlet</text>
+  <text x="616" y="226" text-anchor="middle" fill="rgba(245,158,11,.45)" font-size="10">limited vs MCP</text>
+
+  <!-- Live: MCP needed -->
+  <rect x="689" y="170" width="126" height="64" rx="8" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.38)" stroke-width="1.5"/>
+  <text x="752" y="193" text-anchor="middle" fill="#f43f5e" font-size="12" font-weight="700">MCP needed</text>
+  <text x="752" y="211" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">live viewport</text>
+  <text x="752" y="226" text-anchor="middle" fill="rgba(244,63,94,.45)" font-size="10">real-time feedback</text>
+
+  <!-- ── ROW 3: Godot ── y=238–310 -->
+  <rect x="0" y="238" width="140" height="72" fill="rgba(0,212,255,.06)"/>
+  <text x="70" y="270" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="700">Godot</text>
+  <text x="70" y="290" text-anchor="middle" fill="rgba(0,212,255,.5)" font-size="10">4.x</text>
+
+  <!-- Build: headless ✓ -->
+  <rect x="145" y="242" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="208" y="266" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="208" y="284" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">--headless</text>
+  <text x="208" y="298" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">--export · GUT</text>
+
+  <!-- Write: CLI ✓ -->
+  <rect x="281" y="242" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="344" y="266" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="344" y="284" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">agent edits</text>
+  <text x="344" y="298" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">GDScript · .gd</text>
+
+  <!-- Scene: partial -->
+  <rect x="417" y="242" width="126" height="64" rx="8" fill="rgba(245,158,11,.1)" stroke="rgba(245,158,11,.38)" stroke-width="1.5"/>
+  <text x="480" y="266" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">partial</text>
+  <text x="480" y="284" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">edit .tscn as text</text>
+  <text x="480" y="298" text-anchor="middle" fill="rgba(245,158,11,.45)" font-size="10">MCP is cleaner</text>
+
+  <!-- Batch: headless ✓ -->
+  <rect x="553" y="242" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="616" y="266" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="616" y="284" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">--headless scripts</text>
+  <text x="616" y="298" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">import · export</text>
+
+  <!-- Live: MCP needed -->
+  <rect x="689" y="242" width="126" height="64" rx="8" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.38)" stroke-width="1.5"/>
+  <text x="752" y="265" text-anchor="middle" fill="#f43f5e" font-size="12" font-weight="700">MCP needed</text>
+  <text x="752" y="283" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">live scene tree</text>
+  <text x="752" y="298" text-anchor="middle" fill="rgba(244,63,94,.45)" font-size="10">GDAI MCP</text>
+
+  <!-- ── ROW 4: Blender ── y=310–382 -->
+  <rect x="0" y="310" width="140" height="72" fill="rgba(244,63,94,.06)"/>
+  <text x="70" y="342" text-anchor="middle" fill="#f43f5e" font-size="17" font-weight="700">Blender</text>
+  <text x="70" y="362" text-anchor="middle" fill="rgba(244,63,94,.5)" font-size="10">3.x / 4.x</text>
+
+  <!-- Build: background ✓ -->
+  <rect x="145" y="314" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="208" y="338" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="208" y="356" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">--background</text>
+  <text x="208" y="370" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">render · export</text>
+
+  <!-- Write: CLI ✓ -->
+  <rect x="281" y="314" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="344" y="338" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="344" y="356" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">agent edits</text>
+  <text x="344" y="370" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">Python scripts</text>
+
+  <!-- Scene: bpy ✓ — Blender's headless crown jewel -->
+  <rect x="417" y="314" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="480" y="338" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="480" y="356" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">bpy headless API</text>
+  <text x="480" y="370" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">full scene access</text>
+
+  <!-- Batch: background ✓ -->
+  <rect x="553" y="314" width="126" height="64" rx="8" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.28)" stroke-width="1.5"/>
+  <text x="616" y="338" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="700">✓</text>
+  <text x="616" y="356" text-anchor="middle" fill="rgba(240,244,255,.65)" font-size="11">--background</text>
+  <text x="616" y="370" text-anchor="middle" fill="rgba(240,244,255,.38)" font-size="10">render · convert</text>
+
+  <!-- Live: MCP helps (needs viewport for sculpt/paint) -->
+  <rect x="689" y="314" width="126" height="64" rx="8" fill="rgba(245,158,11,.1)" stroke="rgba(245,158,11,.38)" stroke-width="1.5"/>
+  <text x="752" y="337" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">MCP helps</text>
+  <text x="752" y="355" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11">viewport feedback</text>
+  <text x="752" y="370" text-anchor="middle" fill="rgba(245,158,11,.45)" font-size="10">sculpt · paint</text>
+
+  <!-- Row dividers -->
+  <line x1="0" y1="94" x2="820" y2="94" stroke="rgba(240,244,255,.1)" stroke-width="1"/>
+  <line x1="0" y1="166" x2="820" y2="166" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="0" y1="238" x2="820" y2="238" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="0" y1="310" x2="820" y2="310" stroke="rgba(240,244,255,.06)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="0" y1="382" x2="820" y2="382" stroke="rgba(240,244,255,.1)" stroke-width="1"/>
+
+  <!-- Legend -->
+  <rect x="84" y="400" width="13" height="13" rx="3" fill="rgba(0,212,255,.09)" stroke="rgba(0,212,255,.3)" stroke-width="1.5"/>
+  <text x="103" y="411" fill="rgba(240,244,255,.45)" font-size="11">headless — CLI / script</text>
+
+  <rect x="298" y="400" width="13" height="13" rx="3" fill="rgba(245,158,11,.1)" stroke="rgba(245,158,11,.3)" stroke-width="1.5"/>
+  <text x="317" y="411" fill="rgba(240,244,255,.45)" font-size="11">partial — editor helps</text>
+
+  <rect x="510" y="400" width="13" height="13" rx="3" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.3)" stroke-width="1.5"/>
+  <text x="529" y="411" fill="rgba(240,244,255,.45)" font-size="11">MCP — editor must be running</text>
+</svg>
