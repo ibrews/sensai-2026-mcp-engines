@@ -172,8 +172,8 @@ const SECTIONS = [
         img:'images/beyond-ai-ladder-anim.svg', bullets:[
           'Frontier → local fleet was step one; the next rung needs no model at all at runtime',
           '<a href="https://github.com/ibrews/blueprint-auto-layout" target="_blank" rel="noopener">Blueprint Auto-Layout</a>: AI helped design it, but tidying a graph is pure deterministic algorithm now',
-          '<a href="https://alexcoulombepresents.com" target="_blank" rel="noopener">Forage</a>: an AI-first asset scout whose owned-library search is plain heuristic — zero LLM calls',
-          '<a href="https://alexcoulombepresents.com" target="_blank" rel="noopener">UnReality Kit</a>: a headless Unreal → RealityKit pipeline that just runs — no agent in the loop',
+          '<a href="https://alexcoulombepresents.com/lab/forage" target="_blank" rel="noopener">Forage</a>: an AI-first asset scout whose owned-library search is plain heuristic — zero LLM calls',
+          '<a href="https://alexcoulombepresents.com/lab/unrealitykit-bridge" target="_blank" rel="noopener">UnReality Kit</a>: a headless Unreal → RealityKit pipeline that just runs — no agent in the loop',
           'The pattern: use AI to build the tool, refine it, then let it do the AI-like work without the AI'
         ],
         notes:'The punchline of the cost-down ladder: frontier model → local fleet → no AI at runtime.\nWe build the tool WITH AI, then refine it until it does the AI-like job deterministically.\nBlueprint Auto-Layout, Forage, UnReality Kit all started as AI projects and now run with zero AI.\nThe cheapest, most reliable inference is the one you never have to run — use AI to build the tools that no longer need it.' },
@@ -736,13 +736,13 @@ body[data-bg-style]:not([data-bg-style="none"]) .cfg-panel{background:rgba(8,10,
 .sg-thumb.sg-bonus{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2)}
 .sg-thumb.sg-bonus.active{background:rgba(245,158,11,.18);border-color:var(--amber)}
 .sg-thumb.sg-bonus.active .sg-num,.sg-thumb.sg-bonus.active .sg-label{color:var(--amber)}
-.close-ey{font-size:clamp(.7rem,1.4vw,1.05rem);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:36px;opacity:.85}
-.close-title{font-size:clamp(3.2rem,7.5vw,7.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;background:linear-gradient(130deg,#fff 20%,#fde68a 60%,#f59e0b 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:28px}
-.close-sub{font-size:clamp(1.1rem,2vw,1.7rem);color:var(--dim);margin-bottom:40px}
+.close-ey{font-size:clamp(.6rem,1.1vw,.85rem);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;opacity:.85}
+.close-title{font-size:clamp(2.4rem,5.6vw,5.6rem);font-weight:700;letter-spacing:-.03em;line-height:1;background:linear-gradient(130deg,#fff 20%,#fde68a 60%,#f59e0b 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
+.close-sub{font-size:clamp(.9rem,1.5vw,1.3rem);color:var(--dim);margin-bottom:16px}
 .contact-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .contact-pill{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:48px;padding:14px 28px;font-size:clamp(.95rem,1.3vw,1.2rem)}
 .contact-pill .lbl{opacity:.4;font-size:clamp(.65rem,.9vw,.85rem);text-transform:uppercase;letter-spacing:.1em}
-.close-qr-row{display:flex;gap:24px;justify-content:center;align-items:flex-start;margin-top:36px;flex-wrap:wrap}
+.close-qr-row{display:flex;gap:24px;justify-content:center;align-items:flex-start;margin-top:16px;flex-wrap:wrap}
 .gal-card{display:flex;flex-direction:column;align-items:stretch;text-align:center;gap:5px;text-decoration:none;color:inherit;transition:transform .18s ease}
 .gal-card img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;background:#0c0e18;border:1px solid rgba(255,255,255,.08);display:block}
 .gal-card:hover{transform:translateY(-4px)}
@@ -751,7 +751,7 @@ body[data-bg-style]:not([data-bg-style="none"]) .cfg-panel{background:rgba(8,10,
 .gal-desc{font:.6rem var(--font);line-height:1.3;color:rgba(255,255,255,.5)}
 .qr-link{text-decoration:none;color:inherit;transition:transform .18s ease}
 .qr-link:hover{transform:translateY(-3px)}
-.qr-card{display:flex;flex-direction:column;align-items:center;gap:8px;width:176px}
+.qr-card{display:flex;flex-direction:column;align-items:center;gap:6px;width:130px}
 .qr-card img{border-radius:10px;background:#fff;padding:8px;display:block;width:160px;height:160px}
 .qr-label{font-size:clamp(.72rem,1vw,.9rem);color:rgba(255,255,255,.6);letter-spacing:.1em;font-weight:500;text-align:center}
 .qr-badge{font-size:clamp(.58rem,.78vw,.76rem);font-weight:600;letter-spacing:.08em;text-align:center;line-height:1.35}
@@ -903,7 +903,7 @@ body.pr-dragging,body.pr-dragging *{user-select:none!important;-webkit-user-sele
 .slide[data-type="cover"] .cover-logo-strip{position:absolute;bottom:clamp(20px,3vh,46px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;opacity:.62;z-index:2;pointer-events:auto}
 .cover-logo-strip .logo-badge{height:34px}
 .speaker-card .speaker-avatar{width:clamp(48px,4.2vw,70px);height:clamp(48px,4.2vw,70px);border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);flex-shrink:0}
-.cover-logo-strip .logo-acp-marquee{height:48px}
+.cover-logo-strip .logo-acp-marquee{height:78px}
 .cover-logo-strip a{display:inline-flex;align-items:center;opacity:.85;transition:opacity .15s}
 .cover-logo-strip a:hover{opacity:1}
 .cover-logo-strip .logo-al{height:23px;filter:brightness(0) invert(1)}
@@ -915,7 +915,7 @@ body.pr-dragging,body.pr-dragging *{user-select:none!important;-webkit-user-sele
 .close-brands .b-acp{height:32px}
 .close-brands .b-sensai{height:26px}
 .close-brands .b-badge{height:38px}
-.slide[data-type="close"] .close-avatar{width:clamp(58px,5.4vw,78px);height:clamp(58px,5.4vw,78px);border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);margin-bottom:14px}
+.slide[data-type="close"] .close-avatar{width:clamp(40px,3.6vw,54px);height:clamp(40px,3.6vw,54px);border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);margin-bottom:8px}
 .slide[data-type="close"] .close-clip{position:absolute;bottom:24px;right:24px;width:clamp(130px,13vw,190px);aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.16);opacity:.92;z-index:3;box-shadow:0 10px 34px rgba(0,0,0,.55)}
 .big-text .one-more{font-size:.5em;font-weight:300;color:rgba(240,244,255,.55);font-style:italic;letter-spacing:.06em;display:block;margin-top:.22em}
 .case-slide.layout-big .big-stack{display:flex;flex-direction:column;gap:clamp(18px,2.5vw,40px);align-items:center;max-width:1300px}
@@ -1557,9 +1557,10 @@ deck.appendChild(mapS);allSlides.push(mapS);
 // Close slide with Alex Coulombe Presents logo
 const cls=document.createElement('div');cls.className='slide';cls.dataset.type='close';
 cls.innerHTML=`<img src="media/alex-headshot.png" alt="Alex Coulombe" class="close-avatar"><div class="close-ey">Thank You</div><h2 class="close-title">Let\u2019s Build.</h2><p class="close-sub">Start this weekend.</p>
+<div class="close-cta" style="margin-top:6px"><a href="https://www.alexcoulombepresents.com/training" target="_blank" rel="noopener" style="display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;padding:10px 22px;border-radius:12px;background:linear-gradient(135deg,rgba(0,212,255,.18),rgba(167,139,250,.18));border:1px solid rgba(0,212,255,.4)"><span style="font:700 .85rem var(--font);color:#fff;letter-spacing:.01em">Sign up for future classes &rarr;</span><span style="font:500 .62rem var(--font);color:rgba(255,255,255,.5)">alexcoulombepresents.com/training</span></a></div>
 <div class="contact-row"><div class="contact-pill"><span class="lbl">Web</span>agilelens.com</div><div class="contact-pill"><span class="lbl">Email</span>alex@agilelens.com</div></div>
 <div class="close-qr-row"><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://github.com/ibrews/sensai-2026-mcp-engines" alt="QR"><div class="qr-label">This Deck + Resources</div><div class="qr-badge b-teal">github.com/ibrews/sensai-2026-mcp-engines</div></div></div>
-<div class="close-puppet" style="display:flex;justify-content:center;margin-top:12px"><video src="media/final-loop.mp4" autoplay loop muted playsinline style="width:clamp(150px,15vw,210px);aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 30px rgba(0,0,0,.5)"></video></div>
+<div class="close-puppet" style="display:flex;justify-content:center;margin-top:10px"><video src="media/final-loop.mp4" autoplay loop muted playsinline style="width:clamp(110px,10vw,150px);aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 30px rgba(0,0,0,.5)"></video></div>
 <div class="close-brands"><a href="https://agilelens.com" target="_blank" rel="noopener"><img src="media/agilelens_logo.svg" alt="Agile Lens" class="b-al"></a><a href="https://alexcoulombepresents.com" target="_blank" rel="noopener"><img src="media/acp-logo-marquee.svg" alt="Alex Coulombe Presents" class="b-acp"></a><a href="https://sensaihack.com/" target="_blank" rel="noopener"><img src="media/sensai-logo.png" alt="SensAI Hackademy" class="b-sensai"></a><a href="https://credential.unrealengine.com/ae75c735-f7c6-4fc5-a633-f400ec2efd4b#acc.Mpe8GrAh" target="_blank" rel="noopener"><img src="GoldAuthorized.png" alt="UE Gold Authorized Instructor" class="b-badge"></a></div>`;
 const RES=[['spatial-deck',"This deck's engine - one HTML file"],['claude-fleet','Claude Code across many machines'],['godot-visionos-simulator-kit','Godot on the visionOS simulator'],['SplatStage','Walk inside Gaussian splats on AVP'],['ue-openxr-passthrough','UE5 PCVR passthrough plugin - XR_FB_passthrough, no Meta XR dep','https://github.com/AgileLens/ue-openxr-passthrough'],['MetaHumanGodot','Live MetaHuman look-dev in Godot'],['godot-avp-cascade','Cascade - hand-tracked Godot on AVP'],['blueprint-auto-layout','Auto-tidy Unreal Blueprint graphs'],['ue5-testflight','UE5 to TestFlight, automated'],['apple-platform-skills','Claude skills for Apple dev'],['crystal-caper','Playable platformer - every sprite AI-generated via PixelLab MCP'],['UE5_AndroidXR','UE5 VR template pre-wired for Samsung Galaxy XR','https://github.com/AgileLens/UE5_AndroidXR']];
 const TALKS=[["HarvardXR Talk","https://ibrews.github.io/harvardxr-keynote/","media/cards/talk-harvardxr.jpg","2026 keynote"],["FMX 2026 Talk","https://ibrews.github.io/fmx-2026-spatial-storytelling/","media/cards/talk-fmx-2026.jpg","Spatial Storytelling"],["NXT BLD 2026 Talk","https://ibrews.github.io/nxtbld-2026-productizing-xr/","media/cards/talk-nxtbld-2026.jpg","Productizing XR"]];
@@ -2524,6 +2525,23 @@ setTimeout(updateDurationDisplay,100);
 // =====================================================================
 // =====================================================================
 // =====================================================================
+// =====================================================================
+// FEATURE: BUILD-OUT WISHLIST NOTE — caption under the 'Build the AI Out' diagram
+// =====================================================================
+(function(){
+  var sl=null;
+  for(var _i=0;_i<allSlides.length;_i++){
+    var _t=allSlides[_i].querySelector&&allSlides[_i].querySelector('.case-title');
+    if(_t&&_t.textContent.indexOf('Build the AI Out')>=0){sl=allSlides[_i];break;}
+  }
+  if(!sl)return;
+  var box=sl.querySelector('.case-image'); if(!box)return;
+  var note=document.createElement('div');
+  note.style.cssText='font:500 .68rem var(--font);color:rgba(255,255,255,.45);text-align:center;margin-top:10px;max-width:90%';
+  note.innerHTML='Not public yet — wishlist or sign up for updates at <a href="https://alexcoulombepresents.com/lab" target="_blank" rel="noopener" style="color:var(--teal)">alexcoulombepresents.com/lab</a>';
+  box.appendChild(note);
+})();
+
 // FEATURE: WALK AWAY — sunk-cost tree→megaplant experiments (2 imgs + video)
 // =====================================================================
 (function(){
