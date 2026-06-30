@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <marker id="ac" markerWidth="9" markerHeight="9" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>
+    <marker id="acb" markerWidth="9" markerHeight="9" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 Z" fill="#f59e0b"/></marker>
+  </defs>
+  <text x="410" y="40" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="15" letter-spacing="3">CYCLE · FEEL · CONVERGE</text>
+
+  <!-- LEFT: the dial of options -->
+  <text x="150" y="92" text-anchor="middle" fill="rgba(240,244,255,.45)" font-size="11.5" letter-spacing="1">OPTIONS TO TRY</text>
+  <text x="150" y="108" text-anchor="middle" fill="rgba(240,244,255,.35)" font-size="10.5">rotation · cvar · damping</text>
+  <rect x="60" y="124" width="180" height="40" rx="10" fill="rgba(0,212,255,.16)" stroke="#00d4ff" stroke-width="2"/>
+  <text x="78" y="149" fill="#e9fbff" font-size="14" font-weight="600">› option A</text>
+  <text x="222" y="149" text-anchor="end" fill="rgba(0,212,255,.7)" font-size="11">live</text>
+  <rect x="60" y="172" width="180" height="36" rx="10" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.2)" stroke-width="1.5"/>
+  <text x="78" y="195" fill="rgba(240,244,255,.6)" font-size="13">option B</text>
+  <rect x="60" y="216" width="180" height="36" rx="10" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.2)" stroke-width="1.5"/>
+  <text x="78" y="239" fill="rgba(240,244,255,.6)" font-size="13">option C</text>
+  <rect x="60" y="260" width="180" height="36" rx="10" fill="rgba(240,244,255,.04)" stroke="rgba(240,244,255,.2)" stroke-width="1.5"/>
+  <text x="78" y="283" fill="rgba(240,244,255,.6)" font-size="13">option D…</text>
+
+  <!-- CENTER: live preview -->
+  <rect x="318" y="150" width="184" height="120" rx="16" fill="rgba(167,139,250,.10)" stroke="#a78bfa" stroke-width="2.5"/>
+  <text x="410" y="200" text-anchor="middle" fill="#efe9ff" font-size="18" font-weight="700">LIVE</text>
+  <text x="410" y="222" text-anchor="middle" fill="#efe9ff" font-size="18" font-weight="700">PREVIEW</text>
+  <text x="410" y="246" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">see it, on-device</text>
+  <!-- dial -> preview -->
+  <line x1="240" y1="186" x2="312" y2="200" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#ac)"/>
+  <!-- feedback loop preview -> dial (amber) -->
+  <path d="M360 270 C 300 330, 180 330, 150 300" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#acb)"/>
+  <text x="250" y="345" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">👎 next   ·   👍 keep</text>
+
+  <!-- RIGHT: converged -->
+  <rect x="588" y="168" width="172" height="84" rx="16" fill="rgba(123,191,123,.14)" stroke="#7bbf7b" stroke-width="2.5"/>
+  <text x="674" y="206" text-anchor="middle" fill="#dff5df" font-size="17" font-weight="700">✓ the one</text>
+  <text x="674" y="228" text-anchor="middle" fill="rgba(240,244,255,.55)" font-size="11.5">that feels right</text>
+  <line x1="502" y1="210" x2="582" y2="210" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#ac)"/>
+
+  <text x="410" y="416" text-anchor="middle" fill="rgba(240,244,255,.6)" font-size="15">The agent can’t feel what’s right — but it can build you the dial so you can.</text>
+  <text x="410" y="442" text-anchor="middle" fill="rgba(240,244,255,.4)" font-size="12.5">Pinchwork hand skeleton · Cascade grab damping · visionOS translucency — all solved this way.</text>
+</svg>

@@ -483,6 +483,15 @@ const SECTIONS = [
           'You will learn new engine behaviors, new APIs, new patterns — let it happen'
         ],
         notes:'Do not just read the result. Read how it got there.\nYou will catch wrong turns early, and you will learn things you did not know to ask.\nHit stop, add context, redirect. You are not a passenger.' },
+      { title:'Build a Dial for the Unknowns', subtitle:'When the fix is “try things” — rotations, cvars, dampings — cycle them live and trust your gut',
+        img:'images/ch9-cycle-options.svg', bullets:[
+          'When you don’t know the right value — a hand-skeleton rotation, a cvar, grab damping — don’t guess one at a time',
+          'Have the agent build a quick cycler: hot-swap the options live while you watch on-device',
+          'Then you just react — “that one” — taste in the loop, converging in minutes instead of hours',
+          'We did exactly this for Pinchwork’s OpenXR hand skeleton, Cascade’s grab damping, and the visionOS-source translucency artifacts',
+          'The agent can’t feel what’s right — but it can hand you the dial so you can'
+        ],
+        notes:'High-leverage trick: when the answer is “try things” — rotations, cvars, dampings — don’t guess serially.\nHave the agent build a cycler so you hot-swap options live and feel them.\nPinchwork hand skeleton, Cascade grab damping, visionOS translucency — all solved by cycling + feedback.\nThe agent cannot feel what is right; it can build the dial.' },
       { title:'Bounce Models and Machines', subtitle:'Different models think differently',
         img:'media/fleet-dashboard.jpg', bullets:[
           'Gemini, local models, Sonnet, Opus, Codex — they have different blind spots',
