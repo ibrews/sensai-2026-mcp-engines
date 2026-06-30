@@ -3120,6 +3120,239 @@ setTimeout(updateDurationDisplay,100);
   }, 0);
 })();
 
+// =====================================================================
+// FEATURE: BUILD A DIAL — interactive cycle-options diagram
+// ("Build a Dial for the Unknowns" case slide, ch9)
+// Inlines ch9-cycle-options.svg and makes A/B/C/D options clickable.
+// Arrow-right / space also cycles; resets cleanly on slide re-entry.
+// =====================================================================
+(function(){
+  var sl=null;
+  for(var _i=0;_i<allSlides.length;_i++){
+    var _t=allSlides[_i].querySelector&&allSlides[_i].querySelector('.case-title');
+    if(_t&&_t.textContent.indexOf('Build a Dial for the Unknowns')>=0){sl=allSlides[_i];break;}
+  }
+  if(!sl)return;
+  var ci=sl.querySelector('.case-image');
+  if(!ci)return;
+
+  // Options data: label, sublabel shown in live-preview area
+  var OPTIONS=[
+    {label:'option A', sub:'rotation'},
+    {label:'option B', sub:'cvar'},
+    {label:'option C', sub:'damping'},
+    {label:'option D…', sub:'next…'}
+  ];
+  var currentOpt=-1; // -1 = none selected yet
+
+  // ---- Build wrapper ----
+  ci.innerHTML='';
+  ci.style.cssText='flex:0 0 52%;max-width:900px;border-radius:18px;overflow:visible;position:relative;display:flex;flex-direction:column;align-items:stretch;box-sizing:border-box';
+
+  var wrap=document.createElement('div');
+  wrap.style.cssText='position:relative;flex:1;min-height:360px;border-radius:18px;overflow:hidden;background:rgba(6,8,22,.52);border:1px solid rgba(255,255,255,.07)';
+  ci.appendChild(wrap);
+
+  // ---- Inline SVG (simplified interactive version) ----
+  // We recreate the diagram with DOM elements so we can wire click handlers.
+  var svgNS='http://www.w3.org/2000/svg';
+  var svg=document.createElementNS(svgNS,'svg');
+  svg.setAttribute('viewBox','0 0 820 470');
+  svg.setAttribute('font-family',"'Space Grotesk','Helvetica Neue',Arial,sans-serif");
+  svg.style.cssText='width:100%;display:block;border-radius:18px';
+
+  // Defs: arrowhead markers
+  var defs=document.createElementNS(svgNS,'defs');
+  defs.innerHTML='<marker id="dac" markerWidth="9" markerHeight="9" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 Z" fill="#00d4ff"/></marker>'
+    +'<marker id="dacb" markerWidth="9" markerHeight="9" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 Z" fill="#f59e0b"/></marker>';
+  svg.appendChild(defs);
+
+  function mkText(x,y,txt,fill,size,weight,anchor){
+    var t=document.createElementNS(svgNS,'text');
+    t.setAttribute('x',x);t.setAttribute('y',y);
+    t.setAttribute('fill',fill||'#fff');
+    t.setAttribute('font-size',size||14);
+    if(weight)t.setAttribute('font-weight',weight);
+    if(anchor)t.setAttribute('text-anchor',anchor);
+    t.textContent=txt;
+    return t;
+  }
+  function mkRect(x,y,w,h,rx,fill,stroke,sw){
+    var r=document.createElementNS(svgNS,'rect');
+    r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);
+    r.setAttribute('rx',rx);r.setAttribute('fill',fill);
+    if(stroke){r.setAttribute('stroke',stroke);r.setAttribute('stroke-width',sw||1.5);}
+    return r;
+  }
+
+  // Header label
+  svg.appendChild(mkText(410,40,'CYCLE · FEEL · CONVERGE','rgba(240,244,255,.55)',15,null,'middle'));
+
+  // --- Left column: options ---
+  svg.appendChild(mkText(150,92,'OPTIONS TO TRY','rgba(240,244,255,.45)',11.5,null,'middle'));
+  svg.appendChild(mkText(150,108,'rotation · cvar · damping','rgba(240,244,255,.35)',10.5,null,'middle'));
+
+  // Option rows: y positions
+  var OPT_Y=[124,172,216,260];
+  var OPT_H=[40,36,36,36];
+
+  // We’ll store references for each option row so we can highlight them
+  var optBoxes=[];
+  var optLabels=[];
+  var optLiveTags=[];
+
+  for(var oi=0;oi<OPTIONS.length;oi++){
+    (function(i){
+      var y=OPT_Y[i],h=OPT_H[i];
+      var isFirst=(i===0);
+      var bg=isFirst?'rgba(0,212,255,.16)':'rgba(240,244,255,.04)';
+      var stroke=isFirst?'#00d4ff':'rgba(240,244,255,.2)';
+      var sw=isFirst?2:1.5;
+      var box=mkRect(60,y,180,h,10,bg,stroke,sw);
+      box.style.cursor='pointer';
+      box.style.transition='fill .22s,stroke .22s';
+      svg.appendChild(box);
+
+      var lbl=mkText(78,y+25,OPTIONS[i].label,isFirst?'#e9fbff':'rgba(240,244,255,.6)',isFirst?14:13,isFirst?'600':null);
+      lbl.style.cursor='pointer';
+      svg.appendChild(lbl);
+
+      // "live" tag (only visible when this option is active)
+      var livetag=mkText(222,y+25,'','rgba(0,212,255,.8)',11,null,'end');
+      svg.appendChild(livetag);
+
+      optBoxes.push(box);
+      optLabels.push(lbl);
+      optLiveTags.push(livetag);
+
+      // Hit area (transparent rect over full row)
+      var hit=mkRect(60,y,180,h,10,'transparent',null,0);
+      hit.style.cursor='pointer';
+      hit.addEventListener('click',function(){selectOpt(i);});
+      svg.appendChild(hit);
+    })(oi);
+  }
+
+  // Arrow: dial -> preview
+  var arrow1=document.createElementNS(svgNS,'line');
+  arrow1.setAttribute('x1',240);arrow1.setAttribute('y1',186);
+  arrow1.setAttribute('x2',312);arrow1.setAttribute('y2',200);
+  arrow1.setAttribute('stroke','#00d4ff');arrow1.setAttribute('stroke-width',2.5);
+  arrow1.setAttribute('marker-end','url(#dac)');
+  svg.appendChild(arrow1);
+
+  // Center: LIVE PREVIEW box
+  var liveBox=mkRect(318,150,184,120,16,'rgba(167,139,250,.10)','#a78bfa',2.5);
+  svg.appendChild(liveBox);
+  svg.appendChild(mkText(410,200,'LIVE','#efe9ff',18,'700','middle'));
+  svg.appendChild(mkText(410,222,'PREVIEW','#efe9ff',18,'700','middle'));
+  var liveSubText=mkText(410,246,'see it, on-device','rgba(240,244,255,.55)',11.5,null,'middle');
+  svg.appendChild(liveSubText);
+
+  // Feedback path (amber dashed curve)
+  var fbPath=document.createElementNS(svgNS,'path');
+  fbPath.setAttribute('d','M360 270 C 300 330, 180 330, 150 300');
+  fbPath.setAttribute('fill','none');fbPath.setAttribute('stroke','#f59e0b');
+  fbPath.setAttribute('stroke-width',2.2);fbPath.setAttribute('stroke-dasharray','6 5');
+  fbPath.setAttribute('marker-end','url(#dacb)');
+  svg.appendChild(fbPath);
+  svg.appendChild(mkText(250,345,'👎 next   ·   👍 keep','#f59e0b',12,'600','middle'));
+
+  // Arrow: preview -> converge
+  var arrow2=document.createElementNS(svgNS,'line');
+  arrow2.setAttribute('x1',502);arrow2.setAttribute('y1',210);
+  arrow2.setAttribute('x2',582);arrow2.setAttribute('y2',210);
+  arrow2.setAttribute('stroke','#00d4ff');arrow2.setAttribute('stroke-width',2.5);
+  arrow2.setAttribute('marker-end','url(#dac)');
+  svg.appendChild(arrow2);
+
+  // Right: converged box
+  svg.appendChild(mkRect(588,168,172,84,16,'rgba(123,191,123,.14)','#7bbf7b',2.5));
+  svg.appendChild(mkText(674,206,'✓ the one','#dff5df',17,'700','middle'));
+  svg.appendChild(mkText(674,228,'that feels right','rgba(240,244,255,.55)',11.5,null,'middle'));
+
+  // Footer captions
+  svg.appendChild(mkText(410,416,'The agent can’t feel what’s right — but it can build you the dial so you can.','rgba(240,244,255,.6)',15,null,'middle'));
+  svg.appendChild(mkText(410,442,'Pinchwork hand skeleton · Cascade grab damping · visionOS translucency — all solved this way.','rgba(240,244,255,.4)',12.5,null,'middle'));
+
+  // "that one ✓" confirmation badge (appears near LIVE PREVIEW)
+  var confirmBadge=document.createElementNS(svgNS,'g');
+  confirmBadge.setAttribute('opacity','0');
+  confirmBadge.style.transition='opacity .3s';
+  var cbRect=mkRect(320,270,180,38,10,'rgba(0,212,255,.22)','#00d4ff',1.5);
+  confirmBadge.appendChild(cbRect);
+  var cbText=mkText(410,295,'← that one ✓','#00d4ff',14,'700','middle');
+  confirmBadge.appendChild(cbText);
+  svg.appendChild(confirmBadge);
+
+  wrap.appendChild(svg);
+
+  // ---- Selection logic ----
+  function styleReset(){
+    for(var i=0;i<4;i++){
+      optBoxes[i].setAttribute('fill','rgba(240,244,255,.04)');
+      optBoxes[i].setAttribute('stroke','rgba(240,244,255,.2)');
+      optBoxes[i].setAttribute('stroke-width',1.5);
+      optLabels[i].setAttribute('fill','rgba(240,244,255,.6)');
+      optLabels[i].setAttribute('font-size',13);
+      optLabels[i].removeAttribute('font-weight');
+      optLiveTags[i].textContent='';
+    }
+    confirmBadge.setAttribute('opacity','0');
+    liveSubText.textContent='see it, on-device';
+    liveSubText.setAttribute('fill','rgba(240,244,255,.55)');
+  }
+
+  function selectOpt(i){
+    styleReset();
+    currentOpt=i;
+    optBoxes[i].setAttribute('fill','rgba(0,212,255,.22)');
+    optBoxes[i].setAttribute('stroke','#00d4ff');
+    optBoxes[i].setAttribute('stroke-width',2.5);
+    optLabels[i].setAttribute('fill','#e9fbff');
+    optLabels[i].setAttribute('font-size',14);
+    optLabels[i].setAttribute('font-weight',700);
+    optLiveTags[i].textContent='live';
+    confirmBadge.setAttribute('opacity','1');
+    liveSubText.textContent='← '+OPTIONS[i].sub+' live';
+    liveSubText.setAttribute('fill','#00d4ff');
+  }
+
+  function cycleNext(){
+    var next=(currentOpt+1)%4;
+    selectOpt(next);
+  }
+
+  function resetAll(){
+    currentOpt=-1;
+    styleReset();
+    // restore option A to its default "active-looking" style (matches SVG original)
+    optBoxes[0].setAttribute('fill','rgba(0,212,255,.16)');
+    optBoxes[0].setAttribute('stroke','#00d4ff');
+    optBoxes[0].setAttribute('stroke-width',2);
+    optLabels[0].setAttribute('fill','#e9fbff');
+    optLabels[0].setAttribute('font-size',14);
+    optLabels[0].setAttribute('font-weight',600);
+  }
+
+  resetAll();
+
+  // Register with slideSteps so arrow-right / space cycles options
+  setTimeout(function(){
+    slideSteps.set(sl,{
+      current:0,
+      reset:function(){ currentOpt=-1; resetAll(); this.current=0; },
+      steps:[
+        function(){selectOpt(0);},
+        function(){selectOpt(1);},
+        function(){selectOpt(2);},
+        function(){selectOpt(3);}
+      ]
+    });
+  },0);
+})();
+
+
 // FEATURE: EXPORT-MODE STATIC MEDIA (?print / ?shot=N)
 // =====================================================================
 // In export modes the media cycler renders its first item as a static
