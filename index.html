@@ -77,14 +77,6 @@ const SECTIONS = [
           'And sometimes you skip the plug entirely: talk to the tool directly, headless. If MCP is USB, that is wifi.'
         ],
         notes:'MCP in one sentence: your editor is the server, your AI is the client.\nUSB-C analogy lands well: one connector spec, any device.\nThis is the mental model for everything that follows.' },
-      { title:'You Do Not Need Deep Pockets', subtitle:'A well-trained local model handles routine tasks as well as a frontier model',
-        img:'images/intro-local-frontier.svg', bullets:[
-          'Frontier models are powerful but expensive — assume the cost scales with usage',
-          'For mechanical tasks (batch ops, file ops, status checks) a local 7–8B model is enough',
-          'Typed tools close the gap: a small model with structured calls beats a big model with free-form ones',
-          'Build and maintain a local fleet; reserve the frontier for judgment calls'
-        ],
-        notes:'Key point: most tasks do not need the frontier model.\nTyped tools are the unlock: an 8B model calling typed tools reliably beats a big model with vague ones.\nBuild a local fleet and use Claude only where it earns its cost.' },
       { title:'Love Your Work, Not Your Tools', subtitle:'Great tools come from hating bad ones',
         img:'media/deck-ui-social.png', bullets:[
           'Do not fear changing your tools — build them when they do not exist',
@@ -314,6 +306,14 @@ const SECTIONS = [
           'Rigging: useful for structure and symmetry, less reliable for weights'
         ],
         notes:'Geometry Nodes and materials: describe the look, get the node graph.\nBatch operations across dozens of objects in one prompt.\nHonest caveat: great for structure, shaky on rig weights.' },
+      { title:'You Do Not Need Deep Pockets', subtitle:'A well-trained local model handles routine tasks as well as a frontier model',
+        img:'images/intro-local-frontier.svg', bullets:[
+          'Frontier models are powerful but expensive — assume the cost scales with usage',
+          'For mechanical tasks (batch ops, file ops, status checks) a local 7–8B model is enough',
+          'Typed tools close the gap: a small model with structured calls beats a big model with free-form ones',
+          'Build and maintain a local fleet; reserve the frontier for judgment calls'
+        ],
+        notes:'Key point: most tasks do not need the frontier model.\nTyped tools are the unlock: an 8B model calling typed tools reliably beats a big model with vague ones.\nBuild a local fleet and use Claude only where it earns its cost.' },
       { title:'Watch a Local 8B Build It', subtitle:'qwen3:8b · composite tools · zero cloud tokens',
         img:'MEDIA_CYCLER', bullets:[
           'Same brief, two tool surfaces — atomic tools: a plane and one cube; composite tools: a 45-tower neon city',
