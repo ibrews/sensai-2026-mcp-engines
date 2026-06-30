@@ -46,7 +46,7 @@ const SECTIONS = [
       notes:'Quick intro: Agile Lens, Unreal Authorized Instructor.\nThe arc: built OpenClaw early 2026, pivoted to Claude, now a local model fleet.\nToday we cover engines, routing, case studies, pro tips, and a live demo.\nLet’s get into it.' },
     cases: [
       { title:'Agile Lens', subtitle:'Who built this and why', img:'',
-        bullets:[], notes:'Agile Lens orbit slide — auto-rendered by IIFE.' },
+        bullets:[], notes:'This is Agile Lens — my studio: XR and immersive design out of NYC, ten years in, bootstrapped.\nWe’ve been called an XR strike team and Unreal technical wizards; we solve hard problems with emerging tech for clients from Google to Lincoln Center.\nThat’s the lens everything in this talk comes from.' },
       { title:'My Tool Journey', subtitle:'Expand — contract — expand again',
         img:'', bullets:[
           '2016: Revit, 3ds Max, Rhino, SketchUp, Unity + Unreal — the full toolbox',
@@ -125,6 +125,15 @@ const SECTIONS = [
           'Rule: reach for CLI first; add MCP when you need the editor’s live state'
         ],
         notes:'Quick reference.\nAll four: build, test, batch = headless.\nBlender wins on scene edits: bpy headless API is comprehensive.\nGodot partial: .tscn editable as text, but GDAI MCP is cleaner.\nUnreal scene changes need the editor running = MCP.\nXcode: no MCP ecosystem, but xcodebuild + simctl cover most of the dev loop.\nRule: reach for CLI; add MCP when you need live editor state.' },
+      { title:'Headless Does the Heavy Lifting', subtitle:'Across every engine — MCP is the exception, not the rule',
+        img:'images/headless-first-anim.svg', bullets:[
+          'Blender: blender --background --python — bpy builds, renders, exports, no GUI',
+          'Unreal: UnrealEditor-Cmd + commandlets + UAT — cook, build, package, even ship',
+          'Godot: godot --headless — validate GDScript, export the .pck, run tests',
+          'RealityKit / Swift: xcodebuild + simctl + devicectl — build, test, deploy to device',
+          'MCP earns its place only for live editor state — headless CLI is the meal, MCP is the spice'
+        ],
+        notes:'The honest meta-point: the title says “MCP,” but most of our real work is plain headless CLI.\nEvery engine ships a real headless mode and scripting API, and agents are great at writing scripts and running CLIs — deterministic, version-controlled, CI-friendly.\nReach for MCP only when you must read or poke the editor’s live state.\nHeadless is the meal; MCP is the spice.' },
     ] },
 
   // ── CH 2: Structure + Routing ───────────────────────────────────────────
@@ -158,6 +167,14 @@ const SECTIONS = [
           'Heuristic: start on Sonnet; escalate to Opus only when Sonnet stalls twice on the same root-cause'
         ],
         notes:'Three tiers. Sonnet handles about 80 percent of the real log.\nOpus only when Sonnet stalls twice on the same root cause.\nHaiku for mechanical tasks: rename files, check status, shuffle assets.\nThe billing is real. Default cheap; escalate deliberately.' },
+      { title:'Fleet-First Routing', subtitle:'Cheapest capable model wins — spend Claude only where it counts',
+        img:'images/fleet-routing-anim.svg', bullets:[
+          'A router sends each task to the cheapest model that can do it well',
+          'Most work lands on the local fleet (qwen3:8b, qwen3-coder:30b) — zero cloud tokens',
+          'Only the hard, open-ended, judgment calls escalate to Claude (Sonnet, then Opus)',
+          'Same idea as the Claude tiers, one rung lower: local first, cloud only when it earns it'
+        ],
+        notes:'The routing philosophy in one picture: cheapest capable model wins.\nThe local fleet handles the bulk for zero cloud tokens; Claude is reserved for genuine judgment.\nSame “default cheap, escalate deliberately” rule as the Claude tiers — one level down.\nThat discipline is what keeps the weekly budget alive.' },
       { title:'The Setup Pattern', subtitle:'Learn it once, apply it everywhere',
         img:'images/ch2-setup-pattern-anim.svg', bullets:[
           'MCP server: runs alongside your editor, translates AI calls to editor commands',
@@ -442,7 +459,7 @@ const SECTIONS = [
           'RTX fork: Godot rendering research translated to Unreal material strategies',
           'Each solved problem is a template; the AI finds the connection if it can read the map'
         ],
-        notes:'These are our real projects, not stock demos.\nCascade on Vision Pro; MetaHumans posing natively at 90 fps.\nEach solved problem becomes a template the AI can reuse.' },
+        notes:'These are our real projects, not stock demos.\nCascade on Vision Pro; the MetaHuman cast running at 90 fps via a custom Metal skinning kernel.\nEach solved problem becomes a template the AI can reuse.' },
       { title:'The KB as Triangulation', subtitle:'Three known points give you the fourth for free',
         img:'images/ch5-triangulation-anim.svg', bullets:[
           'A→B: Godot to AVP taught us RealityKit constraints, scale bugs, the LowLevelMesh skinner',
@@ -2304,9 +2321,9 @@ setTimeout(updateDurationDisplay,100);
   const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Watch a Local 8B Build It'));
   if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(m) m.innerHTML='';
   buildMediaCycler(sl, [
-    {type:'image', src:'media/cs-local-city.png'},
-    {type:'image', src:'media/cs-tool-contrast.png'},
-    {type:'video', src:'media/local-city.mp4', loop:true},
+    {type:'image', src:'media/robust-scene-hero.png'},
+    {type:'image', src:'media/robust-scene-contrast.png'},
+    {type:'video', src:'media/robust-scene-turntable.mp4', loop:true},
   ], {imageDuration:6500});
 })();
 
@@ -2316,10 +2333,8 @@ setTimeout(updateDurationDisplay,100);
   const sl = allSlides.find(s => s.querySelector('.case-title')?.textContent.includes('Build a Robust Scene'));
   if (!sl) return; const m=sl.querySelector('.media-cycler-mount'); if(m) m.innerHTML='';
   buildMediaCycler(sl, [
-    {type:'image', src:'media/robust-scene-hero.png'},
     {type:'image', src:'media/robust-scene-ember.png'},
-    {type:'image', src:'media/robust-scene-contrast.png'},
-    {type:'video', src:'media/robust-scene-turntable.mp4', loop:true},
+    {type:'image', src:'media/robust-scene-golden.png'},
   ], {imageDuration:5000});
 })();
 
