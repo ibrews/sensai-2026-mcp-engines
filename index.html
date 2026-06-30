@@ -327,14 +327,14 @@ const SECTIONS = [
           'Proof: Godot ships to platforms people assume need Unreal'
         ],
         notes:'Cascade is a real shipping Godot game on Vision Pro.\nHand-tracked, 90fps, procedural audio - all in Godot.\nThe point: Godot reaches the headset too, not just Unreal.' },
-      { title:'A CC0 Human, No EULA', subtitle:'VitruvianGodot \u2014 photoreal head in stock Godot',
-        img:'media/ch6-vitruvian-cc0.png', bullets:[
-          'A CC0 photoreal human head in stock Godot 4.6 Forward+',
-          'Same skin-shader quality, with no MetaHuman EULA strings',
-          'The agent helped port the look-dev and the shader graph',
-          'Open assets + open engine = freedom to actually ship'
+      { title:'A Real MetaHuman, in Godot', subtitle:'MetaHumanGodot — Epic’s human in stock Godot, now MIT-licensed',
+        img:'media/metahuman-godot.mp4', bullets:[
+          'A real Epic MetaHuman, running in stock Godot — live look-dev, skin shaders, lighting, no Unreal in the loop',
+          'The agent ported the shader graph and look-dev rig — same photoreal character, the small engine',
+          'Epic just made it free: the <a href="https://www.metahuman.com/devkit" target="_blank" rel="noopener">MetaHuman Dev Kit</a> open-sources RigLogic + DNA under an MIT license — load a MetaHuman with Unreal’s exact runtime rig, anywhere',
+          'Remarkably generous — that license, plus markerless single-camera mocap (Unreal Fest 2026), makes photoreal humans genuinely portable'
         ],
-        notes:'You do not need MetaHumans to get a photoreal human.\nVitruvianGodot is CC0, EULA-free, in stock Godot.\nThe agent ported the look-dev. Open all the way down.' },
+        notes:'The win: a real Epic MetaHuman running in stock Godot — look-dev, shaders, lighting, no Unreal.\nThe agent ported the rig and shader graph.\nEpic just open-sourced RigLogic + DNA (the runtime rig) under MIT at metahuman.com/devkit — load a MetaHuman with Unreal’s exact evaluation anywhere.\nThat is genuinely generous, and it makes this portable.' },
       { title:'Why the Small Engine Wins', subtitle:'Iteration speed, zero cost, total scriptability',
         img:'media/ch6-godot-simkit.png', bullets:[
           'Tiny footprint and instant iteration - the loop is fast',
@@ -2619,6 +2619,15 @@ setTimeout(updateDurationDisplay,100);
 
 
 
+
+// FEATURE: Cascade video — show the full (near-square) webcam capture, uncropped
+(function(){
+  var sl=null;
+  for(var i=0;i<allSlides.length;i++){var t=allSlides[i].querySelector&&allSlides[i].querySelector('.case-title');if(t&&t.textContent.indexOf('Cascade Countdown')>=0){sl=allSlides[i];break;}}
+  if(!sl)return;
+  function fit(){var v=sl.querySelector('.case-image video');if(v){v.style.maxHeight='72vh';v.style.maxWidth='100%';v.style.width='auto';v.style.height='auto';}}
+  fit();setTimeout(fit,0);
+})();
 
 // FEATURE: CH3 Promethean AI - video reveal (show video, then reveal 2018)
 (function(){
