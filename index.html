@@ -2554,6 +2554,9 @@ setTimeout(updateDurationDisplay,100);
   var stars=[];
   var angle=0;
   var rafId=null;
+  var monoImg=new Image(),monoReady=false,pulseT=0;
+  monoImg.onload=function(){monoReady=true;};
+  monoImg.src='media/monocle-white.png';
 
   function resize(){
     W=sl.clientWidth||1600;
@@ -2603,6 +2606,13 @@ setTimeout(updateDurationDisplay,100);
     ctx.strokeStyle='rgba(200,210,255,.55)';
     ctx.lineWidth=1.2;
     ctx.stroke();
+
+    // Pulsing Agile Lens monocle — real logo PNG, ring aligned to the client orbit
+    if(monoReady){
+      pulseT+=0.02;
+      var _ms=R/374,_mw=852*_ms,_mh=877*_ms,_mx=cx-407*_ms,_my=cy-432*_ms;
+      ctx.save();ctx.globalAlpha=0.12+0.13*((Math.sin(pulseT)+1)/2);ctx.drawImage(monoImg,_mx,_my,_mw,_mh);ctx.restore();
+    }
 
     // Orbiting client labels
     var n=CLIENTS.length;
