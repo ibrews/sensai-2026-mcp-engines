@@ -61,7 +61,7 @@ const SECTIONS = [
         img:'media/unreal_demo.gif', bullets:[
           'INTRO: who this is for and what MCP actually is',
           'CH 1–3: Agents, structure + routing, and Unreal Engine',
-          'CH 4–5: A real broadcast case study, then community MCP servers — Blender and beyond',
+          'CH 4–5: A real client case study, then community MCP servers — Blender and beyond',
           'CH 6–7: Godot end to end, then Apple’s stack — RealityKit, Swift, Xcode',
           'CH 8–9: Your second brain and pro tips — then a live demo'
         ],
@@ -223,20 +223,20 @@ const SECTIONS = [
   // ── CH 4: Case Study ────────────────────────────────────────────────────
   { year: 'CH 4', accent: 'amber',
     lesson: { title:'Case Study:\nA Small Team, a Big Ask', short:'CASE STUDY',
-      tagline:'A broadcast game-show project, a real deadline, a small team — and an agent on every hard task.',
-      tags:'Broadcast · Unreal Engine · MetaHumans · Perforce',
-      notes:'Context: a broadcast game-show project with a real deadline and a small team.\nKeep the project and the celebrity abstract throughout.\nThe through-line: every hard task here had an agent on it.\nLet the individual cases tell the story.' },
+      tagline:'A high-stakes client project, a real deadline, a small team — and an agent on every hard task.',
+      tags:'Client Project · Unreal Engine · MetaHumans · Perforce',
+      notes:'Context: a high-stakes client project with a real deadline and a small team.\nKeep the project and the talent abstract throughout.\nThe through-line: every hard task here had an agent on it.\nLet the individual cases tell the story.' },
     cases: [
       { title:'Version Control That Just Works', subtitle:'GitHub by default \u2014 Perforce only when a client requires it',
         img:'media/cs-git-log.png', bullets:[
-          'We default to GitHub; some broadcast clients mandate Perforce, so we meet them there',
+          'We default to GitHub; some enterprise clients mandate Perforce, so we meet them there',
           'Claude resolves merge conflicts and writes clean, structured commit notes either way',
           'On this project it navigated the Perforce changelist model with no hand-holding',
           'Net result: fewer integration headaches, better audit trail, faster iteration'
         ],
         notes:'We are GitHub by default; this client required Perforce, so Claude met them there.\nSame discipline either way: clean conventional commits, real conflict resolution.\nNo P4 tutorial needed. The screenshot is our own GitHub history.' },
       { title:'You Do Not Always Need an MCP', subtitle:'A CLI and a clean agent is enough',
-        img:'media/cs-no-mcp-blendshapes.png', bullets:[
+        img:'media/cs-no-mcp-avp.jpg', bullets:[
           'Ready Player Me characters were missing blendshapes; MetaHumans have the full set',
           'We converted them headlessly with Blender + Python — without opening Blender',
           'No MCP plugin installed. The agent drove the Blender CLI directly.',
@@ -246,7 +246,7 @@ const SECTIONS = [
         notes:'No MCP plugin. The agent called the Blender command-line interface directly.\nReady Player Me missing blendshapes; MetaHumans had them; Blender bridged the gap.\nThe surprise: MetaHumans do not export blendshapes themselves.\nThe lesson: MCP is a convenience layer, not a requirement.' },
       { title:'Many MetaHumans, Tiny Hardware', subtitle:'Performance under real constraints',
         img:'media/cs-many-mh-tiny-hw.png', bullets:[
-          'Multiple MetaHumans simultaneously — one a recognizable celebrity likeness',
+          'Multiple MetaHumans simultaneously — one a bespoke custom likeness',
           'Target hardware: a Steam Deck — a fanless PC in a controller shell',
           'Found unusual cvars and project settings (including a facial-animation one) that moved the needle',
           'Wrote a launch script that simulates the target hardware profile on startup',
